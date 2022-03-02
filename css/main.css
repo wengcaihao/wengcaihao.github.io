@@ -1625,10 +1625,6 @@ pre code {
   position: fixed;
   z-index: 30;
   left: 30px;
-  width: 24px;
-}
-.back-to-top span {
-  display: none;
 }
 @media (max-width: 991px) {
   .back-to-top {
@@ -2526,7 +2522,7 @@ ul.breadcrumb li:last-child {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #bbffc1;
+  background: #9a66ff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
