@@ -135,6 +135,11 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
   </nav>
 </div>
 
@@ -170,7 +175,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/25/hexo%E5%86%99%E4%BD%9C/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/25/hexo%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -188,7 +193,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/25/hexo%E5%86%99%E4%BD%9C/" class="post-title-link" itemprop="url">hexo写作</a>
+          <a href="/2022/03/25/hexo%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">Hexo编写博客</a>
         </h2>
 
         <div class="post-meta-container">
@@ -198,8 +203,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2022-03-25 10:35:47" itemprop="dateCreated datePublished" datetime="2022-03-25T10:35:47+08:00">2022-03-25</time>
+      <time title="创建时间：2022-03-25 10:35:47 / 修改时间：15:27:09" itemprop="dateCreated datePublished" datetime="2022-03-25T10:35:47+08:00">2022-03-25</time>
     </span>
 
   
@@ -212,7 +218,124 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <p>本文将针对”Hexo编写博客“进行记录</p>
+<h1 id="Hexo写作"><a href="#Hexo写作" class="headerlink" title="Hexo写作"></a><strong>Hexo写作</strong></h1><h2 id="1-布局"><a href="#1-布局" class="headerlink" title="1.布局"></a>1.布局</h2><p>创建文章、页面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;文章名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在你的博客文件下打开Git Bash，输入上方命令，[layout]表示布局，为可选参数。&lt;文章名&gt;为你想要创建的文章名字，输入时删去&lt;&gt;符号，保留文章名即可。</p>
+<p>Hexo有三种默认的布局，分别为post、page、draft，不同的文件将会被保存在不同的路径。</p>
+<table>
+<thead>
+<tr>
+<th>布局</th>
+<th>文件保存路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>post</td>
+<td>source&#x2F;_posts</td>
+</tr>
+<tr>
+<td>page</td>
+<td>source</td>
+</tr>
+<tr>
+<td>draft</td>
+<td>source&#x2F;_drafts</td>
+</tr>
+</tbody></table>
+<p>Hexo默认以文章名为文件名称，当然，我们也可以修改_config.yml配置文件中的new_post_name参数来修改默认文件名称。如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_post_name: :year-:month-:day-:title.md</span><br></pre></td></tr></table></figure>
+
+<p>则可以在文件名中添加上日期，方便管理。</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:title</td>
+<td>标题（空格将会替换为短杆）</td>
+</tr>
+<tr>
+<td>:year</td>
+<td>建立文件的年份</td>
+</tr>
+<tr>
+<td>:month</td>
+<td>建立文件的月份，如04</td>
+</tr>
+<tr>
+<td>:i_month</td>
+<td>建立文件的月份，如4</td>
+</tr>
+<tr>
+<td>:day</td>
+<td>建立文件的日期，如03</td>
+</tr>
+<tr>
+<td>:i_day</td>
+<td>建立文件的日期，如3</td>
+</tr>
+</tbody></table>
+<h2 id="2-Front-matter"><a href="#2-Front-matter" class="headerlink" title="2.Front-matter"></a>2.Front-matter</h2><p>Front-matter指的是文件上方以 — 分割的区域，用于设置文件的参数。如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo编写博客</span><br><span class="line">date: 2022-03-25 10:35:47</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>下表为一些可以设置的参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>layout</td>
+<td>布局</td>
+<td>post</td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td>文章的文件名</td>
+</tr>
+<tr>
+<td>date</td>
+<td>建立日期</td>
+<td>文章的建立日期</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>更新日期</td>
+<td>文件更新日期</td>
+</tr>
+<tr>
+<td>comments</td>
+<td>开启文章的评论功能</td>
+<td>true</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>标签</td>
+<td></td>
+</tr>
+<tr>
+<td>categories</td>
+<td>分类</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="3-标签插件"><a href="#3-标签插件" class="headerlink" title="3.标签插件"></a>3.标签插件</h2><p>Hexo官网（</p>
+<p>[]: <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins">https://hexo.io/zh-cn/docs/tag-plugins</a>    “Hexo官网”</p>
+<p>）中提供一些文章中快速插入如引用块、代码等特定内容的插件。这里，我推荐直接使用Typora来完成文章的编写。</p>
+<p>Typora是一款Markdown编辑器，当我们输入完标记语言后就可以直接看见效果，并且许多标记语言可以直接通过快捷键或者软件上方工具栏来设置。</p>
+<h2 id="4-重新部署"><a href="#4-重新部署" class="headerlink" title="4.重新部署"></a>4.重新部署</h2><p>最后，在编写完文章后，不要忘记重新部署</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
