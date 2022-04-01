@@ -27,13 +27,14 @@
 <meta property="og:site_name" content="水中岚">
 <meta property="og:description" content="一个简单的Java应用程序123456public class FirstSample &amp;#123;    public static void main(String[] args) &amp;#123;        System.out.println(&quot;We will not use &amp;#x27;Hello World!&amp;#x27;&quot;);    &amp;#125;&amp;#125;  pu">
 <meta property="og:locale">
+<meta property="og:image" content="http://example.com/2022/03/30/%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2.png">
 <meta property="og:image" content="http://example.com/2022/03/30/%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/Blog/source/image/2022.4.1数字类型之间的转换.png">
 <meta property="article:published_time" content="2022-03-30T12:45:16.000Z">
-<meta property="article:modified_time" content="2022-04-01T11:05:06.422Z">
+<meta property="article:modified_time" content="2022-04-01T11:10:21.170Z">
 <meta property="article:author" content="水中岚">
 <meta property="article:tag" content="JAVA核心技术 卷Ⅰ">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/03/30/%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/Blog/source/image/2022.4.1数字类型之间的转换.png">
+<meta name="twitter:image" content="http://example.com/2022/03/30/%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2.png">
 
 
 <link rel="canonical" href="http://example.com/2022/03/30/%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/">
@@ -218,7 +219,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-01 19:05:06" itemprop="dateModified" datetime="2022-04-01T19:05:06+08:00">2022-04-01</time>
+      <time title="修改时间：2022-04-01 19:10:21" itemprop="dateModified" datetime="2022-04-01T19:10:21+08:00">2022-04-01</time>
     </span>
 
   
@@ -283,6 +284,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">double</span> <span class="variable">CM_PER_INCH</span> <span class="operator">=</span> <span class="number">2.54</span>;</span><br></pre></td></tr></table></figure>
 
 <p>2.数值类型之间的转换</p>
+<img src="/2022/03/30/%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2.png" class title="This is an test image">
 <p><img src="/2022/03/30/%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/Blog\source\image\2022.4.1数字类型之间的转换.png" alt="2022.4.1数字类型之间的转换"></p>
 <p>上图给出了Java中的合法转换，其中实线表示转换时无精度损失，虚线表示转换时有精度损失。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">123456789</span>;</span><br><span class="line"><span class="type">float</span> <span class="variable">f</span> <span class="operator">=</span> n;<span class="comment">//f is 1.23456792E8</span></span><br></pre></td></tr></table></figure>
