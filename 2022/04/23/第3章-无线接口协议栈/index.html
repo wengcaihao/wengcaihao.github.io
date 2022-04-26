@@ -23,30 +23,30 @@
     <meta name="description" content="基础1.在5G系统中，将终端和接入网之间的接口简称为Uu接口，也成为空中接口。 2.无线接口协议：建立、重配置和释放各种无线承载业务。主要分为三层两面，三层指的是物理层、数据链路层、网络层；两面指的是控制平面和用户平面。  物理层是指MAC层，位于控制平面和用户平面。  数据链路层可分成媒体访问控制（MAC）层、无线链路控制（RLC）层、分组数据汇聚协议（PDCP）层、服务数据自适应协议（SDPA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="无线接口协议栈">
-<meta property="og:url" content="http://example.com/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/index.html">
+<meta property="og:url" content="http://example.com/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/index.html">
 <meta property="og:site_name" content="水中岚">
 <meta property="og:description" content="基础1.在5G系统中，将终端和接入网之间的接口简称为Uu接口，也成为空中接口。 2.无线接口协议：建立、重配置和释放各种无线承载业务。主要分为三层两面，三层指的是物理层、数据链路层、网络层；两面指的是控制平面和用户平面。  物理层是指MAC层，位于控制平面和用户平面。  数据链路层可分成媒体访问控制（MAC）层、无线链路控制（RLC）层、分组数据汇聚协议（PDCP）层、服务数据自适应协议（SDPA">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE1.png">
-<meta property="og:image" content="http://example.com/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE2.png">
-<meta property="og:image" content="http://example.com/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE3.png">
-<meta property="og:image" content="http://example.com/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE4.png">
-<meta property="og:image" content="http://example.com/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE5.png">
-<meta property="og:image" content="http://example.com/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE6.png">
-<meta property="og:image" content="http://example.com/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE7.png">
+<meta property="og:image" content="http://example.com/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE1.png">
+<meta property="og:image" content="http://example.com/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE2.png">
+<meta property="og:image" content="http://example.com/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE3.png">
+<meta property="og:image" content="http://example.com/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE4.png">
+<meta property="og:image" content="http://example.com/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE5.png">
+<meta property="og:image" content="http://example.com/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE6.png">
+<meta property="og:image" content="http://example.com/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE7.png">
 <meta property="article:published_time" content="2022-04-23T03:03:49.000Z">
 <meta property="article:modified_time" content="2022-04-23T11:53:15.650Z">
 <meta property="article:author" content="水中岚">
 <meta property="article:tag" content="5G移动通信系统设计与标准详解">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE1.png">
+<meta name="twitter:image" content="http://example.com/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE1.png">
 
 
-<link rel="canonical" href="http://example.com/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/">
+<link rel="canonical" href="http://example.com/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/","path":"2022/04/23/无线接口协议栈/","title":"无线接口协议栈"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/","path":"2022/04/23/第3章-无线接口协议栈/","title":"无线接口协议栈"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>无线接口协议栈 | 水中岚</title>
@@ -188,7 +188,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -245,12 +245,12 @@
 <ul>
 <li>控制平面协议栈：负责对无线接口的管理和控制</li>
 </ul>
-<img src="/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE1.png" class title="控制平面协议栈">
+<img src="/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE1.png" class title="控制平面协议栈">
 
 <ul>
 <li>用户平面协议栈</li>
 </ul>
-<img src="/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE2.png" class title="用户平面协议栈">
+<img src="/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE2.png" class title="用户平面协议栈">
 
 <h2 id="物理层协议功能"><a href="#物理层协议功能" class="headerlink" title="物理层协议功能"></a>物理层协议功能</h2><p>物理层为MAC和更好层提供信息传输服务，其中所提供的服务通过传输信道来描述。</p>
 <p>1.下行传输信道类型</p>
@@ -264,10 +264,10 @@
 <li>上行共享信道UL_SCH：与下行共享信道DL_SCH一样</li>
 <li>随机接入信道RACH：承载有限的控制信息，并且具有冲突碰撞特征。</li>
 </ul>
-<img src="/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE3.png" class title="映射关系">
+<img src="/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE3.png" class title="映射关系">
 
-<h2 id="数据链路层协议功能"><a href="#数据链路层协议功能" class="headerlink" title="数据链路层协议功能"></a>数据链路层协议功能</h2><img src="/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE4.png" class title="数据链路层的下行架构">
-<img src="/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE5.png" class title="数据链路层的上行架构">
+<h2 id="数据链路层协议功能"><a href="#数据链路层协议功能" class="headerlink" title="数据链路层协议功能"></a>数据链路层协议功能</h2><img src="/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE4.png" class title="数据链路层的下行架构">
+<img src="/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE5.png" class title="数据链路层的上行架构">
 
 <p>物理层为MAC子层提供传输信道级的服务，MAC子层为RLC子层提供逻辑信道级的服务，RLC子层为PDCP子层提供RLC信道级服务，PDCP子层为SDAP子层提供无线承载级的服务，SDAP子层为上层提供SGC Qos流级的服务。</p>
 <h3 id="MAC子层"><a href="#MAC子层" class="headerlink" title="MAC子层"></a>MAC子层</h3><p>Ⅰ、MAC子层的功能</p>
@@ -289,8 +289,8 @@
 </ul>
 <p>业务信道仅有专用业务信道DTCH，用于针对单个用户的点到点的业务传输信道，可单向可双向。</p>
 <p>Ⅲ、逻辑信道与传输信道的映射关系</p>
-<img src="/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE6.png" class title="上行逻辑信道到上行传输信道的映射关系">
-<img src="/2022/04/23/%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE7.png" class title="下行逻辑信道到下行传输信道的映射关系">
+<img src="/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE6.png" class title="上行逻辑信道到上行传输信道的映射关系">
+<img src="/2022/04/23/%E7%AC%AC3%E7%AB%A0-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE7.png" class title="下行逻辑信道到下行传输信道的映射关系">
 
 <h3 id="RLC子层"><a href="#RLC子层" class="headerlink" title="RLC子层"></a>RLC子层</h3><p>为了满足不同的业务需求，RLC子层支持三种传输模式：<strong>透明模式</strong>（TM）、<strong>非确认模式</strong>（UM）、<strong>确认模式</strong>（AM）。RLC的配置基于逻辑信道的颗粒度，不依赖于底层的参数集和传输时间间隔的长度。</p>
 <p>透明模式主要用于寻呼消息、系统信息广播以及SRB0信令的传输</p>
