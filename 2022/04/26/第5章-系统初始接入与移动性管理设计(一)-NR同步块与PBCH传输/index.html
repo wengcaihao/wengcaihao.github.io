@@ -22,33 +22,34 @@
 
     <meta name="description" content="概述UE和网络进行数据传输之前，必须通过初始接入过程连接到网络。初始接入过程包括小区搜索、系统信息接收和随机接入等阶段。 小区搜索是UE利用小区同步信号进行下行时间和频率同步，以及获得物理小区标识（PCID）的过程。 通过小区搜索完成下行同步之后，UE接收并解码物理广播和承载最小系统信息的PDSCH，获取后续进行随机接入必需的系统信息。 在获取系统信息之后，UE通过随机接入过程实现上行时间同步，从">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第5章-系统初始接入与移动性管理设计-NR同步块（SSB）">
-<meta property="og:url" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/index.html">
+<meta property="og:title" content="第5章-系统初始接入与移动性管理设计(一)-NR同步块与PBCH传输">
+<meta property="og:url" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/index.html">
 <meta property="og:site_name" content="水中岚">
 <meta property="og:description" content="概述UE和网络进行数据传输之前，必须通过初始接入过程连接到网络。初始接入过程包括小区搜索、系统信息接收和随机接入等阶段。 小区搜索是UE利用小区同步信号进行下行时间和频率同步，以及获得物理小区标识（PCID）的过程。 通过小区搜索完成下行同步之后，UE接收并解码物理广播和承载最小系统信息的PDSCH，获取后续进行随机接入必需的系统信息。 在获取系统信息之后，UE通过随机接入过程实现上行时间同步，从">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/%E5%9B%BE1.png">
-<meta property="og:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/%E5%9B%BE2.png">
-<meta property="og:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/%E5%9B%BE3.png">
-<meta property="og:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/%E5%9B%BE4.png">
-<meta property="og:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/%E5%9B%BE5.png">
-<meta property="og:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/%E5%9B%BE6.png">
+<meta property="og:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE1.png">
+<meta property="og:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE2.png">
+<meta property="og:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE3.png">
+<meta property="og:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE4.png">
+<meta property="og:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE5.png">
+<meta property="og:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE6.png">
+<meta property="og:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE7.png">
 <meta property="article:published_time" content="2022-04-26T07:31:17.000Z">
-<meta property="article:modified_time" content="2022-04-27T02:47:33.921Z">
+<meta property="article:modified_time" content="2022-04-27T06:47:58.802Z">
 <meta property="article:author" content="水中岚">
 <meta property="article:tag" content="5G移动通信系统设计与标准详解">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/%E5%9B%BE1.png">
+<meta name="twitter:image" content="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE1.png">
 
 
-<link rel="canonical" href="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/">
+<link rel="canonical" href="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/","path":"2022/04/26/第5章-系统初始接入与移动性管理设计-NR同步块（SSB）/","title":"第5章-系统初始接入与移动性管理设计-NR同步块（SSB）"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/","path":"2022/04/26/第5章-系统初始接入与移动性管理设计(一)-NR同步块与PBCH传输/","title":"第5章-系统初始接入与移动性管理设计(一)-NR同步块与PBCH传输"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>第5章-系统初始接入与移动性管理设计-NR同步块（SSB） | 水中岚</title>
+<title>第5章-系统初始接入与移动性管理设计(一)-NR同步块与PBCH传输 | 水中岚</title>
   
 
 
@@ -127,7 +128,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">NR同步块（SSB）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSB%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8CSSB%E7%AA%81%E5%8F%91%E9%9B%86"><span class="nav-number">2.1.</span> <span class="nav-text">SSB的结构和SSB突发集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5"><span class="nav-number">2.2.</span> <span class="nav-text">时间同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSB%E5%9C%A8%E5%8D%8A%E6%97%A0%E7%BA%BF%E5%B8%A7%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">SSB在半无线帧中的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSB%E4%BC%A0%E8%BE%93%E9%85%8D%E7%BD%AE"><span class="nav-number">2.4.</span> <span class="nav-text">SSB传输配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E4%BC%A0%E8%BE%93SSB%E7%9A%84%E6%8C%87%E7%A4%BA"><span class="nav-number">2.5.</span> <span class="nav-text">实际传输SSB的指示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E4%BF%A1%E5%8F%B7%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.6.</span> <span class="nav-text">同步信号设计</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">NR同步块（SSB）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSB%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8CSSB%E7%AA%81%E5%8F%91%E9%9B%86"><span class="nav-number">2.1.</span> <span class="nav-text">SSB的结构和SSB突发集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5"><span class="nav-number">2.2.</span> <span class="nav-text">时间同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSB%E5%9C%A8%E5%8D%8A%E6%97%A0%E7%BA%BF%E5%B8%A7%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">SSB在半无线帧中的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSB%E4%BC%A0%E8%BE%93%E9%85%8D%E7%BD%AE"><span class="nav-number">2.4.</span> <span class="nav-text">SSB传输配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E4%BC%A0%E8%BE%93SSB%E7%9A%84%E6%8C%87%E7%A4%BA"><span class="nav-number">2.5.</span> <span class="nav-text">实际传输SSB的指示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E4%BF%A1%E5%8F%B7%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.6.</span> <span class="nav-text">同步信号设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PBCH%E4%BC%A0%E8%BE%93"><span class="nav-number">3.</span> <span class="nav-text">PBCH传输</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PBCH%E5%86%85%E5%AE%B9"><span class="nav-number">3.1.</span> <span class="nav-text">PBCH内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PBCH%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B"><span class="nav-number">3.2.</span> <span class="nav-text">PBCH传输过程</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -142,7 +143,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -187,7 +188,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -200,12 +201,12 @@
     </span>
     
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="第5章-系统初始接入与移动性管理设计-NR同步块（SSB） | 水中岚">
+      <meta itemprop="name" content="第5章-系统初始接入与移动性管理设计(一)-NR同步块与PBCH传输 | 水中岚">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          第5章-系统初始接入与移动性管理设计-NR同步块（SSB）
+          第5章-系统初始接入与移动性管理设计(一)-NR同步块与PBCH传输
         </h1>
 
         <div class="post-meta-container">
@@ -223,7 +224,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-27 10:47:33" itemprop="dateModified" datetime="2022-04-27T10:47:33+08:00">2022-04-27</time>
+      <time title="修改时间：2022-04-27 14:47:58" itemprop="dateModified" datetime="2022-04-27T14:47:58+08:00">2022-04-27</time>
     </span>
 
   
@@ -246,7 +247,7 @@
 <h1 id="NR同步块（SSB）"><a href="#NR同步块（SSB）" class="headerlink" title="NR同步块（SSB）"></a>NR同步块（SSB）</h1><p>NR同步块（SSB）包括主同步信号（PSS）、辅同步信号（SSS）和物理广播信道（PBCH）。PBCH中包含解调参考信号（DM-RS）。</p>
 <p>UE在进入NR系统时，首先要检测主同步信号和辅同步信号以获得下行时频同步以及物理小区标识，然后对PBCH进行解码。PBCH中包括主信息块（MIB）和其他与NR同步块传输时间有关的信息。主信息块中携带了UE接入NR系统所需的最小系统信息的一部分。</p>
 <h2 id="SSB的结构和SSB突发集"><a href="#SSB的结构和SSB突发集" class="headerlink" title="SSB的结构和SSB突发集"></a>SSB的结构和SSB突发集</h2><p>1.SSB的结构</p>
-<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/%E5%9B%BE1.png" class title="SSB的结构">
+<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE1.png" class title="SSB的结构">
 
 <p>SSB中PSS、SSS、PBCH采用TDM的方式，一个SSB占用4个OFDM符号,一个SSB的带宽为20个PRB。每个SSB中PSS、SSS和PBCH采用相同的子载波间隔。</p>
 <p>2.SSB搜索</p>
@@ -256,14 +257,14 @@
 <h2 id="时间同步"><a href="#时间同步" class="headerlink" title="时间同步"></a>时间同步</h2><p>当检测到某个SSB时，UE将从SSB获取定时信息，以达到下行时间同步的目的。定时信息包括：系统帧号、半无线帧索引、半无线帧中的时隙索引和时隙中OFDM符号索引。</p>
 <p>首先根据系统帧号以及半无线帧索引获取半无线帧中的位置。然后根据SSB时间索引，UE可结合NR标准规定的SSB在半无线帧中的位置，推断出该检测到的SSB在半无线帧中的时隙索引以及在该时隙中的OFDM符号索引。</p>
 <h2 id="SSB在半无线帧中的位置"><a href="#SSB在半无线帧中的位置" class="headerlink" title="SSB在半无线帧中的位置"></a>SSB在半无线帧中的位置</h2><p>不同频率范围内一个SSB突发集的最大SSB个数不同，表示SSB时间索引所需的比特数不同。为了使UE根据检测到的SSB时间索引确定SSB在半无线帧中的位置，NR标准规定了各种场景中SSB的侯选位置在SSB半无线帧中相对半无线帧起始点的OFDM符号索引值，如表：</p>
-<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/%E5%9B%BE2.png" class>
+<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE2.png" class>
 
 <p>例1：NR SSB 模式A为例，检测到SSB时间索引值为2，即SSB半无线帧中的第3个SSB，根据下图：</p>
-<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/%E5%9B%BE3.png" class>
+<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE3.png" class>
 
 <p>结合表5-1，可知模式A下每个时隙有两个SSB，它们的起始OFDM符号分别为2和8，第3个SSB位于SSB半无线帧中的第2个时隙（$n&#x3D;1$）。所以相对半无线帧起始点的OFDM符号的索引值为14×1+2&#x3D;16</p>
 <p>例2：NR SSB 模式D为例，检测到SSB时间索引值为7，即SSB半无线帧中的第8个SSB，根据下图：</p>
-<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/%E5%9B%BE4.png" class>
+<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE4.png" class>
 
 <p>结合表5-1，可知模式D下每2个有4个SSB，第8个SSB位于SSB半无线帧中的第4个时隙（$n&#x3D;1$）,所以相对半无线帧起始点的OFDM符号的索引值为28×1+20&#x3D;48</p>
 <h2 id="SSB传输配置"><a href="#SSB传输配置" class="headerlink" title="SSB传输配置"></a>SSB传输配置</h2><p>在初始小区搜索时，UE没有任何关于SSB传输配置的信息，为了减少UE初始小区搜索的时间和功耗，NR在协议中定义了一些SSB传输配置参数的默认值，包括SSB子载波间隔、SSB模式和SSB发送周期。</p>
@@ -285,13 +286,18 @@
 <h2 id="同步信号设计"><a href="#同步信号设计" class="headerlink" title="同步信号设计"></a>同步信号设计</h2><p>同步信号包括主同步信号和辅同步信号。</p>
 <p>NR设计了3个主同步信号序列，主同步信号序列的ID为$N_{ID}^{(2)}\in{0,1,2}$。每个主同步信号序列对应于336个辅同步序列，辅同步信号序列的ID为$N_{ID}^{(1)}\in{0,1,…,335}$。每个NR物理小区标识$N_{ID}^{cell}$由主同步信号序列ID和辅同步信号序列ID的组合共同确定，即$N_{ID}^{cell}&#x3D;3N_{ID}^{(1)}+N_{ID}^{(2)}$。所以NR共支持336×3&#x3D;1008个物理小区标识。</p>
 <p>1.主同步信号</p>
-<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/%E5%9B%BE5.png" class>
+<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE5.png" class>
 
 <p>2.辅同步信号</p>
-<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-NR%E5%90%8C%E6%AD%A5%E5%9D%97%EF%BC%88SSB%EF%BC%89/%E5%9B%BE6.png" class>
+<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE6.png" class>
 
 
 
+<h1 id="PBCH传输"><a href="#PBCH传输" class="headerlink" title="PBCH传输"></a>PBCH传输</h1><p>PBCH是UE完成主同步信号和辅同步信号检测之后需要解码的第一个信道。PBCH和解调参考信号包含在SSB中。PBCH的内容为UE访问NR无线网络系统所需最小系统信息的一部分。</p>
+<h2 id="PBCH内容"><a href="#PBCH内容" class="headerlink" title="PBCH内容"></a>PBCH内容</h2><p>NR将最小基本系统信息分为两部分：一部分在NR PBCH中，另一部分在SIB1（SIB:系统信息块）中。而PBCH设计的基本原则是尽可能减小PBCH的载荷。因此NR PBCH的载荷仅为56bit，其中24位来自高层广播信道（BCCH-BCH），剩余32bit由物理层提供，其中包括24bit循环冗余校验（CRC）比特。除了SSB时间索引和CRC比特外，同一个SSB突发集中所以SSB的PBCH内容是相同的。</p>
+<h2 id="PBCH传输过程"><a href="#PBCH传输过程" class="headerlink" title="PBCH传输过程"></a>PBCH传输过程</h2><img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE7.png" class title="PBCH传输过程">
+
+<p>物理层产生PBCH符号和PBCH DM-RS的流程如图所示。首先，来自高层的24bit BCCH-BCH信息与来自物理层的8bit与SSB传输时间相关的信息组合，生成32bit PBCH有效载荷。然后，32bit PBCH有效载荷经历交织（改善前向纠错的性能）、第一次加扰（降低小区之间PBCH信号的相关性，从而降低小区之间的互相干扰）、附加CRC（提供PBCH传输块的错误检测）等过程，产生56bit PBCH载荷。然后，通过极化编码、速率匹配、第二次加扰（第一次加扰的效果有限，于是再一次加扰）、QPSK调制，生成共432个符号的PBCH序列。最后，432个符号的PBCH序列与144个符号的PBCH DM-RS序列一起被映射到用于传输的SSB。</p>
 
     </div>
 
@@ -313,6 +319,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/04/27/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%BA%8C)-%E5%B9%BF%E6%92%AD%E4%BF%A1%E5%8F%B7%E4%BC%A0%E8%BE%93/" rel="next" title="第5章-系统初始接入与移动性管理设计(二)-广播信号传输">
+                  第5章-系统初始接入与移动性管理设计(二)-广播信号传输 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
