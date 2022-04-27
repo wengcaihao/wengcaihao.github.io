@@ -274,7 +274,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-04-27 14:12:18 / 修改时间：15:46:31" itemprop="dateCreated datePublished" datetime="2022-04-27T14:12:18+08:00">2022-04-27</time>
+      <time title="创建时间：2022-04-27 14:12:18 / 修改时间：16:01:06" itemprop="dateCreated datePublished" datetime="2022-04-27T14:12:18+08:00">2022-04-27</time>
     </span>
 
   
@@ -292,6 +292,15 @@
 <p>CORESET称为“控制资源集”，是下行资源网络中特定区域内的一组物理资源，用于承载PDCCH。</p>
 <p>PDCCH承载的是下行控制信息（DCI）,根据DCI的不同可将PDCCH分为不同的类型。</p>
 <p>定义Type0-PDCCH 公共搜索空间（CSS）的CORESET简称为CORESET#0。CORESET#0主要是定义Type0-PDCCH CSS的时间和频率资源以及Type0-PDCCH CSS的监听时机。</p>
+<p><strong>小区定义SSB：</strong>携带关联的CORESET#0的配置信息以及Type0-PDCCH CSS的监听时机的配置信息。而UE根据CORESET#0和Type0-PDCCH CSS的信息搜索调度SIB1 NR PDSCH的NR PDCCH，以便解调接收SIB1，进而获得接入无线网络系统所需的最小系统信息。</p>
+<p><strong>非小区定义SSB：</strong>不携带CORESET#0的配置信息，主要用途是无线资源管理（RRM）。</p>
+<p>当UE在小区搜索期间检测到某一个SSB时，UE首先需要确定该SSB是CD-SSB还是NCD-SSB。</p>
+<h2 id="SSB和CORESET-0的复用模式"><a href="#SSB和CORESET-0的复用模式" class="headerlink" title="SSB和CORESET#0的复用模式"></a>SSB和CORESET#0的复用模式</h2><p><strong>复用模式1：</strong>在时域上，SSB和关联的CORESET#0出现在不同的时刻。在频域上，SSB传输带宽被CORESET#0传输带宽所覆盖。</p>
+<p><strong>复用模式2：</strong>在时域上，SSB和关联的CORESET#0出现在不同的时刻。在频域上，SSB传位于CORESET#0的顶部或底部。</p>
+<p><strong>复用模式3</strong>：在时域上，SSB和关联的CORESET#0出现在相同的OFDM符号种。在频域上，SSB正好位于CORESET#0的顶部或底部。</p>
+<ul>
+<li><input disabled type="checkbox"> 本节剩余内容有点不懂，等后面再学习</li>
+</ul>
 
       
     </div>
