@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="水中岚的博客">
+    <meta name="description" content="寻呼信道设计1、寻呼的目的：  通知处于RRC_IDLE和RRC_INACTIVE状态的UE，重新连接到网络以开始新的数据服务 提示处于RRC_IDLE、RRC_INACTIVE和RRC_CONNECTED状态的UE系统信息已改变，UE应该重新获取新的系统信息 对所有RRC状态下的UE发送地震和海啸预警系统等指示。  2、网络通过在UE的寻呼时机（PO）处发送寻呼消息和&#x2F;或指示来发起寻呼">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第5章-系统初始接入与移动性管理设计(四)-寻呼信道设计">
 <meta property="og:url" content="http://example.com/2022/04/28/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E5%9B%9B)-%E5%AF%BB%E5%91%BC%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="水中岚">
-<meta property="og:description" content="水中岚的博客">
+<meta property="og:description" content="寻呼信道设计1、寻呼的目的：  通知处于RRC_IDLE和RRC_INACTIVE状态的UE，重新连接到网络以开始新的数据服务 提示处于RRC_IDLE、RRC_INACTIVE和RRC_CONNECTED状态的UE系统信息已改变，UE应该重新获取新的系统信息 对所有RRC状态下的UE发送地震和海啸预警系统等指示。  2、网络通过在UE的寻呼时机（PO）处发送寻呼消息和&#x2F;或指示来发起寻呼">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-04-28T01:30:56.000Z">
-<meta property="article:modified_time" content="2022-04-28T01:31:56.729Z">
+<meta property="article:modified_time" content="2022-04-28T01:56:31.335Z">
 <meta property="article:author" content="水中岚">
 <meta property="article:tag" content="5G移动通信系统设计与标准详解">
 <meta name="twitter:card" content="summary">
@@ -107,7 +107,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -120,6 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%BB%E5%91%BC%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.</span> <span class="nav-text">寻呼信道设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BB%E5%91%BC%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">寻呼方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BB%E5%91%BC%E6%8E%A7%E5%88%B6%E8%B5%84%E6%BA%90%E9%9B%86%E5%92%8C%E5%AF%BB%E5%91%BC%E7%9B%91%E5%90%AC%E6%97%B6%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">寻呼控制资源集和寻呼监听时机</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -134,7 +135,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -209,7 +210,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-04-28 09:30:56 / 修改时间：09:31:56" itemprop="dateCreated datePublished" datetime="2022-04-28T09:30:56+08:00">2022-04-28</time>
+      <time title="创建时间：2022-04-28 09:30:56 / 修改时间：09:56:31" itemprop="dateCreated datePublished" datetime="2022-04-28T09:30:56+08:00">2022-04-28</time>
     </span>
 
   
@@ -222,7 +223,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h1 id="寻呼信道设计"><a href="#寻呼信道设计" class="headerlink" title="寻呼信道设计"></a>寻呼信道设计</h1><p>1、寻呼的目的：</p>
+<ul>
+<li>通知处于RRC_IDLE和RRC_INACTIVE状态的UE，重新连接到网络以开始新的数据服务</li>
+<li>提示处于RRC_IDLE、RRC_INACTIVE和RRC_CONNECTED状态的UE系统信息已改变，UE应该重新获取新的系统信息</li>
+<li>对所有RRC状态下的UE发送地震和海啸预警系统等指示。</li>
+</ul>
+<p>2、网络通过在UE的寻呼时机（PO）处发送寻呼消息和&#x2F;或指示来发起寻呼过程。一个PO包括一组S个连续的寻呼PDCCH监听时机，S等于SIB1种参数ssb-PositionInBurst提供的实际发送的SSB数量。所以PO中第k个监听时机对应于SSB突发集实际发送的第k个SSB，所以一个PO中不同监听时机对应于不同的波束方向，从而在一个PO中的所以监听时机处发送寻呼消息和&#x2F;或指示，就相当于完成一次寻呼过程的波束扫描。</p>
+<h2 id="寻呼方法"><a href="#寻呼方法" class="headerlink" title="寻呼方法"></a>寻呼方法</h2><p>NR支持的寻呼方法是：若要寻呼某个UE，基站以波束扫描的方式，通过给该UE配置的各个监听时机对该UE发送寻呼下行控制信息（DCI），以及由寻呼DCI调度的PDSCH携带的寻呼消息。</p>
+<h2 id="寻呼控制资源集和寻呼监听时机"><a href="#寻呼控制资源集和寻呼监听时机" class="headerlink" title="寻呼控制资源集和寻呼监听时机"></a>寻呼控制资源集和寻呼监听时机</h2><p>UE在Type2-PDCCH CSS中搜索承载寻呼DCI的PDCCH，但网络并不必为UE专门配置用于Type2-PDCCH CSS的CORESET，NR规定Type2-PDCCH CSS的CORESET与CORESET#完全相同。</p>
+<p>网络可用高层参数pagingSearchSpace为UE专门配置Type2-PDCCH CSS，如果没有配置，则默认与Type0-PDCCH CSS相同。</p>
+
     </div>
 
     
@@ -243,6 +254,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/04/28/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%BA%94)-%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86/" rel="next" title="第5章-系统初始接入与移动性管理设计(五)-移动性管理">
+                  第5章-系统初始接入与移动性管理设计(五)-移动性管理 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
