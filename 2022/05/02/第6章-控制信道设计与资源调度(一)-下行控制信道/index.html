@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="概述1.物理下行控制信道功能：主要用于承载下行调度许可、上行调度许可等动态调度信息。相比于LTE，NR 采取了更为灵活的设计方式，如控制资源合集CORESET和搜索空间独立定义，并引入监听时机的定义等，以适应灵活多变的时隙结构。 2.物理上行控制信道功能：主要用于承载混合自动重传请求确认、调度请求和信道状态信息等上行控制信息。 下行控制信道NR PDCCH以控制资源集合（CORESET）为单位配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第6章-控制信道设计与资源调度(一)-下行控制信道">
+<meta property="og:url" content="http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/index.html">
+<meta property="og:site_name" content="水中岚">
+<meta property="og:description" content="概述1.物理下行控制信道功能：主要用于承载下行调度许可、上行调度许可等动态调度信息。相比于LTE，NR 采取了更为灵活的设计方式，如控制资源合集CORESET和搜索空间独立定义，并引入监听时机的定义等，以适应灵活多变的时隙结构。 2.物理上行控制信道功能：主要用于承载混合自动重传请求确认、调度请求和信道状态信息等上行控制信息。 下行控制信道NR PDCCH以控制资源集合（CORESET）为单位配置">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE1.png">
+<meta property="og:image" content="http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE2.png">
+<meta property="article:published_time" content="2022-05-02T01:51:48.000Z">
+<meta property="article:modified_time" content="2022-05-03T02:40:20.790Z">
+<meta property="article:author" content="水中岚">
+<meta property="article:tag" content="5G移动通信系统设计与标准详解">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE1.png">
+
+
+<link rel="canonical" href="http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/","path":"2022/05/02/第6章-控制信道设计与资源调度(一)-下行控制信道/","title":"第6章-控制信道设计与资源调度(一)-下行控制信道"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>第6章-控制信道设计与资源调度(一)-下行控制信道 | 水中岚</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">水中岚</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">尽人事 听天命</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93"><span class="nav-number">2.</span> <span class="nav-text">下行控制信道</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E9%81%93%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">信道结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E8%B5%84%E6%BA%90%E9%9B%86%E5%90%88CORESET"><span class="nav-number">2.1.1.</span> <span class="nav-text">控制资源集合CORESET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PDCCH%E7%9A%84%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.2.</span> <span class="nav-text">PDCCH的物理结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E6%96%B9%E6%A1%88"><span class="nav-number">2.2.</span> <span class="nav-text">传输方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PDCCH%E5%A4%9A%E5%A4%A9%E7%BA%BF%E6%96%B9%E6%A1%88"><span class="nav-number">2.2.1.</span> <span class="nav-text">PDCCH多天线方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PDCCH%E8%A7%A3%E8%B0%83%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7"><span class="nav-number">2.2.2.</span> <span class="nav-text">PDCCH解调参考信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E7%A9%BA%E9%97%B4%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.2.3.</span> <span class="nav-text">搜索空间设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E4%B8%8E%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.2.4.</span> <span class="nav-text">控制信息内容与格式</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="水中岚"
+      src="/uploads/me.jpg">
+  <p class="site-author-name" itemprop="name">水中岚</p>
+  <div class="site-description" itemprop="description">水中岚的博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="第6章-控制信道设计与资源调度(一)-下行控制信道 | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第6章-控制信道设计与资源调度(一)-下行控制信道
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-02 09:51:48" itemprop="dateCreated datePublished" datetime="2022-05-02T09:51:48+08:00">2022-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-03 10:40:20" itemprop="dateModified" datetime="2022-05-03T10:40:20+08:00">2022-05-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>1.物理下行控制信道功能：主要用于承载下行调度许可、上行调度许可等动态调度信息。相比于LTE，NR 采取了更为灵活的设计方式，如控制资源合集CORESET和搜索空间独立定义，并引入监听时机的定义等，以适应灵活多变的时隙结构。</p>
+<p>2.物理上行控制信道功能：主要用于承载混合自动重传请求确认、调度请求和信道状态信息等上行控制信息。</p>
+<h1 id="下行控制信道"><a href="#下行控制信道" class="headerlink" title="下行控制信道"></a>下行控制信道</h1><p>NR PDCCH以控制资源集合（CORESET）为单位配置资源，CORESET占用的PRB个数以及PRB位置均可根据网络部署情况灵活选择，不必占满整个带宽，也不限于带宽内的特定位置。CORESET的时频资源可以灵活配置，避免了类似于LTE的PDCCH在小区之间产生的持续干扰，提供了控制小区干扰的便利手段。为了支持低时延业务，NR允许在一个时隙内有多个PDCCH发生机会，即可以在时隙内多个候选OFDM符号位置上发生PDCCH。</p>
+<h2 id="信道结构"><a href="#信道结构" class="headerlink" title="信道结构"></a>信道结构</h2><h3 id="控制资源集合CORESET"><a href="#控制资源集合CORESET" class="headerlink" title="控制资源集合CORESET"></a>控制资源集合CORESET</h3><p>1.<strong>控制资源集和是用于下行控制信道传输的物理资源集和</strong>，以6个连续PRB为资源粒度进行配置。CORESET的频域资源是连续或者非连续的，时域上包括连续的1~3个OFDM符号。</p>
+<p>2.在一个BWP（带宽部分）内，基站可以通过MIB（Master InformationBlock）、SIB（System Information Block）或者专用RRC信令为UE配置至多<strong>3个</strong>CORESET。配置多个CORESET的主要目的是：</p>
+<ul>
+<li><p>可通过不同CORESET的对应的不同下行波束传输PDCCH，某些CORESET用较宽的波束传输以获得较稳定的覆盖范围，其他CORESET用较窄波束传输以获得较大的波束赋形增益。</p>
+</li>
+<li><p>实现相邻小区的频域干扰协调：通过配置不同频域资源位置的CORESET，这样基站在向UE发送PDCCH时可以选择受到邻区干扰较小的CORESET，有利于保证下行控制信道的传输质量。</p>
+</li>
+<li><p>优化不同信道状况下的传输性能。配置分布式映射的CORESET获得频率分集增益，用于抵抗衰落信道带来的性能恶化；配置集中式映射的CORESET获得频率选择性增益，用于信道状态信息可靠的情况。基站可以根据信道状态信息的可靠程度，选择合适的CORESET传输PDCCH。</p>
+</li>
+<li><p>支持不同时延要求业务的下行控制信道传输。配置一个OFDM符号长度的CORESET，缩短PDCCH传输的时间，降低时延；配置2个或3个OFDM符号长度的CORESET，增加PDCCH传输可用的资源，提高传输可靠性。</p>
+</li>
+</ul>
+<h3 id="PDCCH的物理结构"><a href="#PDCCH的物理结构" class="headerlink" title="PDCCH的物理结构"></a>PDCCH的物理结构</h3><p>1.NR资源单元组（Resource Element Group，REG）是CORESET内最基本的<strong>物理资源单元</strong>。一个REG由一个OFDM符号上的12RE组成（即一个OFDM符号上的一个PRB，第4章提过：一个PRB由12个子载波组成，所以这里的RE指的是子载波），包含3个DM-RS RE。一个CORESET内的REG按先时域后频域从0开始编号。</p>
+<img src="/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE1.png" class>
+
+<p>2.REG组由CORESET内若干个连续的REG组成，是NR PDCCH资源映射和预编码的基本单位。同一个REG组内的REG使用相同的预编码矩阵传输，因此UE在一个REG组的范围内可以进行联合信道估计，获得联合处理的增益。在REG组之间可以实现预编码矩阵轮循传输，以获得分集增益。</p>
+<p>3.REG组可以包含2个、3个或者6个REG，这将有高层信令配置。较小的REG组在使用预编码矩阵轮循时可以获得更大的分集增益，在信道条件较好时有利于提升PDCCH的接收性能；较大的REG组能够获得额外的信道估计增益，通常用于信道条件较差时的PDCCH传输。</p>
+<p>4.NR控制信道单元（CCE）是确定搜索空间以及候选PDCCH资源分配的<strong>逻辑资源单位</strong>。一个CCE由6个REG构成。</p>
+<p>5.针对CCE到REG的映射，NR协议支持<strong>集中式映射</strong>和<strong>分布式映射</strong>两种方式。</p>
+<ul>
+<li>集中式映射：即CCE映射到连续的REG，且REG组的大小必须为6。如果基站可以获得信道质量信息，通过集中式映射将CCE映射到信道质量较好的REG，则可以获得频率选择性增益。</li>
+<li>分布式映射：通过一个块交织器将CCE映射到分散的REG组。</li>
+</ul>
+<h2 id="传输方案"><a href="#传输方案" class="headerlink" title="传输方案"></a>传输方案</h2><h3 id="PDCCH多天线方案"><a href="#PDCCH多天线方案" class="headerlink" title="PDCCH多天线方案"></a>PDCCH多天线方案</h3><p>1.NR PDCCH仅支持单流传输，不支持空分复用传输，因为PDCCH设计的首要目标是保证传输的可靠性，而不是高频谱效率。</p>
+<p>2.NR PDCCH支持单端口REG组间的预编码轮循传输的发射分级方案，在不同的REG组轮流应用不同的预编码矩阵，达到发射分集的效果。这一操作对UE是透明的。</p>
+<p>补充：在预编码系统中，发射机可以根据信道条件，对发送信号的空间特性进行优化，使发送信号的空间分布特性与信道条件相匹配，因此可以有效降低对接收机算法的依赖程度。</p>
+<h3 id="PDCCH解调参考信号"><a href="#PDCCH解调参考信号" class="headerlink" title="PDCCH解调参考信号"></a>PDCCH解调参考信号</h3><p>1.NR PDCCH用解调参考信号（DM-RS）解调。DM-RS在PDCCH映射到的每个REG内都存在，密度为1&#x2F;4，且每个REG内DM-RS都映射到固定位置的RE。DM-RS的密度是权衡信道估计信道和导频开销的重要因素，较高的密度有助于提高PDCCH的信道估计精度，过高的密度将造成REG内可用于传输下行控制信息的资源减少。</p>
+<p>2.NR PDCCH的传输方案为单端口传输，预编码颗粒粒度可以配置为REG或者资源簇，一个CORESET内连续的多个REG构成资源簇，一个CORESET内可以有多个资源簇。</p>
+<ul>
+<li>如果预编码颗粒粒度配置为REG，则可以支持REG之间的预编码轮循传输，此时，DM-RS映射在PDCCH实际占用的所有REG上。</li>
+<li>如果哦预编码颗粒粒度为资源簇，则应该假设一个资源簇内REG是相同的预编码。此时DM-RS映射到的资源簇内的所有连续的REG上，即DM-RS会存在于PDCCH实际映射的REG之外。</li>
+</ul>
+<img src="/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE2.png" class>
+
+<h3 id="搜索空间设计"><a href="#搜索空间设计" class="headerlink" title="搜索空间设计"></a>搜索空间设计</h3><p>1.盲检过程：根据承载的下行控制信息（DCI）的比特数和信道状况，基站可以选择使用1个、2个、4个、8个或16个连续的控制信道单元（CCE）承载一条DCI，承载一条DCI的CCE个数称为<strong>聚合等级</strong>。UE在检测PDCCH时，要在不同的候选PDCCH上按照特定的DCI格式以及无线网络临时标识（RNT1）来检测DCI。候选PDCCH的资源位置由CCE的起始位置和聚合等级确定。</p>
+<p>UE在检测DCI时并不知道基站是否发送了DCI，也不知道实际发送该DCI所使用的CCE的聚合等级和起始位置，所以UE需要对候选PDCCH进行逐个尝试，将这一过程称为候选PDCCH的<strong>盲选</strong>。</p>
+<p>2.<strong>搜索空间</strong>由UE需要盲检的一组候选PDCCH组成。PDCCH的搜索空间分为公共搜索空间（CSS）与特定搜索空间（USS）。顾名思义，面向一组UE的公共控制信息通过CSS进行发送。UE的专属调度信息通过USS进行发送，也可以通过CSS发送。其中CSS根据传输内容以及配置方法的不同，分为Type0&#x2F;0A&#x2F;1&#x2F;2&#x2F;3-PDCCH CSS，分别应用于RMSI、OSI、RAR&#x2F;Msg4、Paging以及公共控制信息的调度或者传输。</p>
+<h3 id="控制信息内容与格式"><a href="#控制信息内容与格式" class="headerlink" title="控制信息内容与格式"></a>控制信息内容与格式</h3><p>1.NR的下行控制信息格式可以分为以下三大类：</p>
+<ul>
+<li>回退DCI格式：信息域固定，只能支持最基本的调度，可以用于回退模式的场景。</li>
+<li>非回退DCI格式：部分信息域可以通过高层信令进行配置，支持不同的调度场景和业务需求。</li>
+<li>组公共DCI格式：用于传输一组UE的控制信息，不用于资源调度。</li>
+</ul>
+<p>组公共控制信道通过UE专用RRC信令配置，用来发送一组特定UE的下行控制信令，信道结构与控制信道结构相同，只是DCI格式不同。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3/" rel="tag"># 5G移动通信系统设计与标准详解</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/28/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%BA%94)-%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86/" rel="prev" title="第5章-系统初始接入与移动性管理设计(五)-移动性管理">
+                  <i class="fa fa-chevron-left"></i> 第5章-系统初始接入与移动性管理设计(五)-移动性管理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/03/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%BA%8C)-%E4%B8%8A%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/" rel="next" title="第6章-控制信道设计与资源调度(二)-上行控制信道">
+                  第6章-控制信道设计与资源调度(二)-上行控制信道 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">水中岚</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
