@@ -279,7 +279,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-04 20:31:02" itemprop="dateModified" datetime="2022-05-04T20:31:02+08:00">2022-05-04</time>
+      <time title="修改时间：2022-05-04 20:33:21" itemprop="dateModified" datetime="2022-05-04T20:33:21+08:00">2022-05-04</time>
     </span>
 
   
@@ -292,8 +292,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="资源分配和调度"><a href="#资源分配和调度" class="headerlink" title="资源分配和调度"></a>资源分配和调度</h1><h2 id="传输块大小设计"><a href="#传输块大小设计" class="headerlink" title="传输块大小设计"></a>传输块大小设计</h2><p>NR中传输块大小（TBS）的确定方法是UE根据资源分配信息计算中间信息比特数$N_{info}$，再对$N_{info}$进行量化确定最终的传输块大小。<br>$$<br>N_{info}&#x3D;N_{RE}·R·Q_m·v<br>$$<br>其中，$R$、$Q_m$为根据不同调制与编码策略（MCS）确定的码率和调制阶数。$v$为层数。$N_{RE}$为数据信道在一个时隙内的可用RE数目，<br>$$<br>N_{RE}&#x3D;min(156,N’<em>{RE})·n</em>{PRB}<br>$$<br>其中，$N’<em>{RE}$为一个PRB内可用的RE数目，$n</em>{PRB}$为PRB的个数。其中</p>
-<p>$$<br>N’<em>{RE}&#x3D;N^{RB}</em>{sc}·N^{sh}<em>{sysmb}-N^{PRB}</em>{DMRS}-N^{PRB}<em>{oh}<br>$$<br>其中，$N^{RB}</em>{sc}$为一个PRB的子载波个数，固定为12；$N^{sh}<em>{sysmb}$为数据信道在一个时隙内占用的符号数;$N^{PRB}</em>{DMRS}$为一个DM-RS所占用的RE个数，根据调度信息确定。$N^{PRB}_{oh}$为高层半静态配置的开销，默认值为0.</p>
+          <h1 id="资源分配和调度"><a href="#资源分配和调度" class="headerlink" title="资源分配和调度"></a>资源分配和调度</h1><h2 id="传输块大小设计"><a href="#传输块大小设计" class="headerlink" title="传输块大小设计"></a>传输块大小设计</h2><p>NR中传输块大小（TBS）的确定方法是UE根据资源分配信息计算中间信息比特数$N_{info}$，再对$N_{info}$进行量化确定最终的传输块大小。<br>$$<br>N_{info}&#x3D;N_{RE}·R·Q_m·v<br>$$<br>其中，$R$、$Q_m$为根据不同调制与编码策略（MCS）确定的码率和调制阶数。$v$为层数。$N_{RE}$为数据信道在一个时隙内的可用RE数目，$N_{RE}&#x3D;min(156,N’<em>{RE})·n</em>{PRB}$，其中，$N’<em>{RE}$为一个PRB内可用的RE数目，$n</em>{PRB}$为PRB的个数。其中$N’<em>{RE}&#x3D;N^{RB}</em>{sc}·N^{sh}<em>{sysmb}-N^{PRB}</em>{DMRS}-N^{PRB}<em>{oh}$,其中，$N^{RB}</em>{sc}$为一个PRB的子载波个数，固定为12；$N^{sh}<em>{sysmb}$为数据信道在一个时隙内占用的符号数;$N^{PRB}</em>{DMRS}$为一个DM-RS所占用的RE个数，根据调度信息确定。$N^{PRB}_{oh}$为高层半静态配置的开销，默认值为0.</p>
 <p>对于承载寻呼消息和随机接入响应的下行传输块，</p>
 <p>$N_{info}&#x3D;S·N_{RE}·R·Q_m·v$，$S$为小于等于1的系数，用于进一步降低码率从而提高覆盖。</p>
 <p>最终的TBS根据$N_{info}$量化获得。</p>
