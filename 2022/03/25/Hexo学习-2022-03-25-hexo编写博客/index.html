@@ -20,28 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="接口1.接口中不能含有实例域，但是可以含有常量（接口中的域自动声明为public static final），可以含有方法，在Java SE 8之后，可以在接口中实现方法。此外，接口中的所有方法自动地属于public。但是，在实现接口的类中应该将方法显示声明为public。在Java SE 8中，允许在接口中增加静态方法。 2.接口与抽象类：每个类只能扩展一个类，而接口可以提供多重继承的大多数好处">
+    <meta name="description" content="本文将针对”Hexo编写博客“进行记录 Hexo写作布局创建文章、页面 1hexo new [layout] &lt;文章名&gt;  在你的博客文件下打开Git Bash，输入上方命令，[layout]表示布局，为可选参数。&lt;文章名&gt;为你想要创建的文章名字，输入时删去&lt;&gt;符号，保留文章名即可。 Hexo有三种默认的布局，分别为post、page、draft，不同的文件将会">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第6章_接口、lambda表达式与内部类">
-<meta property="og:url" content="http://example.com/2022/04/04/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-2022-04-04-%E7%AC%AC6%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB/index.html">
+<meta property="og:title" content="Hexo编写博客">
+<meta property="og:url" content="http://example.com/2022/03/25/Hexo%E5%AD%A6%E4%B9%A0-2022-03-25-hexo%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="水中岚">
-<meta property="og:description" content="接口1.接口中不能含有实例域，但是可以含有常量（接口中的域自动声明为public static final），可以含有方法，在Java SE 8之后，可以在接口中实现方法。此外，接口中的所有方法自动地属于public。但是，在实现接口的类中应该将方法显示声明为public。在Java SE 8中，允许在接口中增加静态方法。 2.接口与抽象类：每个类只能扩展一个类，而接口可以提供多重继承的大多数好处">
+<meta property="og:description" content="本文将针对”Hexo编写博客“进行记录 Hexo写作布局创建文章、页面 1hexo new [layout] &lt;文章名&gt;  在你的博客文件下打开Git Bash，输入上方命令，[layout]表示布局，为可选参数。&lt;文章名&gt;为你想要创建的文章名字，输入时删去&lt;&gt;符号，保留文章名即可。 Hexo有三种默认的布局，分别为post、page、draft，不同的文件将会">
 <meta property="og:locale">
-<meta property="article:published_time" content="2022-04-04T12:33:36.000Z">
-<meta property="article:modified_time" content="2022-04-05T06:11:29.765Z">
+<meta property="article:published_time" content="2022-03-25T02:35:47.000Z">
+<meta property="article:modified_time" content="2022-03-25T07:39:52.489Z">
 <meta property="article:author" content="水中岚">
-<meta property="article:tag" content="JAVA核心技术 卷Ⅰ">
+<meta property="article:tag" content="Hexo学习">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2022/04/04/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-2022-04-04-%E7%AC%AC6%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB/">
+<link rel="canonical" href="http://example.com/2022/03/25/Hexo%E5%AD%A6%E4%B9%A0-2022-03-25-hexo%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/04/04/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-2022-04-04-%E7%AC%AC6%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB/","path":"2022/04/04/JAVA核心技术-2022-04-04-第6章-接口、lambda表达式与内部类/","title":"第6章_接口、lambda表达式与内部类"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/03/25/Hexo%E5%AD%A6%E4%B9%A0-2022-03-25-hexo%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/","path":"2022/03/25/Hexo学习-2022-03-25-hexo编写博客/","title":"Hexo编写博客"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>第6章_接口、lambda表达式与内部类 | 水中岚</title>
+<title>Hexo编写博客 | 水中岚</title>
   
 
 
@@ -120,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">接口示例</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo%E5%86%99%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">Hexo写作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%83%E5%B1%80"><span class="nav-number">1.1.</span> <span class="nav-text">布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Front-matter"><span class="nav-number">1.2.</span> <span class="nav-text">Front-matter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E6%8F%92%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">标签插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2"><span class="nav-number">1.4.</span> <span class="nav-text">重新部署</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -141,7 +141,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -180,7 +180,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/04/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-2022-04-04-%E7%AC%AC6%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/25/Hexo%E5%AD%A6%E4%B9%A0-2022-03-25-hexo%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -193,12 +193,12 @@
     </span>
     
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="第6章_接口、lambda表达式与内部类 | 水中岚">
+      <meta itemprop="name" content="Hexo编写博客 | 水中岚">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          第6章_接口、lambda表达式与内部类
+          Hexo编写博客
         </h1>
 
         <div class="post-meta-container">
@@ -208,15 +208,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2022-04-04 20:33:36" itemprop="dateCreated datePublished" datetime="2022-04-04T20:33:36+08:00">2022-04-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-05 14:11:29" itemprop="dateModified" datetime="2022-04-05T14:11:29+08:00">2022-04-05</time>
+      <time title="创建时间：2022-03-25 10:35:47 / 修改时间：15:39:52" itemprop="dateCreated datePublished" datetime="2022-03-25T10:35:47+08:00">2022-03-25</time>
     </span>
 
   
@@ -229,19 +223,122 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>1.接口中不能含有实例域，但是可以含有常量（接口中的域自动声明为public static final），可以含有方法，在Java SE 8之后，可以在接口中实现方法。此外，接口中的所有方法自动地属于public。但是，在实现接口的类中应该将方法显示声明为public。在Java SE 8中，允许在接口中增加静态方法。</p>
-<p>2.接口与抽象类：每个类只能扩展一个类，而接口可以提供多重继承的大多数好处，同时还能避免多重继承的复杂性和低效性。</p>
-<p>3.默认方法：可以在接口中为接口方法提供一个默认实现，但必须用default标记该方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Comparable</span>&lt;T&gt;&#123;</span><br><span class="line">	<span class="keyword">default</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(T other)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <p>本文将针对”Hexo编写博客“进行记录</p>
+<h1 id="Hexo写作"><a href="#Hexo写作" class="headerlink" title="Hexo写作"></a><strong>Hexo写作</strong></h1><h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>创建文章、页面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;文章名&gt;</span><br></pre></td></tr></table></figure>
 
-<p>这样当某个类实现这个接口时，可以无需实现这个默认方法，并且该类调用该方法时，也会转成调用接口的这个方法，不会报错。</p>
-<p>4.解决默认方法冲突：</p>
-<p>如果先在一个接口中将一个方法定义为默认方法，然后又在超类或另一个接口中定义了同样的方法，Java解决这种二义性的规则如下：</p>
-<ol>
-<li>超类优先：如果超类提供了一个具体方法，同名而且有相同参数类型的默认方法会被忽略。</li>
-<li>接口冲突：如果一个接口提供了一个默认方法，另一个接口提供了一个同名而且参数类型（不论是否是默认参数）相同的方法，必须覆盖这个方法来解决冲突。</li>
-</ol>
-<h1 id="接口示例"><a href="#接口示例" class="headerlink" title="接口示例"></a>接口示例</h1>
+<p>在你的博客文件下打开Git Bash，输入上方命令，[layout]表示布局，为可选参数。&lt;文章名&gt;为你想要创建的文章名字，输入时删去&lt;&gt;符号，保留文章名即可。</p>
+<p>Hexo有三种默认的布局，分别为post、page、draft，不同的文件将会被保存在不同的路径。</p>
+<table>
+<thead>
+<tr>
+<th>布局</th>
+<th>文件保存路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>post</td>
+<td>source&#x2F;_posts</td>
+</tr>
+<tr>
+<td>page</td>
+<td>source</td>
+</tr>
+<tr>
+<td>draft</td>
+<td>source&#x2F;_drafts</td>
+</tr>
+</tbody></table>
+<p>Hexo默认以文章名为文件名称，当然，我们也可以修改_config.yml配置文件中的new_post_name参数来修改默认文件名称。如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_post_name: :year-:month-:day-:title.md</span><br></pre></td></tr></table></figure>
+
+<p>则可以在文件名中添加上日期，方便管理。</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:title</td>
+<td>标题（空格将会替换为短杆）</td>
+</tr>
+<tr>
+<td>:year</td>
+<td>建立文件的年份</td>
+</tr>
+<tr>
+<td>:month</td>
+<td>建立文件的月份，如04</td>
+</tr>
+<tr>
+<td>:i_month</td>
+<td>建立文件的月份，如4</td>
+</tr>
+<tr>
+<td>:day</td>
+<td>建立文件的日期，如03</td>
+</tr>
+<tr>
+<td>:i_day</td>
+<td>建立文件的日期，如3</td>
+</tr>
+</tbody></table>
+<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><p>Front-matter指的是文件上方以 — 分割的区域，用于设置文件的参数。如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo编写博客</span><br><span class="line">date: 2022-03-25 10:35:47</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>下表为一些可以设置的参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>layout</td>
+<td>布局</td>
+<td>post</td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td>文章的文件名</td>
+</tr>
+<tr>
+<td>date</td>
+<td>建立日期</td>
+<td>文章的建立日期</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>更新日期</td>
+<td>文件更新日期</td>
+</tr>
+<tr>
+<td>comments</td>
+<td>开启文章的评论功能</td>
+<td>true</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>标签</td>
+<td></td>
+</tr>
+<tr>
+<td>categories</td>
+<td>分类</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="标签插件"><a href="#标签插件" class="headerlink" title="标签插件"></a>标签插件</h2><p>Hexo官网（<a href="Hexo%E5%AE%98%E7%BD%91"> https://hexo.io/zh-cn/docs/tag-plugins</a>）中提供一些文章中快速插入如引用块、代码等特定内容的插件。这里，我推荐直接使用Typora来完成文章的编写。</p>
+<p>Typora是一款Markdown编辑器，当我们输入完标记语言后就可以直接看见效果，并且许多标记语言可以直接通过快捷键或者软件上方工具栏来设置。</p>
+<h2 id="重新部署"><a href="#重新部署" class="headerlink" title="重新部署"></a>重新部署</h2><p>最后，在编写完文章后，不要忘记重新部署</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -250,20 +347,17 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0/" rel="tag"># JAVA核心技术 卷Ⅰ</a>
+              <a href="/tags/Hexo%E5%AD%A6%E4%B9%A0/" rel="tag"># Hexo学习</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/04/03/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-2022-04-03-%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF/" rel="prev" title="第5章_继承">
-                  <i class="fa fa-chevron-left"></i> 第5章_继承
-                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/" rel="next" title="第2章-系统结构与体系标准(一)-无线接口协议栈">
-                  第2章-系统结构与体系标准(一)-无线接口协议栈 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/03/30/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-03-30-%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/" rel="next" title="第3章_Java的基本程序设计结构">
+                  第3章_Java的基本程序设计结构 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

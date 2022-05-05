@@ -23,24 +23,24 @@
     <meta name="description" content="面向对象程序设计概述1.类是构造对象的模板和蓝图。 封装：封装的关键在于绝对不能让类中的方法直接地访问其他类的实例域，而仅通过对象的方法与对象数据进行交互。这样对对象的使用者就隐藏了数据的实现方法。OOP的另一原则为继承。 2.对象的三个主要特征  对象的行为：可以对对象施加哪些方法？ 对象的状态：当实践那些方法时，对象如何响应？ 对象标识：如何辨别具有相同行为与状态的不同对象？  3.类之间的关">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第4章_对象与类">
-<meta property="og:url" content="http://example.com/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/index.html">
+<meta property="og:url" content="http://example.com/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/index.html">
 <meta property="og:site_name" content="水中岚">
 <meta property="og:description" content="面向对象程序设计概述1.类是构造对象的模板和蓝图。 封装：封装的关键在于绝对不能让类中的方法直接地访问其他类的实例域，而仅通过对象的方法与对象数据进行交互。这样对对象的使用者就隐藏了数据的实现方法。OOP的另一原则为继承。 2.对象的三个主要特征  对象的行为：可以对对象施加哪些方法？ 对象的状态：当实践那些方法时，对象如何响应？ 对象标识：如何辨别具有相同行为与状态的不同对象？  3.类之间的关">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/1.webp">
+<meta property="og:image" content="http://example.com/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/1.webp">
 <meta property="article:published_time" content="2022-04-01T12:46:58.000Z">
 <meta property="article:modified_time" content="2022-04-03T02:46:56.247Z">
 <meta property="article:author" content="水中岚">
 <meta property="article:tag" content="JAVA核心技术 卷Ⅰ">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/1.webp">
+<meta name="twitter:image" content="http://example.com/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/1.webp">
 
 
-<link rel="canonical" href="http://example.com/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">
+<link rel="canonical" href="http://example.com/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/","path":"2022/04/01/JAVA核心技术-2022-04-01-第4章-对象与类/","title":"第4章_对象与类"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/","path":"2022/04/01/JAVA核心技术-卷Ⅰ-2022-04-01-第4章-对象与类/","title":"第4章_对象与类"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>第4章_对象与类 | 水中岚</title>
@@ -143,7 +143,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -182,7 +182,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -327,7 +327,7 @@
 </li>
 </ol>
 <p>好了，本章就到这了~~</p>
-<img src="/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/1.webp" class title="这是一直杰尼龟">
+<img src="/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/1.webp" class title="这是一直杰尼龟">
     </div>
 
     
@@ -343,12 +343,12 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/04/01/Hexo%E7%9B%B8%E5%85%B3-2022-04-01-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="prev" title="Hexo搭建博客图片无法显示问题解决方法">
+                <a href="/2022/04/01/Hexo%E5%AD%A6%E4%B9%A0-2022-04-01-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="prev" title="Hexo搭建博客图片无法显示问题解决方法">
                   <i class="fa fa-chevron-left"></i> Hexo搭建博客图片无法显示问题解决方法
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/04/03/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-2022-04-03-%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF/" rel="next" title="第5章_继承">
+                <a href="/2022/04/03/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-03-%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF/" rel="next" title="第5章_继承">
                   第5章_继承 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
