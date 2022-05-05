@@ -20,16 +20,16 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="多天线传输方案下行传输方案NR PDSCH传输的处理过程如图所示：   高层下发的传输块经信道编码后与码字一一对应；码字中的比特流经过加扰和调制之后，通过层映射模块映射到并行的数据流（或称层）；每一层的数据流经过端口映射模块映射到传输使用的天线端口（端口1000-1011）上去。每个天线端口上根据资源分配进行资源的映射以及OFDM调制。其中还有一个非标准化的处理模块（预编码模块），目的是实现天线端">
+    <meta name="description" content="多天线传输方案下行传输方案NR PDSCH传输的处理过程如图所示：    高层下发的传输块经信道编码后与码字一一对应；码字中的比特流经过加扰和调制之后，通过层映射模块映射到并行的数据流（或称层）；每一层的数据流经过端口映射模块映射到传输使用的天线端口（端口1000-1011）上去。每个天线端口上根据资源分配进行资源的映射以及OFDM调制。其中还有一个非标准化的处理模块（预编码模块），目的是实现天线">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第七章-大规模多天线传输(一)-多天线传输方案">
 <meta property="og:url" content="http://example.com/2022/05/04/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-04-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%80-%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93%E6%96%B9%E6%A1%88/index.html">
 <meta property="og:site_name" content="水中岚">
-<meta property="og:description" content="多天线传输方案下行传输方案NR PDSCH传输的处理过程如图所示：   高层下发的传输块经信道编码后与码字一一对应；码字中的比特流经过加扰和调制之后，通过层映射模块映射到并行的数据流（或称层）；每一层的数据流经过端口映射模块映射到传输使用的天线端口（端口1000-1011）上去。每个天线端口上根据资源分配进行资源的映射以及OFDM调制。其中还有一个非标准化的处理模块（预编码模块），目的是实现天线端">
+<meta property="og:description" content="多天线传输方案下行传输方案NR PDSCH传输的处理过程如图所示：    高层下发的传输块经信道编码后与码字一一对应；码字中的比特流经过加扰和调制之后，通过层映射模块映射到并行的数据流（或称层）；每一层的数据流经过端口映射模块映射到传输使用的天线端口（端口1000-1011）上去。每个天线端口上根据资源分配进行资源的映射以及OFDM调制。其中还有一个非标准化的处理模块（预编码模块），目的是实现天线">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/2022/05/04/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-04-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%80-%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93%E6%96%B9%E6%A1%88/%E5%9B%BE1.png">
 <meta property="article:published_time" content="2022-05-04T12:09:40.000Z">
-<meta property="article:modified_time" content="2022-05-05T01:54:58.115Z">
+<meta property="article:modified_time" content="2022-05-05T02:38:50.303Z">
 <meta property="article:author" content="水中岚">
 <meta property="article:tag" content="5G移动通信系统设计与标准详解">
 <meta name="twitter:card" content="summary">
@@ -137,7 +137,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -218,7 +218,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-05 09:54:58" itemprop="dateModified" datetime="2022-05-05T09:54:58+08:00">2022-05-05</time>
+      <time title="修改时间：2022-05-05 10:38:50" itemprop="dateModified" datetime="2022-05-05T10:38:50+08:00">2022-05-05</time>
     </span>
 
   
@@ -232,7 +232,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="多天线传输方案"><a href="#多天线传输方案" class="headerlink" title="多天线传输方案"></a>多天线传输方案</h1><h2 id="下行传输方案"><a href="#下行传输方案" class="headerlink" title="下行传输方案"></a>下行传输方案</h2><p>NR PDSCH传输的处理过程如图所示：</p>
-<img src="/2022/05/04/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-04-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%80-%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93%E6%96%B9%E6%A1%88/%E5%9B%BE1.png" class>
+<img src="/2022/05/04/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-04-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%80-%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93%E6%96%B9%E6%A1%88/%E5%9B%BE1.png" class> 
 
 <p>高层下发的传输块经信道编码后与码字一一对应；码字中的比特流经过加扰和调制之后，通过层映射模块映射到并行的数据流（或称<strong>层</strong>）；每一层的数据流经过端口映射模块映射到传输使用的天线端口（端口1000-1011）上去。每个天线端口上根据资源分配进行资源的映射以及OFDM调制。其中还有一个非标准化的处理模块（预编码模块），目的是实现天线端口到物理天线的映射过程，也就是实现预编码或者波束赋形的过程。</p>
 <p><strong>补充一下LTE中的知识：</strong><a target="_blank" rel="noopener" href="https://www.txrjy.com/thread-549490-1-1.html">请教下有关码字和层映射的问题 - 技术综合版块 - 通信人家园 - Powered by C114 (txrjy.com)</a><br><strong>LTE的下行发送过程：</strong></p>
@@ -323,6 +323,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/05/05/Hexo%E5%AD%A6%E4%B9%A0-Hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/" rel="next" title="post">
+                  post <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

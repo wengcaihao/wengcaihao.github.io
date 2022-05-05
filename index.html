@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -166,6 +166,98 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/05/Hexo%E5%AD%A6%E4%B9%A0-Hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/05/05/Hexo%E5%AD%A6%E4%B9%A0-Hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">post</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-05-05 10:39:35 / 修改时间：10:57:13" itemprop="dateCreated datePublished" datetime="2022-05-05T10:39:35+08:00">2022-05-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>问题：</strong>当博客编写到一定数量时，在_posts文件夹下会显的十分杂乱，不易于管理。</p>
+<p><strong>解决方法：</strong>在_posts下根据博客的tags创建对应的子文件夹。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post --path Hexo学习/Hexo本地博客管理.md</span><br></pre></td></tr></table></figure>
+
+<p>执行以上命令，将会在_posts文件夹下创建一个名为“Hexo学习”的子文件夹，并且会在“Hexo学习”下创建Hexo本地博客管理的.md文件。并且要确保Hexo本地博客管理.md的tags修改为Hexo学习</p>
+<img src="/2022/05/05/Hexo%E5%AD%A6%E4%B9%A0-Hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/%E5%9B%BE1.png" class>
+
+<p>也就是说，应该根据你的tags创建不同的子文件夹。<strong>子文件夹与与其内部博客的tags应该保持一致</strong></p>
+<p>至于之前已经创建在_posts下的.md博客文件，我们可以使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post --path 5G移动通信系统设计与标准详解/1.md</span><br></pre></td></tr></table></figure>
+
+<p>命令创建名为”5G移动通信系统设计与标准详解”的子文件夹，1.md文件只是为了帮助我们创建前面的文件夹，随便起个名字，后面删除掉就行，原因后面会解释。此时我们再将之前的博客转移到对应的文件夹下就行了。</p>
+<p><strong>代码解释：</strong></p>
+<p>因为，假如我们输入的是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post --path 5G移动通信系统设计与标准详解</span><br></pre></td></tr></table></figure>
+
+<p>Hexo貌似会默认在”5G移动通信系统设计与标准详解“加入.md，从而执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post --path 5G移动通信系统设计与标准详解.md</span><br></pre></td></tr></table></figure>
+
+<p>即在_posts下创建了.md文件，而非子文件夹。</p>
+<p>所以我们使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post --path 5G移动通信系统设计与标准详解/1.md</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -211,7 +303,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-05 09:54:58" itemprop="dateModified" datetime="2022-05-05T09:54:58+08:00">2022-05-05</time>
+      <time title="修改时间：2022-05-05 10:38:50" itemprop="dateModified" datetime="2022-05-05T10:38:50+08:00">2022-05-05</time>
     </span>
 
   
@@ -225,7 +317,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="多天线传输方案"><a href="#多天线传输方案" class="headerlink" title="多天线传输方案"></a>多天线传输方案</h1><h2 id="下行传输方案"><a href="#下行传输方案" class="headerlink" title="下行传输方案"></a>下行传输方案</h2><p>NR PDSCH传输的处理过程如图所示：</p>
-<img src="/2022/05/04/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-04-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%80-%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93%E6%96%B9%E6%A1%88/%E5%9B%BE1.png" class>
+<img src="/2022/05/04/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-04-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%80-%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93%E6%96%B9%E6%A1%88/%E5%9B%BE1.png" class> 
 
 <p>高层下发的传输块经信道编码后与码字一一对应；码字中的比特流经过加扰和调制之后，通过层映射模块映射到并行的数据流（或称<strong>层</strong>）；每一层的数据流经过端口映射模块映射到传输使用的天线端口（端口1000-1011）上去。每个天线端口上根据资源分配进行资源的映射以及OFDM调制。其中还有一个非标准化的处理模块（预编码模块），目的是实现天线端口到物理天线的映射过程，也就是实现预编码或者波束赋形的过程。</p>
 <p><strong>补充一下LTE中的知识：</strong><a target="_blank" rel="noopener" href="https://www.txrjy.com/thread-549490-1-1.html">请教下有关码字和层映射的问题 - 技术综合版块 - 通信人家园 - Powered by C114 (txrjy.com)</a><br><strong>LTE的下行发送过程：</strong></p>
@@ -1154,97 +1246,6 @@
 <h2 id="PBCH传输过程"><a href="#PBCH传输过程" class="headerlink" title="PBCH传输过程"></a>PBCH传输过程</h2><img src="/2022/04/26/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-26-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%80-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE7.png" class title="PBCH传输过程">
 
 <p>物理层产生PBCH符号和PBCH DM-RS的流程如图所示。首先，来自高层的24bit BCCH-BCH信息与来自物理层的8bit与SSB传输时间相关的信息组合，生成32bit PBCH有效载荷。然后，32bit PBCH有效载荷经历交织（改善前向纠错的性能）、第一次加扰（降低小区之间PBCH信号的相关性，从而降低小区之间的互相干扰）、附加CRC（提供PBCH传输块的错误检测）等过程，产生56bit PBCH载荷。然后，通过极化编码、速率匹配、第二次加扰（第一次加扰的效果有限，于是再一次加扰）、QPSK调制，生成共432个符号的PBCH序列。最后，432个符号的PBCH序列与144个符号的PBCH DM-RS序列一起被映射到用于传输的SSB。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/%E5%85%B6%E4%BB%96-2022-04-24-CP-OFDM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/me.jpg">
-      <meta itemprop="name" content="水中岚">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="水中岚">
-      <meta itemprop="description" content="水中岚的博客">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 水中岚">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/24/%E5%85%B6%E4%BB%96-2022-04-24-CP-OFDM/" class="post-title-link" itemprop="url">CP-OFDM</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-04-24 14:18:24" itemprop="dateCreated datePublished" datetime="2022-04-24T14:18:24+08:00">2022-04-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-05 10:34:25" itemprop="dateModified" datetime="2022-05-05T10:34:25+08:00">2022-05-05</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>OFDM：正交频分复用技术，是多载波调制的一种。OFDM的主要思想是：将信道分成若干个正交子信道，将高速数据信号转换成并行的低速子数据流，调制到每个子信道上进行传输。OFDM的调制和解调是基于IFFT和FFT实现的。</p>
-<p>理想情况下，发送端所发送的符号到达接收端时不会受到任何影响。如图所示：</p>
-<img src="/2022/04/24/%E5%85%B6%E4%BB%96-2022-04-24-CP-OFDM/%E5%9B%BE1.png" class title="理想情况">
-
-<p>然而，现实情况中，由于多径、反射等情况，接收端可以接收到发送信号的多个延迟信号。如图所示</p>
-<img src="/2022/04/24/%E5%85%B6%E4%BB%96-2022-04-24-CP-OFDM/%E5%9B%BE2.png" class title="现实情况">
-
-<p>接收端接收到经过多个不同路径到达终点的信号，因此在图中所示的FFT window中t1采样点有来自Symbol1的干扰，这就是符号间干扰（ISI）。</p>
-<p>我们称信号的第一个副本和该信号最后接收的一个副本之间的总延迟称为延迟扩展。如果符号周期与“延迟扩展”相比非常大，那么ISI带来的影响较小，反之，若符号周期与”延迟扩展“相比非常小，那么ISI带来的影响将非常大。</p>
-<p>为了解决ISI，其中一个方法就是添加保护间隔，如图所示</p>
-<img src="/2022/04/24/%E5%85%B6%E4%BB%96-2022-04-24-CP-OFDM/%E5%9B%BE3.png" class title="设置保护间隔">
-
-<p>可以发现，在设置保护间隔后（保护间隔应该大于“延迟扩展”），在FFT Window中已经没有了其他信号的干扰了，然而由于保护间隔采用补零的措施，在接收端进行FFT时不同子载波之间已经不在正交，所以解调中的子载波会受到其他子载波的影响，这就是信道干扰（ICI），想要消除ICI，可以采用循环前缀（CP）或循环后缀（CS），这样既可以同时解决ISI和ICI。</p>
-<img src="/2022/04/24/%E5%85%B6%E4%BB%96-2022-04-24-CP-OFDM/%E5%9B%BE4.png" class title="循环前缀">
-
-<p>如图所示，将符号后部复制到符号前面作为保护间隔，这样FFT后不同子载波之间的内积为0，不同子载波相互正交，则不再有ISI和ICI。</p>
 
       
     </div>
