@@ -23,26 +23,26 @@
     <meta name="description" content="波形和参数集设计5G下行的调制波形为CP-OFDM，上行的调制波形除了CP-OFDM外还有DFT-sOFDM。其中，CP-OFDM调制的关键参数包括子载波间隔和CP长度。LTE支持15kHz的子载波间隔，而NR支持多种子载波间隔，不同子载波之间呈倍数关系，并且倍数必须为2的整数次幂。 如果记$f_0&#x3D;15kHz$$,则NR支持的子载波间隔满足关系$$f_u&#x3D;2^uf_0,u&amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第4章-帧结构与物理信道">
-<meta property="og:url" content="http://example.com/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/index.html">
+<meta property="og:url" content="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/index.html">
 <meta property="og:site_name" content="水中岚">
 <meta property="og:description" content="波形和参数集设计5G下行的调制波形为CP-OFDM，上行的调制波形除了CP-OFDM外还有DFT-sOFDM。其中，CP-OFDM调制的关键参数包括子载波间隔和CP长度。LTE支持15kHz的子载波间隔，而NR支持多种子载波间隔，不同子载波之间呈倍数关系，并且倍数必须为2的整数次幂。 如果记$f_0&#x3D;15kHz$$,则NR支持的子载波间隔满足关系$$f_u&#x3D;2^uf_0,u&amp;#">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png">
-<meta property="og:image" content="http://example.com/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE2.png">
-<meta property="og:image" content="http://example.com/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE3.png">
+<meta property="og:image" content="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png">
+<meta property="og:image" content="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE2.png">
+<meta property="og:image" content="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE3.png">
 <meta property="article:published_time" content="2022-04-24T01:58:55.000Z">
 <meta property="article:modified_time" content="2022-05-02T07:24:14.154Z">
 <meta property="article:author" content="水中岚">
 <meta property="article:tag" content="5G移动通信系统设计与标准详解">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png">
+<meta name="twitter:image" content="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png">
 
 
-<link rel="canonical" href="http://example.com/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/">
+<link rel="canonical" href="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/","path":"2022/04/24/第4章-帧结构与物理信道/","title":"第4章-帧结构与物理信道"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/","path":"2022/04/24/5G移动通信系统设计与标准详解-2022-04-24-第4章-帧结构与物理信道/","title":"第4章-帧结构与物理信道"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>第4章-帧结构与物理信道 | 水中岚</title>
@@ -184,7 +184,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -238,7 +238,7 @@
 <h1 id="时频资源"><a href="#时频资源" class="headerlink" title="时频资源"></a>时频资源</h1><h2 id="时域资源的定义"><a href="#时域资源的定义" class="headerlink" title="时域资源的定义"></a>时域资源的定义</h2><p>1.NR无线帧</p>
 <p>NR<strong>无线帧</strong>长度定义为10ms，一个无线帧包含10个<strong>子帧</strong>，每个子帧长度为1ms。一个子帧进一步分为若干个<strong>时隙</strong>，具体的个数取决于子载波间隔，但无论子载波间隔多大，一个时隙都包括14个OFDM符号。如果子载波间隔为$f_u&#x3D;2^uf_0$，则一个子帧内包含$2^u$$个，每个时隙的长度为$$2^{-u}ms$。</p>
 <p>NR帧结构如下：</p>
-<img src="/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png" class title="NR帧结构">
+<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png" class title="NR帧结构">
 
 <p>2.OFDM符号：一个时隙内的OFDM符号包括3种：下行符号、上行符号和灵活符号。上、下行符号只能用于上、下行传输，而灵活符号根据信令的指示可以进行上行传输或下行传输。</p>
 <h2 id="频域资源的定义"><a href="#频域资源的定义" class="headerlink" title="频域资源的定义"></a>频域资源的定义</h2><p>频域内，无论子载波间隔是多少，都可以将连续的12个子载波定义为一个物理资源块（PRB）。子载波间隔越大，PRB的实际带宽越大。</p>
@@ -263,7 +263,7 @@
 <li><strong>物理上行控制信道（PUCCH）</strong>：承载上行控制信息，反馈HARQ-ACK信息，指示下行的传输块是否正确接收；上报信道状态信息；在有上行数据到达时请求上行资源。PUCCH的天线端口为2000。</li>
 <li><strong>物理随机接入信道（PRACH）</strong>：用于随机接入过程。天线端口为4000</li>
 </ul>
-<img src="/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE2.png" class>
+<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE2.png" class>
 
 
 
@@ -287,7 +287,7 @@
 <li>降低HARQ-ACK的时延：为了支持uRLLC业务，希望PDSCH的HARQ-ACK反馈能在尽短时间内完成，这要求PUCCH在较短的时间内完成传输。</li>
 <li>支持上行波束赋性传输：其一是因为UE用多个不同的波束重复发送PUCCH，由于模拟波束赋形的特点，UE一个时间点上只能用一个波束进行发送，过长的PUCCH重复传输会占用更多的时域资源，导致系统开销增加。其二是支持基站侧的接受波束扫描，同样由于模拟波束，基站在一个时间点上仅能用一个模拟波束接收PUCCH，短PUCCH可以实现不同UE的PUCCH&#x2F;PUSCH的时分复用。</li>
 </ul>
-<img src="/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE3.png" class title="PUCCH&#x2F;PUSCH的时分复用">
+<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE3.png" class title="PUCCH&#x2F;PUSCH的时分复用">
 
 
 
@@ -310,7 +310,7 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/04/23/%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86(%E4%B8%80)-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/" rel="prev" title="第2章-系统结构与体系标准(一)-无线接口协议栈">
+                <a href="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/" rel="prev" title="第2章-系统结构与体系标准(一)-无线接口协议栈">
                   <i class="fa fa-chevron-left"></i> 第2章-系统结构与体系标准(一)-无线接口协议栈
                 </a>
             </div>

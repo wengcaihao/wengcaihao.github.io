@@ -23,25 +23,25 @@
     <meta name="description" content="随机接入设计随机接入设计的主要目的是使UE获取上行时间同步，并在UE建立初始无线链路（即UE从RRC_IDLE转换到RRC_CONNECTED）时，可以通过随机接入过程获取用户标识-小区无线网络临时标识信息（C-RNT1）。 NR支持竞争和非竞争的随机接入过程，支持基站的下行发送波束扫描和上行接受波束扫描，同时支持UE的上行发送波束扫描。 随机接入过程1.NR支持四步随机接入过程：  UE在物理随">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第5章-系统初始接入与移动性管理设计(三)-随机接入设计">
-<meta property="og:url" content="http://example.com/2022/04/27/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%89)-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:url" content="http://example.com/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%89-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="水中岚">
 <meta property="og:description" content="随机接入设计随机接入设计的主要目的是使UE获取上行时间同步，并在UE建立初始无线链路（即UE从RRC_IDLE转换到RRC_CONNECTED）时，可以通过随机接入过程获取用户标识-小区无线网络临时标识信息（C-RNT1）。 NR支持竞争和非竞争的随机接入过程，支持基站的下行发送波束扫描和上行接受波束扫描，同时支持UE的上行发送波束扫描。 随机接入过程1.NR支持四步随机接入过程：  UE在物理随">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/2022/04/27/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%89)-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/%E5%9B%BE1.png">
-<meta property="og:image" content="http://example.com/2022/04/27/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%89)-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/%E5%9B%BE2.png">
+<meta property="og:image" content="http://example.com/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%89-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/%E5%9B%BE1.png">
+<meta property="og:image" content="http://example.com/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%89-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/%E5%9B%BE2.png">
 <meta property="article:published_time" content="2022-04-27T07:45:32.000Z">
 <meta property="article:modified_time" content="2022-04-27T12:59:55.850Z">
 <meta property="article:author" content="水中岚">
 <meta property="article:tag" content="5G移动通信系统设计与标准详解">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/04/27/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%89)-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/%E5%9B%BE1.png">
+<meta name="twitter:image" content="http://example.com/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%89-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/%E5%9B%BE1.png">
 
 
-<link rel="canonical" href="http://example.com/2022/04/27/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%89)-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/">
+<link rel="canonical" href="http://example.com/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%89-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/04/27/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%89)-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/","path":"2022/04/27/第5章-系统初始接入与移动性管理设计(三)-随机接入设计/","title":"第5章-系统初始接入与移动性管理设计(三)-随机接入设计"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%89-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/","path":"2022/04/27/5G移动通信系统设计与标准详解-2022-04-27-第5章-系统初始接入与移动性管理设计-三-随机接入设计/","title":"第5章-系统初始接入与移动性管理设计(三)-随机接入设计"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>第5章-系统初始接入与移动性管理设计(三)-随机接入设计 | 水中岚</title>
@@ -183,7 +183,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/27/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%89)-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%89-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -243,12 +243,12 @@
 <p>基站接收并解析消息3包含的UE标识之后，在PDSCH上发送消息4。UE在PDSCH上接收消息4包含的竞争解决并解码，在竞争解决成功之后完成四步随机接入过程。</p>
 </li>
 </ol>
-<img src="/2022/04/27/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%89)-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/%E5%9B%BE1.png" class title="四步和两步随机接入过程">
+<img src="/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%89-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/%E5%9B%BE1.png" class title="四步和两步随机接入过程">
 
 <h2 id="随机接入Preamble格式"><a href="#随机接入Preamble格式" class="headerlink" title="随机接入Preamble格式"></a>随机接入Preamble格式</h2><p>NR随机接入前导码（Preamble）采用Zadoff-Chu（ZC）序列。</p>
 <p>PRACH Preamble由一个循环前缀（CP）和一个或多个Preamble序列组成，每个Preamble序列占用一个PRACH OFDM符号。保护时间（GT）在协议种未显示定义，而是通过PRACH Preamble所在的时隙和其他时隙对齐。</p>
 <p>NR R15规定PRACH Preamble格式如下：</p>
-<img src="/2022/04/27/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%89)-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/%E5%9B%BE2.png" class>
+<img src="/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%89-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/%E5%9B%BE2.png" class>
 
 <p><strong>选项1：</strong>在连续重复PRACH OFDM符号的开头插入CP，在末尾保留GT，并在各个<strong>重复</strong>的PRACH序列之间省略CP和GT。优点：小区的覆盖性能优于选项2和选项3。缺点：PRACH Preamble容量受限。NR R15所采纳。</p>
 <p><strong>选项2：</strong>PRACH Preamble由N个<strong>重复</strong>的Preamble序列构成，在每个Preamble序列的前面添加CP，只在所有的Preamble序列的末尾保留GT，中间的Preamble序列的后面省略GT。</p>
@@ -274,12 +274,12 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/04/27/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%BA%8C)-%E5%B9%BF%E6%92%AD%E4%BF%A1%E5%8F%B7%E4%BC%A0%E8%BE%93/" rel="prev" title="第5章-系统初始接入与移动性管理设计(二)-广播信号传输">
+                <a href="/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%BA%8C-%E5%B9%BF%E6%92%AD%E4%BF%A1%E5%8F%B7%E4%BC%A0%E8%BE%93/" rel="prev" title="第5章-系统初始接入与移动性管理设计(二)-广播信号传输">
                   <i class="fa fa-chevron-left"></i> 第5章-系统初始接入与移动性管理设计(二)-广播信号传输
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/04/28/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E5%9B%9B)-%E5%AF%BB%E5%91%BC%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1/" rel="next" title="第5章-系统初始接入与移动性管理设计(四)-寻呼信道设计">
+                <a href="/2022/04/28/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-28-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E5%9B%9B-%E5%AF%BB%E5%91%BC%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1/" rel="next" title="第5章-系统初始接入与移动性管理设计(四)-寻呼信道设计">
                   第5章-系统初始接入与移动性管理设计(四)-寻呼信道设计 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>

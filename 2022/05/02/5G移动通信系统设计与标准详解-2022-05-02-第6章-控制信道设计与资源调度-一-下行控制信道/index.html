@@ -23,25 +23,25 @@
     <meta name="description" content="概述1.物理下行控制信道功能：主要用于承载下行调度许可、上行调度许可等动态调度信息。相比于LTE，NR 采取了更为灵活的设计方式，如控制资源合集CORESET和搜索空间独立定义，并引入监听时机的定义等，以适应灵活多变的时隙结构。 2.物理上行控制信道功能：主要用于承载混合自动重传请求确认、调度请求和信道状态信息等上行控制信息。 下行控制信道NR PDCCH以控制资源集合（CORESET）为单位配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第6章-控制信道设计与资源调度(一)-下行控制信道">
-<meta property="og:url" content="http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/index.html">
+<meta property="og:url" content="http://example.com/2022/05/02/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-02-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%B8%80-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/index.html">
 <meta property="og:site_name" content="水中岚">
 <meta property="og:description" content="概述1.物理下行控制信道功能：主要用于承载下行调度许可、上行调度许可等动态调度信息。相比于LTE，NR 采取了更为灵活的设计方式，如控制资源合集CORESET和搜索空间独立定义，并引入监听时机的定义等，以适应灵活多变的时隙结构。 2.物理上行控制信道功能：主要用于承载混合自动重传请求确认、调度请求和信道状态信息等上行控制信息。 下行控制信道NR PDCCH以控制资源集合（CORESET）为单位配置">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE1.png">
-<meta property="og:image" content="http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE2.png">
+<meta property="og:image" content="http://example.com/2022/05/02/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-02-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%B8%80-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE1.png">
+<meta property="og:image" content="http://example.com/2022/05/02/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-02-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%B8%80-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE2.png">
 <meta property="article:published_time" content="2022-05-02T01:51:48.000Z">
-<meta property="article:modified_time" content="2022-05-03T02:40:20.790Z">
+<meta property="article:modified_time" content="2022-05-04T12:59:22.652Z">
 <meta property="article:author" content="水中岚">
 <meta property="article:tag" content="5G移动通信系统设计与标准详解">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE1.png">
+<meta name="twitter:image" content="http://example.com/2022/05/02/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-02-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%B8%80-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE1.png">
 
 
-<link rel="canonical" href="http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/">
+<link rel="canonical" href="http://example.com/2022/05/02/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-02-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%B8%80-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/","path":"2022/05/02/第6章-控制信道设计与资源调度(一)-下行控制信道/","title":"第6章-控制信道设计与资源调度(一)-下行控制信道"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/05/02/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-02-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%B8%80-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/","path":"2022/05/02/5G移动通信系统设计与标准详解-2022-05-02-第6章-控制信道设计与资源调度-一-下行控制信道/","title":"第6章-控制信道设计与资源调度(一)-下行控制信道"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>第6章-控制信道设计与资源调度(一)-下行控制信道 | 水中岚</title>
@@ -183,7 +183,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/02/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-02-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%B8%80-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -219,7 +219,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-03 10:40:20" itemprop="dateModified" datetime="2022-05-03T10:40:20+08:00">2022-05-03</time>
+      <time title="修改时间：2022-05-04 20:59:22" itemprop="dateModified" datetime="2022-05-04T20:59:22+08:00">2022-05-04</time>
     </span>
 
   
@@ -243,12 +243,13 @@
 <li><p>实现相邻小区的频域干扰协调：通过配置不同频域资源位置的CORESET，这样基站在向UE发送PDCCH时可以选择受到邻区干扰较小的CORESET，有利于保证下行控制信道的传输质量。</p>
 </li>
 <li><p>优化不同信道状况下的传输性能。配置分布式映射的CORESET获得频率分集增益，用于抵抗衰落信道带来的性能恶化；配置集中式映射的CORESET获得频率选择性增益，用于信道状态信息可靠的情况。基站可以根据信道状态信息的可靠程度，选择合适的CORESET传输PDCCH。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m_052148/article/details/51994477%E3%80%90LTE%E4%B8%8B%E8%A1%8C%E7%89%A9%E7%90%86%E5%B1%82%E4%BC%A0%E8%BE%93%E6%9C%BA%E5%88%B6-%E9%9B%86%E4%B8%AD%E5%BC%8F%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E8%B5%84%E6%BA%90%E6%98%A0%E5%B0%84%E3%80%91">https://blog.csdn.net/m_052148/article/details/51994477【LTE下行物理层传输机制-集中式和分布式资源映射】</a></p>
 </li>
 <li><p>支持不同时延要求业务的下行控制信道传输。配置一个OFDM符号长度的CORESET，缩短PDCCH传输的时间，降低时延；配置2个或3个OFDM符号长度的CORESET，增加PDCCH传输可用的资源，提高传输可靠性。</p>
 </li>
 </ul>
 <h3 id="PDCCH的物理结构"><a href="#PDCCH的物理结构" class="headerlink" title="PDCCH的物理结构"></a>PDCCH的物理结构</h3><p>1.NR资源单元组（Resource Element Group，REG）是CORESET内最基本的<strong>物理资源单元</strong>。一个REG由一个OFDM符号上的12RE组成（即一个OFDM符号上的一个PRB，第4章提过：一个PRB由12个子载波组成，所以这里的RE指的是子载波），包含3个DM-RS RE。一个CORESET内的REG按先时域后频域从0开始编号。</p>
-<img src="/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE1.png" class>
+<img src="/2022/05/02/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-02-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%B8%80-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE1.png" class>
 
 <p>2.REG组由CORESET内若干个连续的REG组成，是NR PDCCH资源映射和预编码的基本单位。同一个REG组内的REG使用相同的预编码矩阵传输，因此UE在一个REG组的范围内可以进行联合信道估计，获得联合处理的增益。在REG组之间可以实现预编码矩阵轮循传输，以获得分集增益。</p>
 <p>3.REG组可以包含2个、3个或者6个REG，这将有高层信令配置。较小的REG组在使用预编码矩阵轮循时可以获得更大的分集增益，在信道条件较好时有利于提升PDCCH的接收性能；较大的REG组能够获得额外的信道估计增益，通常用于信道条件较差时的PDCCH传输。</p>
@@ -267,7 +268,7 @@
 <li>如果预编码颗粒粒度配置为REG，则可以支持REG之间的预编码轮循传输，此时，DM-RS映射在PDCCH实际占用的所有REG上。</li>
 <li>如果哦预编码颗粒粒度为资源簇，则应该假设一个资源簇内REG是相同的预编码。此时DM-RS映射到的资源簇内的所有连续的REG上，即DM-RS会存在于PDCCH实际映射的REG之外。</li>
 </ul>
-<img src="/2022/05/02/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%B8%80)-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE2.png" class>
+<img src="/2022/05/02/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-02-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%B8%80-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE2.png" class>
 
 <h3 id="搜索空间设计"><a href="#搜索空间设计" class="headerlink" title="搜索空间设计"></a>搜索空间设计</h3><p>1.盲检过程：根据承载的下行控制信息（DCI）的比特数和信道状况，基站可以选择使用1个、2个、4个、8个或16个连续的控制信道单元（CCE）承载一条DCI，承载一条DCI的CCE个数称为<strong>聚合等级</strong>。UE在检测PDCCH时，要在不同的候选PDCCH上按照特定的DCI格式以及无线网络临时标识（RNT1）来检测DCI。候选PDCCH的资源位置由CCE的起始位置和聚合等级确定。</p>
 <p>UE在检测DCI时并不知道基站是否发送了DCI，也不知道实际发送该DCI所使用的CCE的聚合等级和起始位置，所以UE需要对候选PDCCH进行逐个尝试，将这一过程称为候选PDCCH的<strong>盲选</strong>。</p>
@@ -295,12 +296,12 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/04/28/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%BA%94)-%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86/" rel="prev" title="第5章-系统初始接入与移动性管理设计(五)-移动性管理">
+                <a href="/2022/04/28/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-28-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%BA%94-%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86/" rel="prev" title="第5章-系统初始接入与移动性管理设计(五)-移动性管理">
                   <i class="fa fa-chevron-left"></i> 第5章-系统初始接入与移动性管理设计(五)-移动性管理
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/05/03/%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6(%E4%BA%8C)-%E4%B8%8A%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/" rel="next" title="第6章-控制信道设计与资源调度(二)-上行控制信道">
+                <a href="/2022/05/03/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-03-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%BA%8C-%E4%B8%8A%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/" rel="next" title="第6章-控制信道设计与资源调度(二)-上行控制信道">
                   第6章-控制信道设计与资源调度(二)-上行控制信道 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>

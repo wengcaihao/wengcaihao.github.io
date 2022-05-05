@@ -175,7 +175,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -193,7 +193,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/" class="post-title-link" itemprop="url">第4章-帧结构与物理信道</a>
+          <a href="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/" class="post-title-link" itemprop="url">第4章-帧结构与物理信道</a>
         </h2>
 
         <div class="post-meta-container">
@@ -229,7 +229,7 @@
 <h1 id="时频资源"><a href="#时频资源" class="headerlink" title="时频资源"></a>时频资源</h1><h2 id="时域资源的定义"><a href="#时域资源的定义" class="headerlink" title="时域资源的定义"></a>时域资源的定义</h2><p>1.NR无线帧</p>
 <p>NR<strong>无线帧</strong>长度定义为10ms，一个无线帧包含10个<strong>子帧</strong>，每个子帧长度为1ms。一个子帧进一步分为若干个<strong>时隙</strong>，具体的个数取决于子载波间隔，但无论子载波间隔多大，一个时隙都包括14个OFDM符号。如果子载波间隔为$f_u&#x3D;2^uf_0$，则一个子帧内包含$2^u$$个，每个时隙的长度为$$2^{-u}ms$。</p>
 <p>NR帧结构如下：</p>
-<img src="/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png" class title="NR帧结构">
+<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png" class title="NR帧结构">
 
 <p>2.OFDM符号：一个时隙内的OFDM符号包括3种：下行符号、上行符号和灵活符号。上、下行符号只能用于上、下行传输，而灵活符号根据信令的指示可以进行上行传输或下行传输。</p>
 <h2 id="频域资源的定义"><a href="#频域资源的定义" class="headerlink" title="频域资源的定义"></a>频域资源的定义</h2><p>频域内，无论子载波间隔是多少，都可以将连续的12个子载波定义为一个物理资源块（PRB）。子载波间隔越大，PRB的实际带宽越大。</p>
@@ -254,7 +254,7 @@
 <li><strong>物理上行控制信道（PUCCH）</strong>：承载上行控制信息，反馈HARQ-ACK信息，指示下行的传输块是否正确接收；上报信道状态信息；在有上行数据到达时请求上行资源。PUCCH的天线端口为2000。</li>
 <li><strong>物理随机接入信道（PRACH）</strong>：用于随机接入过程。天线端口为4000</li>
 </ul>
-<img src="/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE2.png" class>
+<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE2.png" class>
 
 
 
@@ -278,7 +278,7 @@
 <li>降低HARQ-ACK的时延：为了支持uRLLC业务，希望PDSCH的HARQ-ACK反馈能在尽短时间内完成，这要求PUCCH在较短的时间内完成传输。</li>
 <li>支持上行波束赋性传输：其一是因为UE用多个不同的波束重复发送PUCCH，由于模拟波束赋形的特点，UE一个时间点上只能用一个波束进行发送，过长的PUCCH重复传输会占用更多的时域资源，导致系统开销增加。其二是支持基站侧的接受波束扫描，同样由于模拟波束，基站在一个时间点上仅能用一个模拟波束接收PUCCH，短PUCCH可以实现不同UE的PUCCH&#x2F;PUSCH的时分复用。</li>
 </ul>
-<img src="/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE3.png" class title="PUCCH&#x2F;PUSCH的时分复用">
+<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE3.png" class title="PUCCH&#x2F;PUSCH的时分复用">
 
 
 
@@ -311,7 +311,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86(%E4%B8%80)-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -329,7 +329,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/23/%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86(%E4%B8%80)-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/" class="post-title-link" itemprop="url">第2章-系统结构与体系标准(一)-无线接口协议栈</a>
+          <a href="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/" class="post-title-link" itemprop="url">第2章-系统结构与体系标准(一)-无线接口协议栈</a>
         </h2>
 
         <div class="post-meta-container">
@@ -374,12 +374,12 @@
 <ul>
 <li>控制平面协议栈：负责对无线接口的管理和控制</li>
 </ul>
-<img src="/2022/04/23/%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86(%E4%B8%80)-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE1.png" class title="控制平面协议栈">
+<img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE1.png" class title="控制平面协议栈">
 
 <ul>
 <li>用户平面协议栈</li>
 </ul>
-<img src="/2022/04/23/%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86(%E4%B8%80)-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE2.png" class title="用户平面协议栈">
+<img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE2.png" class title="用户平面协议栈">
 
 <h2 id="物理层协议功能"><a href="#物理层协议功能" class="headerlink" title="物理层协议功能"></a>物理层协议功能</h2><p>物理层为MAC和更好层提供信息传输服务，其中所提供的服务通过传输信道来描述。</p>
 <p>1.下行传输信道类型</p>
@@ -393,10 +393,10 @@
 <li>上行共享信道UL_SCH：与下行共享信道DL_SCH一样</li>
 <li>随机接入信道RACH：承载有限的控制信息，并且具有冲突碰撞特征。</li>
 </ul>
-<img src="/2022/04/23/%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86(%E4%B8%80)-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE3.png" class title="映射关系">
+<img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE3.png" class title="映射关系">
 
-<h2 id="数据链路层协议功能"><a href="#数据链路层协议功能" class="headerlink" title="数据链路层协议功能"></a>数据链路层协议功能</h2><img src="/2022/04/23/%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86(%E4%B8%80)-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE4.png" class title="数据链路层的下行架构">
-<img src="/2022/04/23/%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86(%E4%B8%80)-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE5.png" class title="数据链路层的上行架构">
+<h2 id="数据链路层协议功能"><a href="#数据链路层协议功能" class="headerlink" title="数据链路层协议功能"></a>数据链路层协议功能</h2><img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE4.png" class title="数据链路层的下行架构">
+<img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE5.png" class title="数据链路层的上行架构">
 
 <p>物理层为MAC子层提供传输信道级的服务，MAC子层为RLC子层提供逻辑信道级的服务，RLC子层为PDCP子层提供RLC信道级服务，PDCP子层为SDAP子层提供无线承载级的服务，SDAP子层为上层提供SGC Qos流级的服务。</p>
 <h3 id="MAC子层"><a href="#MAC子层" class="headerlink" title="MAC子层"></a>MAC子层</h3><p>Ⅰ、MAC子层的功能</p>
@@ -418,8 +418,8 @@
 </ul>
 <p>业务信道仅有专用业务信道DTCH，用于针对单个用户的点到点的业务传输信道，可单向可双向。</p>
 <p>Ⅲ、逻辑信道与传输信道的映射关系</p>
-<img src="/2022/04/23/%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86(%E4%B8%80)-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE6.png" class title="上行逻辑信道到上行传输信道的映射关系">
-<img src="/2022/04/23/%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86(%E4%B8%80)-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE7.png" class title="下行逻辑信道到下行传输信道的映射关系">
+<img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE6.png" class title="上行逻辑信道到上行传输信道的映射关系">
+<img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE7.png" class title="下行逻辑信道到下行传输信道的映射关系">
 
 <h3 id="RLC子层"><a href="#RLC子层" class="headerlink" title="RLC子层"></a>RLC子层</h3><p>为了满足不同的业务需求，RLC子层支持三种传输模式：<strong>透明模式</strong>（TM）、<strong>非确认模式</strong>（UM）、<strong>确认模式</strong>（AM）。RLC的配置基于逻辑信道的颗粒度，不依赖于底层的参数集和传输时间间隔的长度。</p>
 <p>透明模式主要用于寻呼消息、系统信息广播以及SRB0信令的传输</p>
