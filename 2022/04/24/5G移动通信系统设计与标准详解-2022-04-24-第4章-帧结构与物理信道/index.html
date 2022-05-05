@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="波形和参数集设计5G下行的调制波形为CP-OFDM，上行的调制波形除了CP-OFDM外还有DFT-sOFDM。其中，CP-OFDM调制的关键参数包括子载波间隔和CP长度。LTE支持15kHz的子载波间隔，而NR支持多种子载波间隔，不同子载波之间呈倍数关系，并且倍数必须为2的整数次幂。 如果记$f_0&#x3D;15kHz$$,则NR支持的子载波间隔满足关系$$f_u&#x3D;2^uf_0,u&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第4章-帧结构与物理信道">
+<meta property="og:url" content="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/index.html">
+<meta property="og:site_name" content="水中岚">
+<meta property="og:description" content="波形和参数集设计5G下行的调制波形为CP-OFDM，上行的调制波形除了CP-OFDM外还有DFT-sOFDM。其中，CP-OFDM调制的关键参数包括子载波间隔和CP长度。LTE支持15kHz的子载波间隔，而NR支持多种子载波间隔，不同子载波之间呈倍数关系，并且倍数必须为2的整数次幂。 如果记$f_0&#x3D;15kHz$$,则NR支持的子载波间隔满足关系$$f_u&#x3D;2^uf_0,u&amp;#">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png">
+<meta property="og:image" content="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE2.png">
+<meta property="og:image" content="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE3.png">
+<meta property="article:published_time" content="2022-04-24T01:58:55.000Z">
+<meta property="article:modified_time" content="2022-05-02T07:24:14.154Z">
+<meta property="article:author" content="水中岚">
+<meta property="article:tag" content="5G移动通信系统设计与标准详解">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png">
+
+
+<link rel="canonical" href="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/","path":"2022/04/24/5G移动通信系统设计与标准详解-2022-04-24-第4章-帧结构与物理信道/","title":"第4章-帧结构与物理信道"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>第4章-帧结构与物理信道 | 水中岚</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">水中岚</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">尽人事 听天命</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A2%E5%BD%A2%E5%92%8C%E5%8F%82%E6%95%B0%E9%9B%86%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.</span> <span class="nav-text">波形和参数集设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%B6%E9%A2%91%E8%B5%84%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">时频资源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E5%9F%9F%E8%B5%84%E6%BA%90%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">时域资源的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%91%E5%9F%9F%E8%B5%84%E6%BA%90%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.2.</span> <span class="nav-text">频域资源的定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93%E5%92%8C%E4%BF%A1%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text">物理信道和信号</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E4%BF%A1%E5%8F%B7"><span class="nav-number">3.1.</span> <span class="nav-text">物理信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93"><span class="nav-number">3.2.</span> <span class="nav-text">物理信道</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93"><span class="nav-number">3.2.1.</span> <span class="nav-text">控制信道</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NR%E5%AE%9A%E4%B9%89%E7%9A%84%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93"><span class="nav-number">3.2.2.</span> <span class="nav-text">NR定义的物理信道</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%BF%A1%E9%81%93%EF%BC%88%E4%B8%8B%E8%A1%8C%E5%90%8C%E6%AD%A5%E4%BF%A1%E9%81%93%EF%BC%88%E6%9C%AC%E8%B4%A8%E6%98%AF%E7%89%A9%E7%90%86%E5%B9%BF%E6%92%AD%E4%BF%A1%E9%81%93%EF%BC%89%E4%B8%8E%E7%89%A9%E7%90%86%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E4%BF%A1%E9%81%93%EF%BC%89"><span class="nav-number">3.2.3.</span> <span class="nav-text">初始接入信道（下行同步信道（本质是物理广播信道）与物理随机接入信道）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93"><span class="nav-number">3.2.4.</span> <span class="nav-text">上下行控制信道</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E3%80%81%E4%B8%8B%E8%A1%8C%E4%B8%9A%E5%8A%A1%E4%BF%A1%E9%81%93"><span class="nav-number">3.2.5.</span> <span class="nav-text">上、下行业务信道</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="水中岚"
+      src="/uploads/me.jpg">
+  <p class="site-author-name" itemprop="name">水中岚</p>
+  <div class="site-description" itemprop="description">水中岚的博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="第4章-帧结构与物理信道 | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第4章-帧结构与物理信道
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-24 09:58:55" itemprop="dateCreated datePublished" datetime="2022-04-24T09:58:55+08:00">2022-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-02 15:24:14" itemprop="dateModified" datetime="2022-05-02T15:24:14+08:00">2022-05-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="波形和参数集设计"><a href="#波形和参数集设计" class="headerlink" title="波形和参数集设计"></a>波形和参数集设计</h1><p>5G下行的调制波形为CP-OFDM，上行的调制波形除了CP-OFDM外还有DFT-sOFDM。其中，CP-OFDM调制的关键参数包括子载波间隔和CP长度。LTE支持15kHz的子载波间隔，而NR支持多种子载波间隔，不同子载波之间呈倍数关系，并且倍数必须为2的整数次幂。</p>
+<p>如果记$f_0&#x3D;15kHz$$,则NR支持的子载波间隔满足关系$$f_u&#x3D;2^uf_0,u&#x3D;0,1,2,3,4$</p>
+<h1 id="时频资源"><a href="#时频资源" class="headerlink" title="时频资源"></a>时频资源</h1><h2 id="时域资源的定义"><a href="#时域资源的定义" class="headerlink" title="时域资源的定义"></a>时域资源的定义</h2><p>1.NR无线帧</p>
+<p>NR<strong>无线帧</strong>长度定义为10ms，一个无线帧包含10个<strong>子帧</strong>，每个子帧长度为1ms。一个子帧进一步分为若干个<strong>时隙</strong>，具体的个数取决于子载波间隔，但无论子载波间隔多大，一个时隙都包括14个OFDM符号。如果子载波间隔为$f_u&#x3D;2^uf_0$，则一个子帧内包含$2^u$$个，每个时隙的长度为$$2^{-u}ms$。</p>
+<p>NR帧结构如下：</p>
+<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png" class title="NR帧结构">
+
+<p>2.OFDM符号：一个时隙内的OFDM符号包括3种：下行符号、上行符号和灵活符号。上、下行符号只能用于上、下行传输，而灵活符号根据信令的指示可以进行上行传输或下行传输。</p>
+<h2 id="频域资源的定义"><a href="#频域资源的定义" class="headerlink" title="频域资源的定义"></a>频域资源的定义</h2><p>频域内，无论子载波间隔是多少，都可以将连续的12个子载波定义为一个物理资源块（PRB）。子载波间隔越大，PRB的实际带宽越大。</p>
+<h1 id="物理信道和信号"><a href="#物理信道和信号" class="headerlink" title="物理信道和信号"></a>物理信道和信号</h1><h2 id="物理信号"><a href="#物理信号" class="headerlink" title="物理信号"></a>物理信号</h2><p>1.常见的物理信号</p>
+<p>NR下行物理信号包括信道状态信息参考信号、解调参考信号、时频跟踪参考信号、相位噪声跟踪参考信号、RRM测量参考信号、RLM测量参考信号等</p>
+<p>NR上行物理信号包括探测参考信号、解调参考信号、相位噪声跟踪参考信号等。</p>
+<p>其中解调参考信号和行为噪声跟踪参考信号在上下行的设计基本相同。</p>
+<p>2.物理信号的设计原则</p>
+<ul>
+<li>尽量避免持续发送（持续发送：不经系统配置即发送，也无法关闭的信号）的周期性信号。因为持续发送的信号无法关闭，未来系统引入的新业务需要考虑如何避开这些信号，且这些信号会造成不必要的系统开销和功率消耗。</li>
+<li>物理信号占用的时频资源应该可以灵活配置。</li>
+<li>支持大规模波束赋形传输。（<strong>波束赋形</strong>：调整多天线信号的幅相以产生干涉效应，使最终辐射的信号集中朝着某个方向传播或接收，从数学的角度讲，多天线辐射的射频信号就是很多正弦信号的和，调整每个正弦信号的幅相之后，这些信号和功率在一些会变为零（相消干涉），在另一些位置功率最大（相长干涉））</li>
+</ul>
+<h2 id="物理信道"><a href="#物理信道" class="headerlink" title="物理信道"></a>物理信道</h2><h3 id="控制信道"><a href="#控制信道" class="headerlink" title="控制信道"></a>控制信道</h3><p>物理信道对应于一组特定的时&#x2F;频资源，用于承载高层映射的传输信号。不承载传输信道的物理信道称为<strong>控制信道</strong>。（传输信道中也有控制信道，但二者明显不是一个概念）</p>
+<p>物理下行控制信道用于为UE提供下行接收和上行传输的<strong>必要信息</strong>（如资源分配信息）。</p>
+<p>物理上行控制信道承载上行控制信息，用于向基站报告YE的状态。</p>
+<h3 id="NR定义的物理信道"><a href="#NR定义的物理信道" class="headerlink" title="NR定义的物理信道"></a>NR定义的物理信道</h3><ul>
+<li><strong>物理下行共享信道（PDSCH）</strong>：主要用于下行单播数据的传输，也可以用于寻呼消息和系统消息的传输。天线端口1000~1011</li>
+<li><strong>物理广播信道（PBCH）</strong>：承载UE接入网络所需的最小系统信息的一部分。天线端口4000</li>
+<li><strong>物理下行控制信道（PDCCH）</strong>：用于传输下行控制信息，主要是UE接收PDSCH和传输上行共享信道（PUSCH）所需的调度信息，也可以传输时隙格式指示和抢占指示。天线端口为2000</li>
+<li><strong>物理上行共享信道（PUSCH）</strong>：对应于PDSCH的上行物理信道，用于传输上行业务数据，还可以承载上行控制信息。天线端口1000~1003</li>
+<li><strong>物理上行控制信道（PUCCH）</strong>：承载上行控制信息，反馈HARQ-ACK信息，指示下行的传输块是否正确接收；上报信道状态信息；在有上行数据到达时请求上行资源。PUCCH的天线端口为2000。</li>
+<li><strong>物理随机接入信道（PRACH）</strong>：用于随机接入过程。天线端口为4000</li>
+</ul>
+<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE2.png" class>
+
+
+
+<p>下面将详细介绍下这些物理信道</p>
+<h3 id="初始接入信道（下行同步信道（本质是物理广播信道）与物理随机接入信道）"><a href="#初始接入信道（下行同步信道（本质是物理广播信道）与物理随机接入信道）" class="headerlink" title="初始接入信道（下行同步信道（本质是物理广播信道）与物理随机接入信道）"></a>初始接入信道（下行同步信道（本质是物理广播信道）与物理随机接入信道）</h3><p>UE开机或移动到新的小区覆盖范围后，需要通过<strong>下行同步信道</strong>获得与网络的下行同步，如时间和频率的同步、读取小区的广播信息、获取小区的物理表示，从而获取小区的系统信息以确定后续的操作。然而NR所支持的高频率将导致网络覆盖范围变小，通过大规模天线技术将有效地解决高频段带来的覆盖范围变小的难题。而下行同步信道的设计必须考虑覆盖范围的要求，使之与业务信道的范围相匹配。</p>
+<p>NR采用<strong>波束扫描</strong>技术提升下行同步信道的覆盖范围，波束扫描即用多个波束在不同方向重复发送下行同步信道，将这些波束合并起来可以覆盖整个小区。</p>
+<p>UE开机后获得下行同步，读取完系统广播消息之后，如果UE需要和基站建立无线链路，则UE需要发起<strong>上行随机接入过程</strong>，建立与基站的连接，随后才能进行常规的数据传输和接收。而随机接入过程也需要考虑覆盖范围，也就是说，基站要采用接收波束赋形获得赋性增益，UE也需要采用波束赋性进行发送，才能满足高频段的覆盖要求。</p>
+<h3 id="上下行控制信道"><a href="#上下行控制信道" class="headerlink" title="上下行控制信道"></a>上下行控制信道</h3><p>4.1下行控制信道（PDCCH）</p>
+<p>上下行业务信道的传输需要相关的下行控制信令辅助，而下行控制信令在PDCCH上传输。下行控制信令的可靠高效传输是上、下行数据传输的前提条件，因此当上、下行数据信道通过大规模天线技术获得了速率和覆盖的提升时，控制信道的覆盖也需要获得与之匹配的提升，否则下行控制信道会成为覆盖的瓶颈。</p>
+<p>1.PDCCH多天线方案有以下几种：</p>
+<ul>
+<li>波束赋性：这里指UE专属的波束赋性，不同UE的PDCCH可以有不同的波束赋性方向。下节将讨论的PDSCH中也会用到波束赋性技术，但二者的目标不一样。PDSCH追求频谱效率，波束应该尽量的窄，以获得更大的波束赋形增益；而对于PDCCH，可靠性是更为重要的目标，因此PDCCH的波束可以宽一些。</li>
+<li>发射分级：由于控制信道的可靠性高于数据信道，因此控制信道的设计过程考虑了空间分集方案。</li>
+<li>多用户多入多出技术：以提高容量为目标，并没有得到明显的协议支持</li>
+<li>空分复用：目的是提高频谱效率，NR不支持PDCCH的空分复用传输。</li>
+</ul>
+<p>4.2上行控制信道（PUCCH）</p>
+<p>NR中关于上行控制信道的一个重要特征是引入了两种PUCCH结构：长PUCCH和短PUCCH。</p>
+<p>1.短PUCCH的设计动机：</p>
+<ul>
+<li>降低HARQ-ACK的时延：为了支持uRLLC业务，希望PDSCH的HARQ-ACK反馈能在尽短时间内完成，这要求PUCCH在较短的时间内完成传输。</li>
+<li>支持上行波束赋性传输：其一是因为UE用多个不同的波束重复发送PUCCH，由于模拟波束赋形的特点，UE一个时间点上只能用一个波束进行发送，过长的PUCCH重复传输会占用更多的时域资源，导致系统开销增加。其二是支持基站侧的接受波束扫描，同样由于模拟波束，基站在一个时间点上仅能用一个模拟波束接收PUCCH，短PUCCH可以实现不同UE的PUCCH&#x2F;PUSCH的时分复用。</li>
+</ul>
+<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE3.png" class title="PUCCH&#x2F;PUSCH的时分复用">
+
+
+
+<h3 id="上、下行业务信道"><a href="#上、下行业务信道" class="headerlink" title="上、下行业务信道"></a>上、下行业务信道</h3><p>下行共享信道（DL-SCH）是下行数据的主要传输信道，映射到PDSCH上进行传输。同理，上行共享信道（UL-SCH）是上行数据的主要传输信道，映射到PUSCH上进行传输。</p>
+<p>PDSCH和PUSCH频域资源调度类似于LTE，但增加了BWP(带宽部分)的指示。</p>
+<p>NR时域资源调度比LTE更加灵活,PDSCH和PUSCH的时域资源的映射类型有两种：TypeA和TypeB。TypeA是基于时隙的调度；TypeB是基于微时隙的调度，主要目标是支持uRLLC业务，使起始符号位置可以使任意的符号。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3/" rel="tag"># 5G移动通信系统设计与标准详解</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/" rel="prev" title="第2章-系统结构与体系标准(一)-无线接口协议栈">
+                  <i class="fa fa-chevron-left"></i> 第2章-系统结构与体系标准(一)-无线接口协议栈
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/24/%E5%85%B6%E4%BB%96-2022-04-24-CP-OFDM/" rel="next" title="CP-OFDM">
+                  CP-OFDM <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">水中岚</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
