@@ -205,7 +205,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-05-05 11:01:44 / 修改时间：13:52:59" itemprop="dateCreated datePublished" datetime="2022-05-05T11:01:44+08:00">2022-05-05</time>
+      <time title="创建时间：2022-05-05 11:01:44 / 修改时间：18:40:57" itemprop="dateCreated datePublished" datetime="2022-05-05T11:01:44+08:00">2022-05-05</time>
     </span>
 
   
@@ -220,7 +220,112 @@
     <div class="post-body" itemprop="articleBody">
           <h1 id="参考信号"><a href="#参考信号" class="headerlink" title="参考信号"></a>参考信号</h1><p>参控信号是MIMO方案设计的重要组成部分。</p>
 <p>本章将介绍4种参考信号的设计：信道状态信息参考信号（CSI-RS）、解调参考信号（DM-RS）、相位跟踪参考信号（PT-RS）和上行探测参考信号（SRS）。</p>
-<h2 id="解调参考信号（DM-RS）"><a href="#解调参考信号（DM-RS）" class="headerlink" title="解调参考信号（DM-RS）"></a>解调参考信号（DM-RS）</h2>
+<h2 id="解调参考信号（DM-RS）"><a href="#解调参考信号（DM-RS）" class="headerlink" title="解调参考信号（DM-RS）"></a>解调参考信号（DM-RS）</h2><h3 id="DM-RS的设计原则"><a href="#DM-RS的设计原则" class="headerlink" title="DM-RS的设计原则"></a>DM-RS的设计原则</h3><ol>
+<li><strong>DM-RS前置</strong>：在每个调度时间内，DM-RS首次出现的位置应当尽可能地靠近调度的起始点。前置DM-RS的使用有助于接收端尽早开始估计信道并进行接收检测，对于降低时延并支持自包含帧结构具有重要的作用。每一组DM-RS最多可占用2个DM-RS符号。</li>
+<li><strong>附加DM-RS</strong>：NR系统所考虑的移动速率最高可达500km&#x2F;h，在高速场景之中，还需要在调度持续时间内安插更多的DM-RS符号，以满足对时变信道的估计精度要求。针对这一问题，NR采用了前置DM-RS与时域密度可配置的附加DM-RS相结合的DM-RS结构。每一组附加DM-RS的图样都是前置DM-RS的重复。</li>
+<li><strong>上下行对称</strong>：NR系统内可能会存在上下行链路之间的干扰。上下行对称设计对于抑制不同链路方向之间的干扰将会带来更大的便利。上下行对称的设计体现在：<ul>
+<li>图样以及端口的复用方式的一致性，上行使用CP-OFDM波形时，上下行DM-RS的图样、序列以及复用方式均一致；</li>
+<li>配置的一致性，取决于具体配置，上下行DM-RS的时域位置可以相同，从而有可能估计出不同方向链路的空间干扰信息，并能为有效地对其进行抑制。</li>
+</ul>
+</li>
+<li><strong>支持的层数</strong>：MIMO传输的层数会直接影响系统的频谱利用效率以及峰值速率等指标，而天线端口数的增加为进一步提升MIMO维度创造了可能。NR系统种MU-MIMO的正交端口数增加到了12个。下行和上行链路中没UE最多可以传输的层数分为8层和4层。</li>
+<li>DFT-s-OFDM波形的上行DM-RS：仅支持单流传输，DM-RS采用了梳状结构的资源映射，以极低PARP的AC序列。</li>
+</ol>
+<h3 id="DM-RS端口复用方式"><a href="#DM-RS端口复用方式" class="headerlink" title="DM-RS端口复用方式"></a>DM-RS端口复用方式</h3><p>DM-RS端口采用频分复用+码分复用的方式进行复用。在每个CDM组内通过正交覆盖码（OOC）分为多个端口，CDM组内通过FDM方式进行区分。</p>
+<p>NR支持两种DM-RS类型，由高层信令配置使用的DM-RS类型。NR DM-RS可以包括一个（单符号DM-RS）或者2个（DM-RS）OFDM符号。两种DM-RS类型的复用和配置方式具体描述如下：</p>
+<p>1.DM-RS类型1</p>
+<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE1.png" class>
+
+<ul>
+<li>单符号DM-RS，一个OFDM符号内的子载波被分为两组频分的梳状资源，其中每组梳状资源构成一个CMD组。CMD组内部通过2个OCC支持2端口复用，最多支持4个端口。</li>
+<li>双符号DM-RS在单符号结构的基础上增加时域OCC，每组梳状资源占用连续两个OFDM符号，每个CDM组通过4个时频域的OCC实现4个正交端口，因此最多支持8个正交端口。</li>
+</ul>
+<p>2.DM-RS类型2</p>
+<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE2.png" class>
+
+<ul>
+<li>单符号DM-RS，一个OFDM符号内的子载波被分为3个CDM组，每个CDM组由两对相邻的两个子载波构成，CDM组内通过2个OCC支持2端口复用，组内FDM，因此最多支持6个端口。</li>
+<li>双符号DM-RS在单符号结构的基础上增加了TD-OCC，每个CDM组占用连续的两个OFDM符号，每个CDM组通过4个时频域的OCC支持4个正交端口，3个CDM组中最多支持12个端口。</li>
+</ul>
+<p>总结：类型1的频域密度更高，每个包含DM-RS的符号上平均每个端口占用3个RE，可以获得更好的信道估计性能，相应的开销也高。</p>
+<p>类型2在每个DM-RS符号上的密度为2RE&#x2F;端口，支持的端口数更多，达到12，可以更好地支持高阶MU-MIMO传输，类型2在相对常用地1-4层传输范围内具有更低地开销。</p>
+<h3 id="附加DM-RS配置"><a href="#附加DM-RS配置" class="headerlink" title="附加DM-RS配置"></a>附加DM-RS配置</h3><p>NR系统中采用了前置DM-RS与时域密度可配置的附加DM-RS相结合的结构，每一组附加DM-RS的图样都是前置DM-RS的重复，根据具体使用场景及移动性，可以配置最多3组附加DM-RS，其数量取决于高层的配置以及具体的调度时长。</p>
+<p>附加DM-RS的位置考虑以下原则：</p>
+<ul>
+<li>尽可能均匀的时域分布，保证各个OFDM符号上的信道估计精度尽可能均衡。</li>
+<li>不同调度时长情况下，DM-RS符号的位置尽可能相同。</li>
+<li>尽量避开调度区域的最后一个符号，以尽可能降低信道估计对检测时延的影响。</li>
+</ul>
+<h3 id="DM-RS端口指示"><a href="#DM-RS端口指示" class="headerlink" title="DM-RS端口指示"></a>DM-RS端口指示</h3><p>NR PDSCH和DM-RS在相同的天线端口传输，PDSCH所占用的天线端口是由DCI中的端口分配指示信息域提示的。基站通过天线端口的分配来实现SU-MIMO和MU-MIMO的切换。DCI中的端口分配指示信息包括UE的PDSCH占用的天线端口集合，以及在其调度资源上所有不用于数据传输的CDM组数量。PUSCH的端口分配指示信息同样除了指示PUSCH对应的天线端口集合外，也提供不用于数据传输的总的CDM组占用情况。</p>
+<h3 id="DM-RS功率偏移"><a href="#DM-RS功率偏移" class="headerlink" title="DM-RS功率偏移"></a>DM-RS功率偏移</h3><p>进行非恒模调制信号（如QAM）的解调时，接收机需要知道调制信号的EPRE和对应端口的DM-RS的EPRE的比值，以判断调制信号的幅度。PDSCH和PUSCH EPRE相对于DM-RS EPRE的比值通过DCI中指示的DM-RS的CDM组的个数来决定，具体如下：</p>
+<ol>
+<li>DM-RS类型1：<ul>
+<li>如果只有一个CDM组没有数据传输，则每层数据与其对应的DM-RS端口的功率相同。</li>
+<li>如果两个CDM组没有数据传输，则每层数据的功率是其对应DM-RS端口功率的1&#x2F;2。</li>
+</ul>
+</li>
+<li>DM-RS类型2：<ul>
+<li>如果只有一个CDM组没有数据传输，则每层数据与其对应的DM-RS端口的功率相同。</li>
+<li>如果两个CDM组没有数据传输，则每层数据的功率是其对应DM-RS端口功率的1&#x2F;2。</li>
+<li>如果三个CDM组没有数据传输，则每层数据的功率是其对应DM-RS端口功率的1&#x2F;3。</li>
+</ul>
+</li>
+</ol>
+<h2 id="信道状态信息参考信息（CSI-RS）"><a href="#信道状态信息参考信息（CSI-RS）" class="headerlink" title="信道状态信息参考信息（CSI-RS）"></a>信道状态信息参考信息（CSI-RS）</h2><p>NR CSI-RS主要用于：</p>
+<ul>
+<li>获取信道状态信息</li>
+<li>波束管理</li>
+<li>时频跟踪</li>
+<li>移动性管理</li>
+</ul>
+<p>信道状态信息获取CSI-RS</p>
+<p>NR支持的CSI-RS端口数包括1、2、4、8、12、16、24和32。8端口及以上的CSI-RS可以支持一维与二维的天线阵列。</p>
+<p><strong>1.CSI-RS图样设计</strong></p>
+<p><strong>CSI图样</strong>是指一个CSI-RS资源所占用的资源单位在一个PRB内的分布。NR将时域和频域上相邻的多个RE作为一个CSI-RS图样基本单元（简称基本单元），通过基本单元的聚合构造出不同端口数的CSI-RS图样。</p>
+<p>X端口CSI-RS基本单元由一个PRB内频域上相邻的Y个RE与时域上相邻的Z个符号组成。NR支持的CSI-RS基本单元如下：</p>
+<ul>
+<li>1端口：X&#x3D;1,(Y,Z)&#x3D;(1,1)</li>
+<li>2端口：X&#x3D;2,(Y,Z)&#x3D;(2,1)</li>
+<li>4端口：X&#x3D;4,(Y,Z)&#x3D;(4,1)和(2,2)</li>
+</ul>
+<p>CSI的8-32端口均由2端口或4端口基本单元聚合构成。</p>
+<p>当一个CSI-RS资源占用N(N≥2)个OFDM符号时，CSI-RS在N个OFDM上占用相同的子载波。若N&#x3D;2，则两个OFDM符号必须相邻。若N&#x3D;4,CSI-RS所在的符号分为两组，每组的OFDM符号必须相邻，两组间的OFDM符号可以相隔多个OFDM符号。</p>
+<p><strong>2.CSI-RS密度</strong></p>
+<p>CSI-RS密度是指在一个PRB内每个CSI-RS端口占用的RE数量。NR支持的CSI-RS密度包括D&#x3D;1&#x2F;2,1,3。密度1&#x2F;2仅用于CSI获取，且仅在奇数或偶数PRB传输CSI-RS。密度3仅用于波束管理，为了保证波束测量的精度。</p>
+<p><strong>3.CSI端口复用</strong></p>
+<p>多端口CSI-RS资源采用基于OCC的CDM方式占用相同的RE位置传输。码分复用可以提升每个CSI-RS端口的发射功率，扩大CSI-RS的覆盖范围。NR定义了CSI-RS的CDM图样，以确定每个端口占用的RE位置。</p>
+<p>NR定义了CDM-2、CDM-4、CDM-8三个CDM图样。CDM-2图样用于2-32端口聚合，灵活性最高。CDM-4和CDM-7图样分别用于8-32端口和24-32端口的聚合，可以为小区边缘UE提供更好的覆盖，实现多端口的满功率传输。</p>
+<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE3.png" class><img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE4.png" class>
+
+<p><strong>4.CSI-RS资源配置</strong></p>
+<p>CSI资源在一个PRB内的时频域位置通过RRC信令来指示。</p>
+<p>在时域上，CSI-RS资源可能占用1个、2个或4个OFDM符号，根据端口数和聚合方式的不同，可以配置在时隙内任意位置起始的一组或两组连续的OFDM符号上。</p>
+<p>在频域上，CSI-RS以公共资源块0为参考点的起始PRB位置，占用的PRB数目由高层信令配置。</p>
+<h3 id="波束管理CSI-RS"><a href="#波束管理CSI-RS" class="headerlink" title="波束管理CSI-RS"></a>波束管理CSI-RS</h3><p>波束管理CSI-RS只用于波束质量的测量和波束选择。NR系统中，CSI-RS可以分别应用于收发波束同时扫描、发送波束扫描、接收波束扫描（后面两个可以看出第一个的特例）。</p>
+<p>以收发波束同时扫描过程为例，介绍它的两组CSI-RS传输方式：</p>
+<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE5.png" class>
+
+<ul>
+<li>方式1：一个CSI-RS资源结合包含4个采用不同波束传输的CSI-RS资源。CSI-RS资源集合每一次传输对应一次发送波束扫描过程，UE可以分别用不同的波束接收，实现接收波束的扫描。</li>
+<li>方式2：CSI-RS资源集和包含4个采用相同波束传输的CSI-RS资源，基站配置4个采用不同的波束传输的CSI-RS资源集合，实现发送波束扫描。UE可以使用4个不同的波束进行接收，从而实现接受波束的扫描。</li>
+</ul>
+<h3 id="时频精同步CSI-RS"><a href="#时频精同步CSI-RS" class="headerlink" title="时频精同步CSI-RS"></a>时频精同步CSI-RS</h3><p>NR引入可以根据需要配置和触发的时频跟踪参考信号（TRS）来实现时域精同步。NR规定一种特殊配置的CSI-RS做TRS（所以TRS本质还是CSI-RS）TRS的作用是进行时频参数的估计，只有在RRC建立后才需要为UE配置TRS。</p>
+<p><strong>1.TRS时域结构</strong></p>
+<p>TRS以周期性传输为主，可以根据不同场景选择不同的周期值。</p>
+<p>在一个周期内，TRS集中在一个TRS突发内传输。</p>
+<p>一个TRS突发内的TRS所占的OFDM符号（TRS符号）个数影响时频参数的估计精度，数量越多，估计的精度越高。</p>
+<p>TRS突发内相邻TRS符号间隔越大，能由TRS估计出的最大频偏值越小。</p>
+<p>TRS突发内距离最远的两个TRS符号之间的间隔越小，频偏估计的分辨率越低，也就是能由TRS估计出的最小频偏值越大。</p>
+<p>NR系统中，一个TRS突发包含1或者2个时隙。在一个时隙内，TRS在两个OFDM符号上传输，令X、$S_t$、N分别表示TRS突发的长度（时隙的个数）、一个时隙内TRS符号的间隔和一个时隙中TRS符号的个数。则NR中TRS时域的结构参数如下：</p>
+<ul>
+<li>对于频率范围1（FR1）：X&#x3D;2、$S_t&#x3D;4$、N&#x3D;2</li>
+<li>对于频率范围2（FR2）：X&#x3D;1或2、$S_t&#x3D;4$、N&#x3D;2。</li>
+</ul>
+<p><strong>2.TRS频域结构</strong></p>
+<p>频域上，信号间隔越大，能由TRS估计出的最大时延值越小。而TRS占用的带宽决定了时延估计的颗粒度。NR将TRS的最小带宽确定为52个PRB。</p>
+<p><strong>3.非周期TRS</strong></p>
+<p>网络中有许多事件不能与周期TRS对齐，当这些事件发生后，UE不一定能及时接收到TRS，因此NR在周期TRS的基础上引入非周期TRS。在一个TRS突发内，非周期TRS与周期TRS采用相同的时频结构设计。非周期TRS的目的是辅助周期TRS，因此必须要关联一个周期TRS。</p>
+<h2 id="相位跟踪参考信号（PT-RS）"><a href="#相位跟踪参考信号（PT-RS）" class="headerlink" title="相位跟踪参考信号（PT-RS）"></a>相位跟踪参考信号（PT-RS）</h2>
       
     </div>
 
