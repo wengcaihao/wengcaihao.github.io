@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="面向对象程序设计概述1.类是构造对象的模板和蓝图。 封装：封装的关键在于绝对不能让类中的方法直接地访问其他类的实例域，而仅通过对象的方法与对象数据进行交互。这样对对象的使用者就隐藏了数据的实现方法。OOP的另一原则为继承。 2.对象的三个主要特征  对象的行为：可以对对象施加哪些方法？ 对象的状态：当实践那些方法时，对象如何响应？ 对象标识：如何辨别具有相同行为与状态的不同对象？  3.类之间的关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第4章_对象与类">
+<meta property="og:url" content="http://example.com/2022/04/01/%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/index.html">
+<meta property="og:site_name" content="水中岚">
+<meta property="og:description" content="面向对象程序设计概述1.类是构造对象的模板和蓝图。 封装：封装的关键在于绝对不能让类中的方法直接地访问其他类的实例域，而仅通过对象的方法与对象数据进行交互。这样对对象的使用者就隐藏了数据的实现方法。OOP的另一原则为继承。 2.对象的三个主要特征  对象的行为：可以对对象施加哪些方法？ 对象的状态：当实践那些方法时，对象如何响应？ 对象标识：如何辨别具有相同行为与状态的不同对象？  3.类之间的关">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/2022/04/01/%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/1.webp">
+<meta property="article:published_time" content="2022-04-01T12:46:58.000Z">
+<meta property="article:modified_time" content="2022-04-03T02:46:56.247Z">
+<meta property="article:author" content="水中岚">
+<meta property="article:tag" content="JAVA核心技术 卷Ⅰ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/04/01/%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/1.webp">
+
+
+<link rel="canonical" href="http://example.com/2022/04/01/%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/04/01/%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/","path":"2022/04/01/第4章-对象与类/","title":"第4章_对象与类"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>第4章_对象与类 | 水中岚</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">水中岚</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">尽人事 听天命</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">面向对象程序设计概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">使用预定义类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="nav-number">3.</span> <span class="nav-text">用户自定义类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%9F%9F%E4%B8%8E%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">静态域与静态方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8F%82%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">方法参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%9E%84%E9%80%A0"><span class="nav-number">6.</span> <span class="nav-text">对象构造</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7"><span class="nav-number">7.</span> <span class="nav-text">类设计技巧</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="水中岚"
+      src="/uploads/me.jpg">
+  <p class="site-author-name" itemprop="name">水中岚</p>
+  <div class="site-description" itemprop="description">水中岚的博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/01/%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="第4章_对象与类 | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第4章_对象与类
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-01 20:46:58" itemprop="dateCreated datePublished" datetime="2022-04-01T20:46:58+08:00">2022-04-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-03 10:46:56" itemprop="dateModified" datetime="2022-04-03T10:46:56+08:00">2022-04-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="面向对象程序设计概述"><a href="#面向对象程序设计概述" class="headerlink" title="面向对象程序设计概述"></a>面向对象程序设计概述</h1><p>1.类是构造对象的模板和蓝图。</p>
+<p>封装：封装的关键在于绝对不能让类中的方法直接地访问其他类的实例域，而仅通过对象的方法与对象数据进行交互。这样对对象的使用者就隐藏了数据的实现方法。OOP的另一原则为继承。</p>
+<p>2.对象的三个主要特征</p>
+<ul>
+<li>对象的行为：可以对对象施加哪些方法？</li>
+<li>对象的状态：当实践那些方法时，对象如何响应？</li>
+<li>对象标识：如何辨别具有相同行为与状态的不同对象？</li>
+</ul>
+<p>3.类之间的关系</p>
+<ul>
+<li>依赖（”uses-a“）：如果一个类A的方法操纵另一个类B的对象，则说类A依赖于类B。代码应尽量将相互依赖的类减至最少，以减小产生代码的概率，即让类之间的耦合度最小。</li>
+<li>聚合（”has-a“）：即类A的对象包含B的对象。</li>
+<li>继承（”is-a“）：表示特殊与一般的关系，下一章会详细讨论。</li>
+</ul>
+<h1 id="使用预定义类"><a href="#使用预定义类" class="headerlink" title="使用预定义类"></a>使用预定义类</h1><p>1.Date类与LocalDate类</p>
+<p>标准Java类库包含了两个类：一个是用来表示时间点的Date类；另一个是用来表示日历的LocalDate类。</p>
+<p>以上两种类的构造对象方法不同：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Date</span> <span class="variable">deadline</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();<span class="comment">//Date类使用构造器来构造方法</span></span><br><span class="line"><span class="type">LocalDate</span> <span class="variable">date</span> <span class="operator">=</span> LocalDate.now();<span class="comment">//LocalDate使用静态工厂方法</span></span><br><span class="line"><span class="type">LocalDate</span> <span class="variable">newYearsEve</span> <span class="operator">=</span> LocalDate.of(<span class="number">1999</span>,<span class="number">12</span>,<span class="number">31</span>);</span><br></pre></td></tr></table></figure>
+
+<p>一个用来显示本月日历的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.DayOfWeek;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDate;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CalendarTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">date</span> <span class="operator">=</span> LocalDate.now();</span><br><span class="line">        <span class="type">int</span> <span class="variable">month</span> <span class="operator">=</span> date.getMonthValue();<span class="comment">//目前的月份</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">today</span> <span class="operator">=</span> date.getDayOfMonth();<span class="comment">//目前的日期</span></span><br><span class="line"></span><br><span class="line">        date = date.minusDays(today - <span class="number">1</span>);<span class="comment">//将date转为本月的第一天</span></span><br><span class="line">        <span class="type">DayOfWeek</span> <span class="variable">weekday</span> <span class="operator">=</span> date.getDayOfWeek();<span class="comment">//本月第一天的星期</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">value</span> <span class="operator">=</span> weekday.getValue();<span class="comment">//1-&gt;星期一 2-&gt;星期二  以此类推</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;Mon Tue Wed Thu Fri Sat Sun&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; value; i++) &#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;    &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (date.getMonthValue() == month) &#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%3d&quot;</span>, date.getDayOfMonth());</span><br><span class="line">            <span class="keyword">if</span> (date.getDayOfMonth() == today) &#123;</span><br><span class="line">                System.out.printf(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.printf(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            date = date.plusDays(<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (date.getDayOfWeek().getValue() == <span class="number">1</span>)</span><br><span class="line">                System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (date.getDayOfWeek().getValue() != <span class="number">1</span>)</span><br><span class="line">            System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="用户自定义类"><a href="#用户自定义类" class="headerlink" title="用户自定义类"></a>用户自定义类</h1><p>1.隐式参数与显示参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">raiseSalary</span><span class="params">(<span class="type">double</span> byPercent)</span> &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">raise</span> <span class="operator">=</span> salary * byPercent / <span class="number">100</span>;</span><br><span class="line">        salary += raise;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>出现在方法面前的类对象称为隐式参数，在每一个方法中，用关键字this表示隐式参数。而位于方法名后括号中的数值称为显示参数，如double byPercent。</p>
+<p>2.final实例域</p>
+<p>当将实例域定义为final，构建对象时必须初始化这样的域，并且在后面的操作中，不能够再对他进行修改。因此，final修饰符大多应用于基本类型域或不可变类的域。</p>
+<h1 id="静态域与静态方法"><a href="#静态域与静态方法" class="headerlink" title="静态域与静态方法"></a>静态域与静态方法</h1><p>1.静态域：如果将域定义为static，则该类的所有对象共享这个域，这个域属于这个类而非某个对象。</p>
+<p>2.静态常量：静态变量使用较少，而静态常量却使用较多。静态常量可以直接通过类来访问，而无需通过类的对象再来访问，如Math类中定义了一个静态常量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> <span class="variable">PI</span> <span class="operator">=</span> <span class="number">3.14159265358979323846</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在程序中即可通过Math.PI的形式得到这个值。</p>
+<p>这行代码中PI虽然为公有域，可以被每个类对象进行修改，但是又由于其被final修饰，不允许再次赋值，所以不会面临被修改的风险。</p>
+<p>3.静态方法：静态方法是一种不能向对象实时操作的方法，即没有隐式参数。静态方法无法访问类中非静态方法与非静态域，但是可以访问自身类中的静态域。</p>
+<p>以下两种情况使用静态方法：</p>
+<ul>
+<li>一个方法不需要访问对象状态，所需参数都是显示参数，如Math.pow。</li>
+<li>一个方法只需要访问类中的静态域。</li>
+</ul>
+<h1 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h1><p>1.计算机科学中有两种调用方式：</p>
+<ul>
+<li>按值调用：方法接收的是调用者提供的值。</li>
+<li>按引用调用：方法接收的是调用者提供的变量地址。</li>
+</ul>
+<p><strong>Java总是采用按值调用。</strong>而Java方法参数的使用情况可以分为以下三种：</p>
+<ul>
+<li>一个方法不能修改一个基本数据类型的参数。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">tripleValue</span><span class="params">(<span class="type">double</span> x)</span> &#123;</span><br><span class="line">        x = <span class="number">3</span> * x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>即使通过上述方法将变量value赋值给参数x，也无法修改value的值。因为value只将它的值赋给了x，参数变量x在方法结束就不再使用，无法对value造成影响。</p>
+<ul>
+<li>一个方法可以改变一个对象参数的状态。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">tripleSalary</span><span class="params">(Employee x)</span> &#123;</span><br><span class="line">        x.raiseSalary(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上方法可以成功修改Employee对象的状态（即Salary提高两倍），因为参数变量被赋予的是一个对象引用。</p>
+<ul>
+<li>一个方法不能让对象参数引用一个新的对象。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(Employee x, Employee y)</span> &#123;</span><br><span class="line">        <span class="type">Employee</span> <span class="variable">temp</span> <span class="operator">=</span> x;</span><br><span class="line">        x = y;</span><br><span class="line">        y = temp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如上方法无法成功让两个对象参数互换。假设我们通过以下代码调用上面这个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Employee</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;Carl Cracker&quot;</span>, <span class="number">75000</span>, <span class="number">1987</span>, <span class="number">12</span>, <span class="number">15</span>);</span><br><span class="line"><span class="type">Employee</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="string">&quot;Harry Hacker&quot;</span>, <span class="number">50000</span>, <span class="number">1989</span>, <span class="number">10</span>, <span class="number">1</span>);</span><br><span class="line">swap(a, b);</span><br></pre></td></tr></table></figure>
+
+<p>首先，我们需要明白a，b的值分别对应的都是一个Employee对象的引用。因此，当调用swap方法时参数变量x，y的值也是Employee对象的引用。经过swap方法后，参数变量x，y值对换，即双方引用的对象交换了。但是a，b的值并没有变化。</p>
+<h1 id="对象构造"><a href="#对象构造" class="headerlink" title="对象构造"></a>对象构造</h1><p>2.无参数的构造器</p>
+<p>当类没有提供任何构造器时，系统会提供一个默认的无参构造器。但是当类给出了一个构造器，此时系统不会默认提供无参构造器，如果需要则需要显式声明。</p>
+<p>3.调用另一个构造器</p>
+<p>构造器的第一个语句可以为形如this(…)的形式，这样这个构造器可以调用本类的其他构造器，从而避免重复编写代码。</p>
+<p>4.初始化块：初始化块是除了在构造器中赋值、在声明中赋值外的第三种初始化数据域方式。初始化数据域有多种方式，以下为调用构造器的具体处理步骤：</p>
+<ol>
+<li>所有数据域被初始化为默认值（0、false、null）</li>
+<li>按照在类声明中出现的次序，依次执行所有域初始化语句和初始化块。</li>
+<li>如果构造器的第一行调用了第二个构造器，则执行第二个构造器的主体。</li>
+<li>执行第一个构造器的主体。</li>
+</ol>
+<h1 id="类设计技巧"><a href="#类设计技巧" class="headerlink" title="类设计技巧"></a>类设计技巧</h1><ol>
+<li><p>一定要保证数据私有：绝对不要破坏封装性。</p>
+</li>
+<li><p>一定要对数据初始化：不要依赖于系统的默认值，而是应该显式地初始化所有的数据，具体的初始化方式可以是提供默认值，也可以在所有构造器中设置默认值。</p>
+</li>
+<li><p>不要在类中使用过多的基本类型：用其他的类代替多个相关的基本类型的使用。例如：用一个称为Address的新类替换一个Customer类中以下的实例域：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String street;</span><br><span class="line"><span class="keyword">private</span> String city;</span><br><span class="line"><span class="keyword">private</span> String state;</span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> zip;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不是所有的域都需要独立的域访问器和域更改器。</p>
+</li>
+<li><p>将职责过多的类进行分解。</p>
+</li>
+<li><p>类名和方法名要能够体现它们的职责。</p>
+</li>
+<li><p>优先使用不可变的类：这样可以在多个线程间共享其对象。当然，并不是所有的类都应当是不可变的。如果员工加薪时让raiseSalary方法返回一个新的Employee对象，这回很奇怪。</p>
+</li>
+</ol>
+<p>好了，本章就到这了~~</p>
+<img src="/2022/04/01/%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/1.webp" class title="这是一直杰尼龟">
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0/" rel="tag"># JAVA核心技术 卷Ⅰ</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/01/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="prev" title="Hexo搭建博客图片无法显示问题解决方法">
+                  <i class="fa fa-chevron-left"></i> Hexo搭建博客图片无法显示问题解决方法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/03/%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF/" rel="next" title="第5章_继承">
+                  第5章_继承 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">水中岚</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

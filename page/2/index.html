@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,7 +175,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -193,7 +193,228 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/" class="post-title-link" itemprop="url">第4章-帧结构与物理信道</a>
+          <a href="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/" class="post-title-link" itemprop="url">第5章-系统初始接入与移动性管理设计(一)-NR同步块与PBCH传输</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-26 15:31:17" itemprop="dateCreated datePublished" datetime="2022-04-26T15:31:17+08:00">2022-04-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-27 14:47:58" itemprop="dateModified" datetime="2022-04-27T14:47:58+08:00">2022-04-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>UE和网络进行数据传输之前，必须通过初始接入过程连接到网络。初始接入过程包括小区搜索、系统信息接收和随机接入等阶段。</p>
+<p>小区搜索是UE利用小区同步信号进行下行时间和频率同步，以及获得物理小区标识（PCID）的过程。</p>
+<p>通过小区搜索完成下行同步之后，UE接收并解码物理广播和承载最小系统信息的PDSCH，获取后续进行随机接入必需的系统信息。</p>
+<p>在获取系统信息之后，UE通过随机接入过程实现上行时间同步，从非RRC连接态（RRC_IDLE和RRC_INACTIVE）进入RRC连接态（RRC_CONNECTED），为上、下行数据传输做好准备。</p>
+<p>寻呼过程用于帮助网络寻呼正处于非RRC连接态的UE。</p>
+<p>移动性管理对有效利用系统资源，保证网络对UE提供合理服务至关重要。</p>
+<p>5G NR移动管理包括无线资源管理（RRM）和无线链路监视（RLM）。</p>
+<h1 id="NR同步块（SSB）"><a href="#NR同步块（SSB）" class="headerlink" title="NR同步块（SSB）"></a>NR同步块（SSB）</h1><p>NR同步块（SSB）包括主同步信号（PSS）、辅同步信号（SSS）和物理广播信道（PBCH）。PBCH中包含解调参考信号（DM-RS）。</p>
+<p>UE在进入NR系统时，首先要检测主同步信号和辅同步信号以获得下行时频同步以及物理小区标识，然后对PBCH进行解码。PBCH中包括主信息块（MIB）和其他与NR同步块传输时间有关的信息。主信息块中携带了UE接入NR系统所需的最小系统信息的一部分。</p>
+<h2 id="SSB的结构和SSB突发集"><a href="#SSB的结构和SSB突发集" class="headerlink" title="SSB的结构和SSB突发集"></a>SSB的结构和SSB突发集</h2><p>1.SSB的结构</p>
+<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE1.png" class title="SSB的结构">
+
+<p>SSB中PSS、SSS、PBCH采用TDM的方式，一个SSB占用4个OFDM符号,一个SSB的带宽为20个PRB。每个SSB中PSS、SSS和PBCH采用相同的子载波间隔。</p>
+<p>2.SSB搜索</p>
+<p>初始接入时，UE不知道载波的具体带宽、频段内的载波带宽组合以及SSB在载波带宽中的位置。因此为了实现下行同步，UE按照<strong>同步栅格</strong>进行SSB搜索。SSB带宽的设计直接影响系统载波带宽中同步栅格的个数（正相关）。在一个系统载波带宽中，同步栅格的个数越多，UE搜索SSB所花费的时间就越多，而一个SSB内PSS、SSS和PBCH采用TDM相比于FDM可以减小SSB的带宽，从而减少同步栅格个数，降低搜索复杂度。</p>
+<p>3.<strong>SSB突发集</strong></p>
+<p>完成一次波束扫描所需的NR同步块组成了SSB突发集，SSB突发集是周期性传输的。配置较短的SSB突发集可以减少初始接入的时间延迟，降低UE测量SSB的时间和功耗，但会消耗较多的系统资源。反之，配置较长的SSB突发集周期可以减少SSB占用的资源，但可能会延长UE初始接入的时间。</p>
+<h2 id="时间同步"><a href="#时间同步" class="headerlink" title="时间同步"></a>时间同步</h2><p>当检测到某个SSB时，UE将从SSB获取定时信息，以达到下行时间同步的目的。定时信息包括：系统帧号、半无线帧索引、半无线帧中的时隙索引和时隙中OFDM符号索引。</p>
+<p>首先根据系统帧号以及半无线帧索引获取半无线帧中的位置。然后根据SSB时间索引，UE可结合NR标准规定的SSB在半无线帧中的位置，推断出该检测到的SSB在半无线帧中的时隙索引以及在该时隙中的OFDM符号索引。</p>
+<h2 id="SSB在半无线帧中的位置"><a href="#SSB在半无线帧中的位置" class="headerlink" title="SSB在半无线帧中的位置"></a>SSB在半无线帧中的位置</h2><p>不同频率范围内一个SSB突发集的最大SSB个数不同，表示SSB时间索引所需的比特数不同。为了使UE根据检测到的SSB时间索引确定SSB在半无线帧中的位置，NR标准规定了各种场景中SSB的侯选位置在SSB半无线帧中相对半无线帧起始点的OFDM符号索引值，如表：</p>
+<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE2.png" class>
+
+<p>例1：NR SSB 模式A为例，检测到SSB时间索引值为2，即SSB半无线帧中的第3个SSB，根据下图：</p>
+<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE3.png" class>
+
+<p>结合表5-1，可知模式A下每个时隙有两个SSB，它们的起始OFDM符号分别为2和8，第3个SSB位于SSB半无线帧中的第2个时隙（$n&#x3D;1$）。所以相对半无线帧起始点的OFDM符号的索引值为14×1+2&#x3D;16</p>
+<p>例2：NR SSB 模式D为例，检测到SSB时间索引值为7，即SSB半无线帧中的第8个SSB，根据下图：</p>
+<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE4.png" class>
+
+<p>结合表5-1，可知模式D下每2个有4个SSB，第8个SSB位于SSB半无线帧中的第4个时隙（$n&#x3D;1$）,所以相对半无线帧起始点的OFDM符号的索引值为28×1+20&#x3D;48</p>
+<h2 id="SSB传输配置"><a href="#SSB传输配置" class="headerlink" title="SSB传输配置"></a>SSB传输配置</h2><p>在初始小区搜索时，UE没有任何关于SSB传输配置的信息，为了减少UE初始小区搜索的时间和功耗，NR在协议中定义了一些SSB传输配置参数的默认值，包括SSB子载波间隔、SSB模式和SSB发送周期。</p>
+<ul>
+<li>NR在协议中按频段规定了默认的SSB子载波间隔。对于大多数频段来说，协议规定了唯一的默认SSB子载波间隔，也规定了唯一的默认SSB模式。但是对于某些特殊的频段，协议规定了两个默认子载波间隔，目的是希望保持这些特殊频段部署的灵活度，且对于这两个默认子载波间隔，协议针对每个子载波间隔都定义了唯一的默认SSB模式。</li>
+<li>对于支持初始小区搜索的小区，SSB实际发送周期可以是5ms，10ms和20ms。对于不支持初始小区搜索的小区，其SSB发送周期可以为{5，10，20，40，80，160}ms。对于网络没有指示SSB发送周期的小区，UE应假设SSB的实际发送周期为5ms。</li>
+</ul>
+<h2 id="实际传输SSB的指示"><a href="#实际传输SSB的指示" class="headerlink" title="实际传输SSB的指示"></a>实际传输SSB的指示</h2><p>NR协议规定了每个频率范围内一个SSB突发集的最大SSB个数，实际传输中一个SSB突发集的SSB个数可以小于或等于协议规定的最大数。未传输的SSB资源可以用来PDSCH传输。NR通过高层参数ssb-PositionsInBurst通知UE实际传输的SSB的位置和个数，使UE在接收PDSCH时能正确地进行速率匹配。</p>
+<p>NR规定了ssb-PositionsInBurst的两种表达方式：</p>
+<ul>
+<li><p>两个8比特位图，即组内比特映射（inOneGroup）和组比特映射（groupPresence）。</p>
+<p>当频率小于6GHz时，SSB突发集最大SSB个数不超过8。inOneGroup的每个比特代表相应的SSB的位置是否实际用于传输SSB。而groupPresence没有实际意义。</p>
+<p>当频率大于6GHz时，SSB突发集的最大SSB为64，NR将64个候选SSB按位置次序分为8组，groupPresence的每个比特表示相应的SSB组是否用于传输SSB，inOneGroup的每个比特表示每组中相应的SSB的位置是否实际用于传输SSB（配置不灵活）。</p>
+</li>
+<li><p>第二种方式采用3种长度分别为4位、8位和64位比特的位图，各比特代表相应的SSB的位置是否实际用于传输SSB。</p>
+</li>
+</ul>
+<p>两种ssb-PositionsInBurst表达方式的设计初衷，前者采用16bit就可表达实际传输SSB的位置，但网络实际传输SSB的灵活性受到了限制。后者保留网络实际传输SSB配置的灵活性，但最多却需要64bit。</p>
+<h2 id="同步信号设计"><a href="#同步信号设计" class="headerlink" title="同步信号设计"></a>同步信号设计</h2><p>同步信号包括主同步信号和辅同步信号。</p>
+<p>NR设计了3个主同步信号序列，主同步信号序列的ID为$N_{ID}^{(2)}\in{0,1,2}$。每个主同步信号序列对应于336个辅同步序列，辅同步信号序列的ID为$N_{ID}^{(1)}\in{0,1,…,335}$。每个NR物理小区标识$N_{ID}^{cell}$由主同步信号序列ID和辅同步信号序列ID的组合共同确定，即$N_{ID}^{cell}&#x3D;3N_{ID}^{(1)}+N_{ID}^{(2)}$。所以NR共支持336×3&#x3D;1008个物理小区标识。</p>
+<p>1.主同步信号</p>
+<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE5.png" class>
+
+<p>2.辅同步信号</p>
+<img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE6.png" class>
+
+
+
+<h1 id="PBCH传输"><a href="#PBCH传输" class="headerlink" title="PBCH传输"></a>PBCH传输</h1><p>PBCH是UE完成主同步信号和辅同步信号检测之后需要解码的第一个信道。PBCH和解调参考信号包含在SSB中。PBCH的内容为UE访问NR无线网络系统所需最小系统信息的一部分。</p>
+<h2 id="PBCH内容"><a href="#PBCH内容" class="headerlink" title="PBCH内容"></a>PBCH内容</h2><p>NR将最小基本系统信息分为两部分：一部分在NR PBCH中，另一部分在SIB1（SIB:系统信息块）中。而PBCH设计的基本原则是尽可能减小PBCH的载荷。因此NR PBCH的载荷仅为56bit，其中24位来自高层广播信道（BCCH-BCH），剩余32bit由物理层提供，其中包括24bit循环冗余校验（CRC）比特。除了SSB时间索引和CRC比特外，同一个SSB突发集中所以SSB的PBCH内容是相同的。</p>
+<h2 id="PBCH传输过程"><a href="#PBCH传输过程" class="headerlink" title="PBCH传输过程"></a>PBCH传输过程</h2><img src="/2022/04/26/%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1(%E4%B8%80)-NR%E5%90%8C%E6%AD%A5%E5%9D%97%E4%B8%8EPBCH%E4%BC%A0%E8%BE%93/%E5%9B%BE7.png" class title="PBCH传输过程">
+
+<p>物理层产生PBCH符号和PBCH DM-RS的流程如图所示。首先，来自高层的24bit BCCH-BCH信息与来自物理层的8bit与SSB传输时间相关的信息组合，生成32bit PBCH有效载荷。然后，32bit PBCH有效载荷经历交织（改善前向纠错的性能）、第一次加扰（降低小区之间PBCH信号的相关性，从而降低小区之间的互相干扰）、附加CRC（提供PBCH传输块的错误检测）等过程，产生56bit PBCH载荷。然后，通过极化编码、速率匹配、第二次加扰（第一次加扰的效果有限，于是再一次加扰）、QPSK调制，生成共432个符号的PBCH序列。最后，432个符号的PBCH序列与144个符号的PBCH DM-RS序列一起被映射到用于传输的SSB。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/CP-OFDM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/24/CP-OFDM/" class="post-title-link" itemprop="url">CP-OFDM</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-04-24 14:18:24 / 修改时间：15:58:55" itemprop="dateCreated datePublished" datetime="2022-04-24T14:18:24+08:00">2022-04-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>OFDM：正交频分复用技术，是多载波调制的一种。OFDM的主要思想是：将信道分成若干个正交子信道，将高速数据信号转换成并行的低速子数据流，调制到每个子信道上进行传输。OFDM的调制和解调是基于IFFT和FFT实现的。</p>
+<p>理想情况下，发送端所发送的符号到达接收端时不会受到任何影响。如图所示：</p>
+<img src="/2022/04/24/CP-OFDM/%E5%9B%BE1.png" class title="理想情况">
+
+<p>然而，现实情况中，由于多径、反射等情况，接收端可以接收到发送信号的多个延迟信号。如图所示</p>
+<img src="/2022/04/24/CP-OFDM/%E5%9B%BE2.png" class title="现实情况">
+
+<p>接收端接收到经过多个不同路径到达终点的信号，因此在图中所示的FFT window中t1采样点有来自Symbol1的干扰，这就是符号间干扰（ISI）。</p>
+<p>我们称信号的第一个副本和该信号最后接收的一个副本之间的总延迟称为延迟扩展。如果符号周期与“延迟扩展”相比非常大，那么ISI带来的影响较小，反之，若符号周期与”延迟扩展“相比非常小，那么ISI带来的影响将非常大。</p>
+<p>为了解决ISI，其中一个方法就是添加保护间隔，如图所示</p>
+<img src="/2022/04/24/CP-OFDM/%E5%9B%BE3.png" class title="设置保护间隔">
+
+<p>可以发现，在设置保护间隔后（保护间隔应该大于“延迟扩展”），在FFT Window中已经没有了其他信号的干扰了，然而由于保护间隔采用补零的措施，在接收端进行FFT时不同子载波之间已经不在正交，所以解调中的子载波会受到其他子载波的影响，这就是信道干扰（ICI），想要消除ICI，可以采用循环前缀（CP）或循环后缀（CS），这样既可以同时解决ISI和ICI。</p>
+<img src="/2022/04/24/CP-OFDM/%E5%9B%BE4.png" class title="循环前缀">
+
+<p>如图所示，将符号后部复制到符号前面作为保护间隔，这样FFT后不同子载波之间的内积为0，不同子载波相互正交，则不再有ISI和ICI。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/" class="post-title-link" itemprop="url">第4章-帧结构与物理信道</a>
         </h2>
 
         <div class="post-meta-container">
@@ -229,7 +450,7 @@
 <h1 id="时频资源"><a href="#时频资源" class="headerlink" title="时频资源"></a>时频资源</h1><h2 id="时域资源的定义"><a href="#时域资源的定义" class="headerlink" title="时域资源的定义"></a>时域资源的定义</h2><p>1.NR无线帧</p>
 <p>NR<strong>无线帧</strong>长度定义为10ms，一个无线帧包含10个<strong>子帧</strong>，每个子帧长度为1ms。一个子帧进一步分为若干个<strong>时隙</strong>，具体的个数取决于子载波间隔，但无论子载波间隔多大，一个时隙都包括14个OFDM符号。如果子载波间隔为$f_u&#x3D;2^uf_0$，则一个子帧内包含$2^u$$个，每个时隙的长度为$$2^{-u}ms$。</p>
 <p>NR帧结构如下：</p>
-<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png" class title="NR帧结构">
+<img src="/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png" class title="NR帧结构">
 
 <p>2.OFDM符号：一个时隙内的OFDM符号包括3种：下行符号、上行符号和灵活符号。上、下行符号只能用于上、下行传输，而灵活符号根据信令的指示可以进行上行传输或下行传输。</p>
 <h2 id="频域资源的定义"><a href="#频域资源的定义" class="headerlink" title="频域资源的定义"></a>频域资源的定义</h2><p>频域内，无论子载波间隔是多少，都可以将连续的12个子载波定义为一个物理资源块（PRB）。子载波间隔越大，PRB的实际带宽越大。</p>
@@ -254,7 +475,7 @@
 <li><strong>物理上行控制信道（PUCCH）</strong>：承载上行控制信息，反馈HARQ-ACK信息，指示下行的传输块是否正确接收；上报信道状态信息；在有上行数据到达时请求上行资源。PUCCH的天线端口为2000。</li>
 <li><strong>物理随机接入信道（PRACH）</strong>：用于随机接入过程。天线端口为4000</li>
 </ul>
-<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE2.png" class>
+<img src="/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE2.png" class>
 
 
 
@@ -278,7 +499,7 @@
 <li>降低HARQ-ACK的时延：为了支持uRLLC业务，希望PDSCH的HARQ-ACK反馈能在尽短时间内完成，这要求PUCCH在较短的时间内完成传输。</li>
 <li>支持上行波束赋性传输：其一是因为UE用多个不同的波束重复发送PUCCH，由于模拟波束赋形的特点，UE一个时间点上只能用一个波束进行发送，过长的PUCCH重复传输会占用更多的时域资源，导致系统开销增加。其二是支持基站侧的接受波束扫描，同样由于模拟波束，基站在一个时间点上仅能用一个模拟波束接收PUCCH，短PUCCH可以实现不同UE的PUCCH&#x2F;PUSCH的时分复用。</li>
 </ul>
-<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE3.png" class title="PUCCH&#x2F;PUSCH的时分复用">
+<img src="/2022/04/24/%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE3.png" class title="PUCCH&#x2F;PUSCH的时分复用">
 
 
 
@@ -476,7 +697,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/04/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-04-%E7%AC%AC6%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/04/%E7%AC%AC6%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -494,7 +715,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/04/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-04-%E7%AC%AC6%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB/" class="post-title-link" itemprop="url">第6章_接口、lambda表达式与内部类</a>
+          <a href="/2022/04/04/%E7%AC%AC6%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB/" class="post-title-link" itemprop="url">第6章_接口、lambda表达式与内部类</a>
         </h2>
 
         <div class="post-meta-container">
@@ -563,7 +784,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/03/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-03-%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/03/%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -581,7 +802,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/03/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-03-%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF/" class="post-title-link" itemprop="url">第5章_继承</a>
+          <a href="/2022/04/03/%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF/" class="post-title-link" itemprop="url">第5章_继承</a>
         </h2>
 
         <div class="post-meta-container">
@@ -697,7 +918,7 @@
 <li>不要过多的使用反射。</li>
 </ol>
 <p>本章就到这了~</p>
-<img src="/2022/04/03/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-03-%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF/%E9%B8%A3%E4%BA%BA.webp" class title="鸣人">
+<img src="/2022/04/03/%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF/%E9%B8%A3%E4%BA%BA.webp" class title="鸣人">
       
     </div>
 
@@ -723,7 +944,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/01/%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -741,7 +962,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/" class="post-title-link" itemprop="url">第4章_对象与类</a>
+          <a href="/2022/04/01/%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/" class="post-title-link" itemprop="url">第4章_对象与类</a>
         </h2>
 
         <div class="post-meta-container">
@@ -868,7 +1089,7 @@
 </li>
 </ol>
 <p>好了，本章就到这了~~</p>
-<img src="/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/1.webp" class title="这是一直杰尼龟">
+<img src="/2022/04/01/%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/1.webp" class title="这是一直杰尼龟">
       
     </div>
 
@@ -894,7 +1115,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/01/Hexo-2022-04-01-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/01/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -912,7 +1133,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/01/Hexo-2022-04-01-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Hexo搭建博客图片无法显示问题解决方法</a>
+          <a href="/2022/04/01/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Hexo搭建博客图片无法显示问题解决方法</a>
         </h2>
 
         <div class="post-meta-container">
@@ -939,7 +1160,7 @@
     <div class="post-body" itemprop="articleBody">
           <p>基于Hexo搭建的博客平台在上传图片时会遇到图片无法打开的情况，解决方法如下：</p>
 <p>1.在博客的根目录下的配置文件_config.yml中的post_asset_folder: false改为true（注意:后有一空格），这样在新建博客时就会自动建立一个同名的文件夹，这样我们可以将博客中用到的图片放在上述文件夹中。</p>
-<img src="/2022/04/01/Hexo-2022-04-01-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/%E6%AD%A5%E9%AA%A41.png" class title="步骤1">
+<img src="/2022/04/01/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/%E6%AD%A5%E9%AA%A41.png" class title="步骤1">
 
 <p>2.git bash安装插件:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/7ym0n/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
@@ -950,7 +1171,7 @@
 
 <p>将上面的 杰尼龟.webp 改成第一步中自动建立的文件夹中所需图片的名字 + .图片格式（jpg，png等），将上面的 这是一只杰尼龟 改成你图片的描述。</p>
 <p>这样问题就解决了，效果如下：</p>
-<img src="/2022/04/01/Hexo-2022-04-01-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/%E6%9D%B0%E5%B0%BC%E9%BE%9F.webp" class title="这是一直杰尼龟">
+<img src="/2022/04/01/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/%E6%9D%B0%E5%B0%BC%E9%BE%9F.webp" class title="这是一直杰尼龟">
 
 
       
@@ -978,7 +1199,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/30/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-03-30-%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/30/%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -996,7 +1217,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/30/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-03-30-%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">第3章_Java的基本程序设计结构</a>
+          <a href="/2022/03/30/%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">第3章_Java的基本程序设计结构</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1079,7 +1300,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">double</span> <span class="variable">CM_PER_INCH</span> <span class="operator">=</span> <span class="number">2.54</span>;</span><br></pre></td></tr></table></figure>
 
 <p>2.数值类型之间的转换</p>
-<img src="/2022/03/30/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-03-30-%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2.png" class title="数字类型之间的转换">
+<img src="/2022/03/30/%E7%AC%AC3%E7%AB%A0-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2.png" class title="数字类型之间的转换">
 
 <p>上图给出了Java中的合法转换，其中实线表示转换时无精度损失，虚线表示转换时有精度损失。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">123456789</span>;</span><br><span class="line"><span class="type">float</span> <span class="variable">f</span> <span class="operator">=</span> n;<span class="comment">//f is 1.23456792E8</span></span><br></pre></td></tr></table></figure>
@@ -1119,7 +1340,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/25/Hexo-2022-03-25-hexo%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/25/hexo%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -1137,7 +1358,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/25/Hexo-2022-03-25-hexo%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">Hexo编写博客</a>
+          <a href="/2022/03/25/hexo%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">Hexo编写博客</a>
         </h2>
 
         <div class="post-meta-container">
