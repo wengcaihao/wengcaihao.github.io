@@ -22,32 +22,32 @@
 
     <meta name="description" content="参考信号参控信号是MIMO方案设计的重要组成部分。 本章将介绍4种参考信号的设计：信道状态信息参考信号（CSI-RS）、解调参考信号（DM-RS）、相位跟踪参考信号（PT-RS）和上行探测参考信号（SRS）。 解调参考信号（DM-RS）DM-RS的设计原则 DM-RS前置：在每个调度时间内，DM-RS首次出现的位置应当尽可能地靠近调度的起始点。前置DM-RS的使用有助于接收端尽早开始估计信道并进行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第七章-大规模多天线传输(二)-参考信号">
-<meta property="og:url" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/index.html">
+<meta property="og:title" content="第7章-大规模多天线传输(二)-参考信号">
+<meta property="og:url" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/index.html">
 <meta property="og:site_name" content="水中岚">
 <meta property="og:description" content="参考信号参控信号是MIMO方案设计的重要组成部分。 本章将介绍4种参考信号的设计：信道状态信息参考信号（CSI-RS）、解调参考信号（DM-RS）、相位跟踪参考信号（PT-RS）和上行探测参考信号（SRS）。 解调参考信号（DM-RS）DM-RS的设计原则 DM-RS前置：在每个调度时间内，DM-RS首次出现的位置应当尽可能地靠近调度的起始点。前置DM-RS的使用有助于接收端尽早开始估计信道并进行">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE1.png">
-<meta property="og:image" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE2.png">
-<meta property="og:image" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE3.png">
-<meta property="og:image" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE4.png">
-<meta property="og:image" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE5.png">
+<meta property="og:image" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE1.png">
+<meta property="og:image" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE2.png">
+<meta property="og:image" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE3.png">
+<meta property="og:image" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE4.png">
+<meta property="og:image" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE5.png">
 <meta property="article:published_time" content="2022-05-05T03:01:44.000Z">
-<meta property="article:modified_time" content="2022-05-05T11:18:23.525Z">
+<meta property="article:modified_time" content="2022-05-06T00:23:46.884Z">
 <meta property="article:author" content="水中岚">
 <meta property="article:tag" content="5G移动通信系统设计与标准详解">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE1.png">
+<meta name="twitter:image" content="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE1.png">
 
 
-<link rel="canonical" href="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/">
+<link rel="canonical" href="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/","path":"2022/05/05/5G移动通信系统设计与标准详解-2022-05-05-第七章-大规模多天线传输-二-参考信号/","title":"第七章-大规模多天线传输(二)-参考信号"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/","path":"2022/05/05/5G移动通信系统设计与标准详解-2022-05-05-第7章-大规模多天线传输-二-参考信号/","title":"第7章-大规模多天线传输(二)-参考信号"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>第七章-大规模多天线传输(二)-参考信号 | 水中岚</title>
+<title>第7章-大规模多天线传输(二)-参考信号 | 水中岚</title>
   
 
 
@@ -186,7 +186,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/me.jpg">
@@ -199,12 +199,12 @@
     </span>
     
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="第七章-大规模多天线传输(二)-参考信号 | 水中岚">
+      <meta itemprop="name" content="第7章-大规模多天线传输(二)-参考信号 | 水中岚">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          第七章-大规模多天线传输(二)-参考信号
+          第7章-大规模多天线传输(二)-参考信号
         </h1>
 
         <div class="post-meta-container">
@@ -214,9 +214,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-05-05 11:01:44 / 修改时间：19:18:23" itemprop="dateCreated datePublished" datetime="2022-05-05T11:01:44+08:00">2022-05-05</time>
+      <time title="创建时间：2022-05-05 11:01:44" itemprop="dateCreated datePublished" datetime="2022-05-05T11:01:44+08:00">2022-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-06 08:23:46" itemprop="dateModified" datetime="2022-05-06T08:23:46+08:00">2022-05-06</time>
     </span>
 
   
@@ -245,14 +251,14 @@
 <h3 id="DM-RS端口复用方式"><a href="#DM-RS端口复用方式" class="headerlink" title="DM-RS端口复用方式"></a>DM-RS端口复用方式</h3><p>DM-RS端口采用频分复用+码分复用的方式进行复用。在每个CDM组内通过正交覆盖码（OOC）分为多个端口，CDM组内通过FDM方式进行区分。</p>
 <p>NR支持两种DM-RS类型，由高层信令配置使用的DM-RS类型。NR DM-RS可以包括一个（单符号DM-RS）或者2个（DM-RS）OFDM符号。两种DM-RS类型的复用和配置方式具体描述如下：</p>
 <p>1.DM-RS类型1</p>
-<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE1.png" class>
+<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE1.png" class>
 
 <ul>
 <li>单符号DM-RS，一个OFDM符号内的子载波被分为两组频分的梳状资源，其中每组梳状资源构成一个CMD组。CMD组内部通过2个OCC支持2端口复用，最多支持4个端口。</li>
 <li>双符号DM-RS在单符号结构的基础上增加时域OCC，每组梳状资源占用连续两个OFDM符号，每个CDM组通过4个时频域的OCC实现4个正交端口，因此最多支持8个正交端口。</li>
 </ul>
 <p>2.DM-RS类型2</p>
-<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE2.png" class>
+<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE2.png" class>
 
 <ul>
 <li>单符号DM-RS，一个OFDM符号内的子载波被分为3个CDM组，每个CDM组由两对相邻的两个子载波构成，CDM组内通过2个OCC支持2端口复用，组内FDM，因此最多支持6个端口。</li>
@@ -305,8 +311,8 @@
 <p>CSI-RS密度是指在一个PRB内每个CSI-RS端口占用的RE数量。NR支持的CSI-RS密度包括D&#x3D;1&#x2F;2,1,3。密度1&#x2F;2仅用于CSI获取，且仅在奇数或偶数PRB传输CSI-RS。密度3仅用于波束管理，为了保证波束测量的精度。</p>
 <p><strong>3.CSI端口复用</strong></p>
 <p>多端口CSI-RS资源采用基于OCC的CDM方式占用相同的RE位置传输。码分复用可以提升每个CSI-RS端口的发射功率，扩大CSI-RS的覆盖范围。NR定义了CSI-RS的CDM图样，以确定每个端口占用的RE位置。</p>
-<p>NR定义了CDM-2、CDM-4、CDM-8三个CDM图样。CDM-2图样用于2-32端口聚合，灵活性最高。CDM-4和CDM-7图样分别用于8-32端口和24-32端口的聚合，可以为小区边缘UE提供更好的覆盖，实现多端口的满功率传输。</p>
-<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE3.png" class><img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE4.png" class>
+<p>NR定义了CDM-2、CDM-4、CDM-8三个CDM图样。CDM-2图样用于2-32端口聚合，灵活性最高。CDM-4和CDM-8图样分别用于8-32端口和24-32端口的聚合，可以为小区边缘UE提供更好的覆盖，实现多端口的满功率传输。</p>
+<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE3.png" class><img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE4.png" class>
 
 <p><strong>4.CSI-RS资源配置</strong></p>
 <p>CSI资源在一个PRB内的时频域位置通过RRC信令来指示。</p>
@@ -314,7 +320,7 @@
 <p>在频域上，CSI-RS以公共资源块0为参考点的起始PRB位置，占用的PRB数目由高层信令配置。</p>
 <h3 id="波束管理CSI-RS"><a href="#波束管理CSI-RS" class="headerlink" title="波束管理CSI-RS"></a>波束管理CSI-RS</h3><p>波束管理CSI-RS只用于波束质量的测量和波束选择。NR系统中，CSI-RS可以分别应用于收发波束同时扫描、发送波束扫描、接收波束扫描（后面两个可以看出第一个的特例）。</p>
 <p>以收发波束同时扫描过程为例，介绍它的两组CSI-RS传输方式：</p>
-<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE5.png" class>
+<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE5.png" class>
 
 <ul>
 <li>方式1：一个CSI-RS资源结合包含4个采用不同波束传输的CSI-RS资源。CSI-RS资源集合每一次传输对应一次发送波束扫描过程，UE可以分别用不同的波束接收，实现接收波束的扫描。</li>
@@ -352,7 +358,7 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/05/05/Hexo%E5%AD%A6%E4%B9%A0-Hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/" rel="prev" title="Hexo本地博客管理">
+                <a href="/2022/05/05/Hexo%E5%AD%A6%E4%B9%A0-2022-05-05-Hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/" rel="prev" title="Hexo本地博客管理">
                   <i class="fa fa-chevron-left"></i> Hexo本地博客管理
                 </a>
             </div>
