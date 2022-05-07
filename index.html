@@ -211,7 +211,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-06 08:23:46" itemprop="dateModified" datetime="2022-05-06T08:23:46+08:00">2022-05-06</time>
+      <time title="修改时间：2022-05-07 09:46:42" itemprop="dateModified" datetime="2022-05-07T09:46:42+08:00">2022-05-07</time>
     </span>
 
   
@@ -331,7 +331,52 @@
 <p>频域上，信号间隔越大，能由TRS估计出的最大时延值越小。而TRS占用的带宽决定了时延估计的颗粒度。NR将TRS的最小带宽确定为52个PRB。</p>
 <p><strong>3.非周期TRS</strong></p>
 <p>网络中有许多事件不能与周期TRS对齐，当这些事件发生后，UE不一定能及时接收到TRS，因此NR在周期TRS的基础上引入非周期TRS。在一个TRS突发内，非周期TRS与周期TRS采用相同的时频结构设计。非周期TRS的目的是辅助周期TRS，因此必须要关联一个周期TRS。</p>
-<h2 id="相位跟踪参考信号（PT-RS）"><a href="#相位跟踪参考信号（PT-RS）" class="headerlink" title="相位跟踪参考信号（PT-RS）"></a>相位跟踪参考信号（PT-RS）</h2>
+<h2 id="相位跟踪参考信号（PT-RS）"><a href="#相位跟踪参考信号（PT-RS）" class="headerlink" title="相位跟踪参考信号（PT-RS）"></a>相位跟踪参考信号（PT-RS）</h2><h3 id="相位噪声"><a href="#相位噪声" class="headerlink" title="相位噪声"></a>相位噪声</h3><p>主要由本地振荡电路引入。在本地振荡器电路系统中，实际输出信号相对于理想输出信号多了一个随机相位。相位噪声导致所有子载波上引入了相同的相位旋转，即共相位误差（CPE）。</p>
+<p>一方面，CPE的影响是在所有子载波上引入相同的相位旋转，从而导致所有子载波上的调制星座点以固定角度旋转；另一方面，由于噪声边带的存在，子载波间的相互重叠引起子载波间的干扰。</p>
+<p>NR设计相位跟踪参考信号（PT-RS）主要实现对CPE的估计和补偿。在设计上，NR在一个子载波上发送PT-RS，DM-RS占用的OFDM符号不传输PT-RS。如下图所示</p>
+<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE6.png" class>
+
+<h3 id="PT-RS的设计"><a href="#PT-RS的设计" class="headerlink" title="PT-RS的设计"></a>PT-RS的设计</h3><ul>
+<li><p>频域上：理想情况下一个子载波用于传输PT-RS就可以达到CPE估计和补偿的目的。然而由于噪声和干扰的影响，仅用一个子载波估计CPE可能会存在较大的估计误差，因此NR采用每$K$个PRB占用一个子载波的均匀配置传输PT-RS。PT-RS的频域密度与调度带宽关系如下：</p>
+<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE8.png" class>
+
+<p>由于PT-RS在频域分布比较稀缺，所以在频域上既要确定其所在的PRB位置，也需要确定其在PRB中子载波位置。</p>
+</li>
+<li><p>时域上：PT-RS可以采用不同的时域密度，NR将PT-RS的时域密度与MCS等级关联，当开始PT-RS功能时，通过MCS、调度带宽参数隐式确定PT-RS的时频密度。</p>
+<img src="/2022/05/05/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-05-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%8C-%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/%E5%9B%BE7.png" class>
+
+<p>表中，时域密度表示每$L$个OFDM符号占用一个OFDM符号传输PT-RS，$I_{MCS}$表示基站在调度信令中指示的MCS等级。$MCS_i$表示PT-RS时域密度门限值。</p>
+</li>
+<li><p>空域上：PT-RS端口至少需要关联一个DM-RS端口，用于相位差估计。</p>
+<p>若某些端口经历相同的相位噪声，则无须为每个DM0RS端口都进行CPE估计，也就是说，仅需将PT-RS关联至其中一个DM-RS端口，即与该端口使用相同的预编码。并且，NR希望将PT-RS关联至信道质量最佳的DM-RS端口进行传输，因此在CSI反馈中引入LI(Layer Indicator)反馈，指示UE反馈的预编码矩阵中的最强层。</p>
+<p>端口数方面，NR R15中下行支持一个PT-RS端口，上行最多支持两个PT-RS端口。对于MU-MIMO，多个UE的PT-RS之间采用非正交复用，且与其他UE的数据间也采用非正交复用。</p>
+</li>
+</ul>
+<h2 id="上行探测参考信号（SRS）"><a href="#上行探测参考信号（SRS）" class="headerlink" title="上行探测参考信号（SRS）"></a>上行探测参考信号（SRS）</h2><p>1.SRS可用于上行信道信息获取、下行信道信息获取以及上行波束管理。</p>
+<p>2.NR系统以SRS资源集的方式进行SRS的管理和配置，根据不同的用途，基站可以为UE配置多个SRS资源集，每个SRS资源集包含一个或者多个SRS资源，每个SRS资源包含1、2或4个SRS端口。每个SRS资源集的配置信息中包含一个用途指示，可以被配置为：</p>
+<ul>
+<li><p>beamManagement：上行波束管理</p>
+</li>
+<li><p>codebook：基于码本上行传输方案的上行信道信息获取</p>
+</li>
+<li><p>nonCodebook：非码本上行传输方案的上行信道信息获取</p>
+</li>
+<li><p>antennaSwitching：基于SRS天线切换的下行信道信息获取</p>
+</li>
+</ul>
+<p>UE向基站上报其支持的SRS传输能力，以便基站为其进行SRS资源集的配置。</p>
+<p>3.SRS资源的映射方式：</p>
+<ul>
+<li><p>时域上：每个SRS资源可以被配置在一个时隙上的最后6个OFDM符号中的1个、2个或4个连续的符号上。占用多个OFDM符号目的是通过重复传输扩展覆盖。</p>
+</li>
+<li><p>频域上：NR支持两种映射方式</p>
+<p>Comb-2：SRS每隔2个子载波进行映射。一个SRS资源在一个PRB中占用6个子载波。</p>
+<p>Comb-4：SRS每隔4个子载波进行映射。一个SRS资源在一个PRB中占用3个子载波。</p>
+</li>
+</ul>
+<p>4.NR支持周期、半持续和非周期的SRS发送方式。</p>
+<p>5.SRS序列基于ZC序列产生，序列长度等于SRS资源在一个符号内占用的子载波数（即为6或3）。SRS序列分为若干组，每个组包含若干个序列。为了进行干扰随机化，NR支持序列跳频或序列组跳频。如果不进行序列化跳频或序列组跳频，则该SRS资源对应的SRS在各个OFDM符号内使用相同的序列；如果SRS资源被配置为进行序列跳频或序列组跳频，该SRS资源对应的SRS在各个OFDM符号内按照一定规则采用不同序列或序列组对应的序列。</p>
+
       
     </div>
 
