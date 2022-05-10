@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="为啥要使用模拟波束5G NR由于使用了毫米波频段，相比4G而言，载波频率大大提高了。载波频率的提高一方面显著加大了无线信号的传播损耗，减少了天线的覆盖面积，另一方面也大大减小了天线单元的物理尺寸，使得在相同的物理空间里能够安装更多的天线单元，从而可以使用天线阵列、波束赋形等技术加大无线信号的覆盖范围，补偿路径损耗。 在4G LTE系统中，波束赋形已经作为一个重要的功能被广泛应用。由于4G LTE载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大规模多天线传输(四)-模拟波束管理">
+<meta property="og:url" content="http://example.com/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="水中岚">
+<meta property="og:description" content="为啥要使用模拟波束5G NR由于使用了毫米波频段，相比4G而言，载波频率大大提高了。载波频率的提高一方面显著加大了无线信号的传播损耗，减少了天线的覆盖面积，另一方面也大大减小了天线单元的物理尺寸，使得在相同的物理空间里能够安装更多的天线单元，从而可以使用天线阵列、波束赋形等技术加大无线信号的覆盖范围，补偿路径损耗。 在4G LTE系统中，波束赋形已经作为一个重要的功能被广泛应用。由于4G LTE载">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/%E5%9B%BE1.png">
+<meta property="og:image" content="http://example.com/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/%E5%9B%BE2.png">
+<meta property="article:published_time" content="2022-05-08T12:57:38.000Z">
+<meta property="article:modified_time" content="2022-05-10T12:47:02.505Z">
+<meta property="article:author" content="水中岚">
+<meta property="article:tag" content="5G移动通信系统设计与标准详解">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/%E5%9B%BE1.png">
+
+
+<link rel="canonical" href="http://example.com/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/","path":"2022/05/08/5G移动通信系统设计与标准详解-2022-05-08-第7章-大规模多天线传输-四-模拟波束管理/","title":"大规模多天线传输(四)-模拟波束管理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>大规模多天线传输(四)-模拟波束管理 | 水中岚</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">水中岚</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">尽人事 听天命</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E5%95%A5%E8%A6%81%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F"><span class="nav-number">1.</span> <span class="nav-text">为啥要使用模拟波束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">波束管理过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E4%B8%8E%E6%8E%A5%E6%94%B6%E6%B3%A2%E6%9D%9F%E7%9A%84%E6%8E%A5%E6%94%B6%E8%BF%87%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">模拟波束与接收波束的接收过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86%E8%BF%87%E7%A8%8B-1"><span class="nav-number">2.2.</span> <span class="nav-text">波束管理过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A2%E6%9D%9F%E6%B5%8B%E9%87%8F"><span class="nav-number">3.</span> <span class="nav-text">波束测量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A2%E6%9D%9F%E4%B8%8A%E6%8A%A5"><span class="nav-number">4.</span> <span class="nav-text">波束上报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A2%E6%9D%9F%E6%8C%87%E7%A4%BA"><span class="nav-number">5.</span> <span class="nav-text">波束指示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A2%E6%9D%9F%E5%A4%B1%E6%95%88%E6%81%A2%E5%A4%8D%E8%BF%87%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">波束失效恢复过程</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="水中岚"
+      src="/uploads/me.jpg">
+  <p class="site-author-name" itemprop="name">水中岚</p>
+  <div class="site-description" itemprop="description">水中岚的博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="大规模多天线传输(四)-模拟波束管理 | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          大规模多天线传输(四)-模拟波束管理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-08 20:57:38" itemprop="dateCreated datePublished" datetime="2022-05-08T20:57:38+08:00">2022-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-10 20:47:02" itemprop="dateModified" datetime="2022-05-10T20:47:02+08:00">2022-05-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="为啥要使用模拟波束"><a href="#为啥要使用模拟波束" class="headerlink" title="为啥要使用模拟波束"></a>为啥要使用模拟波束</h2><p>5G NR由于使用了毫米波频段，相比4G而言，载波频率大大提高了。载波频率的提高一方面显著加大了无线信号的传播损耗，减少了天线的覆盖面积，另一方面也大大减小了天线单元的物理尺寸，使得在相同的物理空间里能够安装更多的天线单元，从而可以使用天线阵列、波束赋形等技术加大无线信号的覆盖范围，补偿路径损耗。</p>
+<p>在4G LTE系统中，波束赋形已经作为一个重要的功能被广泛应用。由于4G LTE载波频率相对较低，天线单元数量较少，使用数字式波束赋形技术（Digital Beamforming）能够充分发挥其优势，同时基本不受其缺点的影响。而在5G NR系统中，由于天线单元数量的急剧增加，数字式波束赋形技术的缺点越来越明显，因此不得不转向模拟式波束赋</p>
+<p>为什么5G NR开始使用模拟式波束赋形呢？因为5G NR的天线数量实在太多了。如果还是使用数字式波束赋形，那么每个天线单元上都必须有一个DAC（发生端）或者ADC（接收端）。如果有100个天线单元，那么就要有100个DAC（发生端）或者ADC（接收端）；这就让天线变得非常臃肿复杂，功耗也大大增加。如果使用模拟式波束赋形，由于多路信号其实是对一个输入信号的相位或者振幅调整，只需要在波束赋形处理矩阵之前有1个DAC（发生端）或者ADC（接收端）即可，因此硬件设计非常的简单。</p>
+<h2 id="波束管理过程"><a href="#波束管理过程" class="headerlink" title="波束管理过程"></a>波束管理过程</h2><p>因为同一时间内只能发送有限个模拟赋性波束（波束数量取决于数字端口数量，一个数字端口对应一个波束），并且波束宽度较窄，通常只能覆盖小区的一部分区域，为了实现整个小区的覆盖，需要采用时域内多个波束联合扫描的传输方式，即在一个时间段内通过轮循方式，每个波束依次接力覆盖整个小区不同区域来实现小区的完整覆盖。</p>
+<p>对于基站与UE间的单播传输，当基站与UE间的发送和接收波束对齐时，可以获得最大的链路增益，让基站与UE的收发波束对齐的过程，在NR系统中被称为<strong>波束管理过程</strong>。</p>
+<h3 id="模拟波束与接收波束的接收过程"><a href="#模拟波束与接收波束的接收过程" class="headerlink" title="模拟波束与接收波束的接收过程"></a>模拟波束与接收波束的接收过程</h3><p>模拟波束赋性在接收过程中，每次接收前需要调整每个射频通道的相位来实现不同方向的接受波束赋性。</p>
+<p>数字波束赋性在接收过程中，接收端只需要接收一次信号并进行存储，在接收端采用不同的接收波束赋性参数对存储信号进行数字均衡处理，寻找接收性能最好的赋性参数。</p>
+<h3 id="波束管理过程-1"><a href="#波束管理过程-1" class="headerlink" title="波束管理过程"></a>波束管理过程</h3><p>波束选择：在单播的控制或数据传输过程中，基站和UE选择合适的波束方向，以确保最佳的链路传输质量。</p>
+<p>波束测量：当无线链路建立以后，UE对基站的多个波束以及接收端采用的多个接收波束进行测量。</p>
+<p>波束上报：将波束测量结果上报给基站</p>
+<p>波束切换：当UE位置移动、方向变化以及传播路线受到遮挡，配对的收发波束对的传输质量下降时，基站和UE可以选择另外一对质量更好的收发波束对，并进行波束切换操作。</p>
+<p>波束指示：通过下行控制信令将所发送的波束指示通知给UE，便于UE的接收与切换。</p>
+<p>波束恢复：所监测的所有收发波束传输质量都无法满足链路传输要求的情况下，重新建立基站与UE间的连接的过程。</p>
+<h2 id="波束测量"><a href="#波束测量" class="headerlink" title="波束测量"></a>波束测量</h2><p> 1.<strong>波束测量的过程</strong></p>
+<p>如果一个基站可以发送$M$个模拟波束，可以用每个波束传输一个赋形的参考信号用于波束的测量。这$M$个参考信号应该在不同时域和&#x2F;或频域资源上传输，以便基站能够针对每个波束调整移相器来实现模拟波束赋形。假如UE有$N$个接收波束，则基站与UE之间一共有$MN$个波束对，才能找到最佳的收发配对波束。</p>
+<p>NR支持3种波束测量过程：</p>
+<ul>
+<li><p>联合收发波束测量：基站和UE都执行波束测量，有两种方式，一是基站的发送波束的参考信号周期发送，接收端在发送端的一个周期内固定让一个波束接收，在下一个周期让接下来的波束接收。二是发送端固定发送端波束方向，直到接收端所有波束都接收到参考信号后发送端切换至下一波束方向。</p>
+</li>
+<li><p>发送波束测量：基站通过轮循方式发送多个波束的参考信号，UE采用固定的接受波束，选取最合适的发送波束与固定的接收波束配对。</p>
+<img src="/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/%E5%9B%BE1.png" class>
+
+<p>用于接收$M$个发送波束的固定接收波束由基站或UE决定</p>
+<ol>
+<li>如果基站没有提供UE波束的辅助信息，UE通常采用一个宽的接收波束或者轮循接收波束，通常用于初始波束测量时。</li>
+<li>如果基站知道UE所处的大致方向，则基站会根据这个方向给出一个接收波束建议，并基于原来的大致方向发送$M$个窄波束，从而获得更加精确的发送波束信息。</li>
+</ol>
+</li>
+<li><p>接收波束测量：基站采用固定波束重复发送参考信号，UE用轮循方式测试不同的接收波束，选取最合适的接受波束与基站的发送波束配对。</p>
+<img src="/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/%E5%9B%BE2.png" class>
+
+<p>接收波束测量所用的波束方向将由基站或者UE决定</p>
+<ol>
+<li>如果基站没有接收波束的先验信息，UE将会用所有接收波束进行扫描接收。</li>
+<li>如果基站可以指示接收波束信息给UE，UE则可以根据信息采用更小角度扩展的接收波束进行测量，从而获得更精确的接收波束。波束</li>
+</ol>
+</li>
+</ul>
+<h2 id="波束上报"><a href="#波束上报" class="headerlink" title="波束上报"></a>波束上报</h2><p>基站可以设置让UE选择所有下行发送波束中最好或者最合适的$L$个发送波束进行上报。并且这些上报的波束对所对应的接收波束只需要存储在UE中，方便之后的处理，不需要上报给基站。</p>
+<p>可以用于波束测量的参数包括参考信号接收功率（RSRP），参考信号接收质量（RSRQ）和CSI。</p>
+<p>RSRP测量的计算复杂度低，适合于大量波束的快速测量，因此可用于处死波束测量和配对场景。</p>
+<p>CSI测量更加复杂，但可以提供更精确的波束赋形信息，可用于在一部分候选波束中对波束进行精确测量的场景。</p>
+<h2 id="波束指示"><a href="#波束指示" class="headerlink" title="波束指示"></a>波束指示</h2><p>前面提到，最佳波束对所对应的接收波束会存储在UE中，所以当基站采用模拟波束赋形的方式传输下行业务数据时，基站需要指示UE所选的下行模拟发送波束的序号。UE接收到指示后，根据波束训练过程存储的信息，调用该序号对应的最佳接收波束进行数据接收。</p>
+<p>发送波束的指示方式可以是动态或者是静态的。当数据传输需要快速和高精度的波束赋形时，最好使用动态指示方式随时切换用于传输的波束。</p>
+<p>1.控制信道的波束指示</p>
+<p>PDCCH的资源被半静态地分为多个CORESET，基站可为每个CORESET匹配一个发送波束，不同地CORESET可以匹配不同的波束方向。基站可以在不同CORESET间动态切换，从而实现波束地动态切换。在发送PDCCH时，基站可以根据UE的信息，选择合适波束方向的CORESET。在接收端，UE将使用与CORESET发送波束对应的接收波束进行接收。PUCCH与PDCCH的机制类似。</p>
+<p>2.业务数据信道传输的波束指示</p>
+<p>PDCCH包含了PUSCH发送波束的指示信息，因为PDCCH的解码（时间长）以及从PDCCH的模拟波束赋形转换到PDCSH的模拟波束赋形（时间短）均需要一定的时间，如果PDSCH与PDCCH之间间隙较小，则UE无法获得用于接收PDSCH的发送波束指示信息，也就无法确定接收波束。</p>
+<p>解决方法：NR定义了一个区分完成和未完成PDCCH解调解码的阈值，如果PDCCH与PDSCH之间的时间间隔小于这个阈值，则PDSCH的接收波束采用PDCCH的接收波束。反之，如果PDCCH和PDSCH的间隔大于这个阈值，PDSCH将根据PDCCH解码成功后的波束指示进行数据接收。</p>
+<h2 id="波束失效恢复过程"><a href="#波束失效恢复过程" class="headerlink" title="波束失效恢复过程"></a>波束失效恢复过程</h2><p>1、高频段毫米波通信，反射和衍射性能差，大部分传输质量都集中在直射传播路径。因此设计能够快速从波束遮挡中恢复，确保控制信道传输可靠性和顽健性的机制，是高频段传输中的一个重要内容。</p>
+<p>NR中规定，基站通过快速地将PDCCH发送从一个波束切换到另外一个波束，避免了波束遮挡对传输性能的影响，使得UE能够接收到控制信息，恢复数据传输。而基站所选择的新波束是根据UE上报的信息获得的。</p>
+<p>2、由于基站可以通过多个下行控制信道发送PDCCH，因此<strong>下行波束失效</strong>定义为：UE所接收到的每一个下行控制信道波束的质量都低于规定阈值。</p>
+<p>3、波束失效的指标参数：</p>
+<ul>
+<li>误块率（BLER）：能够更好地反映信道接收质量，复杂度相对较高，但由于NR将每个UE在所激活的BWP中的CORESET数量限制为3，所以采用BLER作为波束失效的指标参数的复杂度还是相对能接受的。</li>
+<li>L1-RSRP：实现复杂度低，但不能够太好地反映信道接收质量。NR最终选择了L1-RSRP作为新候选波束的评估参数。</li>
+</ul>
+<p>4、用于波束失效测量的参考信号集合的配置，可以采用基站通过信令通知UE的显示配置或者是UE通过控制信道的波束配置隐含获得。</p>
+<p>5、新波束指示方式：为了让UE能够上报新的候选波束，网络需要给UE配置响应的参考信号资源集合，这些参考信号对应了候选波束集。UE通过测量参考信号集合，确定用于传输链路的收发波束对。当UE完成测量后，把新的候选波束上报给网络。</p>
+<p>6、用于上报波束失效事件和新候选波束的物理信道：PRACH和PUCCH</p>
+<p>7、波束恢复过程：</p>
+<p>网络将为UE配置一个专用的CORESET，称为CORESET_BFR，用于波束恢复的控制信令传输。当UE测量并上报波束失效消息后，UE开始监听CORESET_BFR内传输的PDCCH，并且UE会假设其所用波束为自己上报的新波束。而基站则会在CORESET_BFR中使用新波束发送PDCCH。</p>
+<p>如果之后UE未收到RRC重配置消息（用于CORESET集合的波束配置），则CORESET_BFR将会作为另一个用于调度的CORESET进行正常通信。UE如果收到了RRC重配置消息，则会根据新波束配置，并停止对CORESET_BFR的监听。</p>
+<p>此外，当基站受到波束失效事件的上报后，仍然可以使用原来配置的CORESET集合和波束参数进行通信（因为测失效判断是基于10%的BLER测量结果得到的），并可对下行控制信道进行重配置。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3/" rel="tag"># 5G移动通信系统设计与标准详解</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/07/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-07-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%89-%E4%BF%A1%E9%81%93%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%E5%8F%8D%E9%A6%88/" rel="prev" title="第7章-大规模多天线传输(三)-信道状态信息反馈">
+                  <i class="fa fa-chevron-left"></i> 第7章-大规模多天线传输(三)-信道状态信息反馈
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">水中岚</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

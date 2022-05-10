@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -166,6 +166,281 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">大规模多天线传输(四)-模拟波束管理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-08 20:57:38" itemprop="dateCreated datePublished" datetime="2022-05-08T20:57:38+08:00">2022-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-10 20:47:02" itemprop="dateModified" datetime="2022-05-10T20:47:02+08:00">2022-05-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="为啥要使用模拟波束"><a href="#为啥要使用模拟波束" class="headerlink" title="为啥要使用模拟波束"></a>为啥要使用模拟波束</h2><p>5G NR由于使用了毫米波频段，相比4G而言，载波频率大大提高了。载波频率的提高一方面显著加大了无线信号的传播损耗，减少了天线的覆盖面积，另一方面也大大减小了天线单元的物理尺寸，使得在相同的物理空间里能够安装更多的天线单元，从而可以使用天线阵列、波束赋形等技术加大无线信号的覆盖范围，补偿路径损耗。</p>
+<p>在4G LTE系统中，波束赋形已经作为一个重要的功能被广泛应用。由于4G LTE载波频率相对较低，天线单元数量较少，使用数字式波束赋形技术（Digital Beamforming）能够充分发挥其优势，同时基本不受其缺点的影响。而在5G NR系统中，由于天线单元数量的急剧增加，数字式波束赋形技术的缺点越来越明显，因此不得不转向模拟式波束赋</p>
+<p>为什么5G NR开始使用模拟式波束赋形呢？因为5G NR的天线数量实在太多了。如果还是使用数字式波束赋形，那么每个天线单元上都必须有一个DAC（发生端）或者ADC（接收端）。如果有100个天线单元，那么就要有100个DAC（发生端）或者ADC（接收端）；这就让天线变得非常臃肿复杂，功耗也大大增加。如果使用模拟式波束赋形，由于多路信号其实是对一个输入信号的相位或者振幅调整，只需要在波束赋形处理矩阵之前有1个DAC（发生端）或者ADC（接收端）即可，因此硬件设计非常的简单。</p>
+<h2 id="波束管理过程"><a href="#波束管理过程" class="headerlink" title="波束管理过程"></a>波束管理过程</h2><p>因为同一时间内只能发送有限个模拟赋性波束（波束数量取决于数字端口数量，一个数字端口对应一个波束），并且波束宽度较窄，通常只能覆盖小区的一部分区域，为了实现整个小区的覆盖，需要采用时域内多个波束联合扫描的传输方式，即在一个时间段内通过轮循方式，每个波束依次接力覆盖整个小区不同区域来实现小区的完整覆盖。</p>
+<p>对于基站与UE间的单播传输，当基站与UE间的发送和接收波束对齐时，可以获得最大的链路增益，让基站与UE的收发波束对齐的过程，在NR系统中被称为<strong>波束管理过程</strong>。</p>
+<h3 id="模拟波束与接收波束的接收过程"><a href="#模拟波束与接收波束的接收过程" class="headerlink" title="模拟波束与接收波束的接收过程"></a>模拟波束与接收波束的接收过程</h3><p>模拟波束赋性在接收过程中，每次接收前需要调整每个射频通道的相位来实现不同方向的接受波束赋性。</p>
+<p>数字波束赋性在接收过程中，接收端只需要接收一次信号并进行存储，在接收端采用不同的接收波束赋性参数对存储信号进行数字均衡处理，寻找接收性能最好的赋性参数。</p>
+<h3 id="波束管理过程-1"><a href="#波束管理过程-1" class="headerlink" title="波束管理过程"></a>波束管理过程</h3><p>波束选择：在单播的控制或数据传输过程中，基站和UE选择合适的波束方向，以确保最佳的链路传输质量。</p>
+<p>波束测量：当无线链路建立以后，UE对基站的多个波束以及接收端采用的多个接收波束进行测量。</p>
+<p>波束上报：将波束测量结果上报给基站</p>
+<p>波束切换：当UE位置移动、方向变化以及传播路线受到遮挡，配对的收发波束对的传输质量下降时，基站和UE可以选择另外一对质量更好的收发波束对，并进行波束切换操作。</p>
+<p>波束指示：通过下行控制信令将所发送的波束指示通知给UE，便于UE的接收与切换。</p>
+<p>波束恢复：所监测的所有收发波束传输质量都无法满足链路传输要求的情况下，重新建立基站与UE间的连接的过程。</p>
+<h2 id="波束测量"><a href="#波束测量" class="headerlink" title="波束测量"></a>波束测量</h2><p> 1.<strong>波束测量的过程</strong></p>
+<p>如果一个基站可以发送$M$个模拟波束，可以用每个波束传输一个赋形的参考信号用于波束的测量。这$M$个参考信号应该在不同时域和&#x2F;或频域资源上传输，以便基站能够针对每个波束调整移相器来实现模拟波束赋形。假如UE有$N$个接收波束，则基站与UE之间一共有$MN$个波束对，才能找到最佳的收发配对波束。</p>
+<p>NR支持3种波束测量过程：</p>
+<ul>
+<li><p>联合收发波束测量：基站和UE都执行波束测量，有两种方式，一是基站的发送波束的参考信号周期发送，接收端在发送端的一个周期内固定让一个波束接收，在下一个周期让接下来的波束接收。二是发送端固定发送端波束方向，直到接收端所有波束都接收到参考信号后发送端切换至下一波束方向。</p>
+</li>
+<li><p>发送波束测量：基站通过轮循方式发送多个波束的参考信号，UE采用固定的接受波束，选取最合适的发送波束与固定的接收波束配对。</p>
+<img src="/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/%E5%9B%BE1.png" class>
+
+<p>用于接收$M$个发送波束的固定接收波束由基站或UE决定</p>
+<ol>
+<li>如果基站没有提供UE波束的辅助信息，UE通常采用一个宽的接收波束或者轮循接收波束，通常用于初始波束测量时。</li>
+<li>如果基站知道UE所处的大致方向，则基站会根据这个方向给出一个接收波束建议，并基于原来的大致方向发送$M$个窄波束，从而获得更加精确的发送波束信息。</li>
+</ol>
+</li>
+<li><p>接收波束测量：基站采用固定波束重复发送参考信号，UE用轮循方式测试不同的接收波束，选取最合适的接受波束与基站的发送波束配对。</p>
+<img src="/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/%E5%9B%BE2.png" class>
+
+<p>接收波束测量所用的波束方向将由基站或者UE决定</p>
+<ol>
+<li>如果基站没有接收波束的先验信息，UE将会用所有接收波束进行扫描接收。</li>
+<li>如果基站可以指示接收波束信息给UE，UE则可以根据信息采用更小角度扩展的接收波束进行测量，从而获得更精确的接收波束。波束</li>
+</ol>
+</li>
+</ul>
+<h2 id="波束上报"><a href="#波束上报" class="headerlink" title="波束上报"></a>波束上报</h2><p>基站可以设置让UE选择所有下行发送波束中最好或者最合适的$L$个发送波束进行上报。并且这些上报的波束对所对应的接收波束只需要存储在UE中，方便之后的处理，不需要上报给基站。</p>
+<p>可以用于波束测量的参数包括参考信号接收功率（RSRP），参考信号接收质量（RSRQ）和CSI。</p>
+<p>RSRP测量的计算复杂度低，适合于大量波束的快速测量，因此可用于处死波束测量和配对场景。</p>
+<p>CSI测量更加复杂，但可以提供更精确的波束赋形信息，可用于在一部分候选波束中对波束进行精确测量的场景。</p>
+<h2 id="波束指示"><a href="#波束指示" class="headerlink" title="波束指示"></a>波束指示</h2><p>前面提到，最佳波束对所对应的接收波束会存储在UE中，所以当基站采用模拟波束赋形的方式传输下行业务数据时，基站需要指示UE所选的下行模拟发送波束的序号。UE接收到指示后，根据波束训练过程存储的信息，调用该序号对应的最佳接收波束进行数据接收。</p>
+<p>发送波束的指示方式可以是动态或者是静态的。当数据传输需要快速和高精度的波束赋形时，最好使用动态指示方式随时切换用于传输的波束。</p>
+<p>1.控制信道的波束指示</p>
+<p>PDCCH的资源被半静态地分为多个CORESET，基站可为每个CORESET匹配一个发送波束，不同地CORESET可以匹配不同的波束方向。基站可以在不同CORESET间动态切换，从而实现波束地动态切换。在发送PDCCH时，基站可以根据UE的信息，选择合适波束方向的CORESET。在接收端，UE将使用与CORESET发送波束对应的接收波束进行接收。PUCCH与PDCCH的机制类似。</p>
+<p>2.业务数据信道传输的波束指示</p>
+<p>PDCCH包含了PUSCH发送波束的指示信息，因为PDCCH的解码（时间长）以及从PDCCH的模拟波束赋形转换到PDCSH的模拟波束赋形（时间短）均需要一定的时间，如果PDSCH与PDCCH之间间隙较小，则UE无法获得用于接收PDSCH的发送波束指示信息，也就无法确定接收波束。</p>
+<p>解决方法：NR定义了一个区分完成和未完成PDCCH解调解码的阈值，如果PDCCH与PDSCH之间的时间间隔小于这个阈值，则PDSCH的接收波束采用PDCCH的接收波束。反之，如果PDCCH和PDSCH的间隔大于这个阈值，PDSCH将根据PDCCH解码成功后的波束指示进行数据接收。</p>
+<h2 id="波束失效恢复过程"><a href="#波束失效恢复过程" class="headerlink" title="波束失效恢复过程"></a>波束失效恢复过程</h2><p>1、高频段毫米波通信，反射和衍射性能差，大部分传输质量都集中在直射传播路径。因此设计能够快速从波束遮挡中恢复，确保控制信道传输可靠性和顽健性的机制，是高频段传输中的一个重要内容。</p>
+<p>NR中规定，基站通过快速地将PDCCH发送从一个波束切换到另外一个波束，避免了波束遮挡对传输性能的影响，使得UE能够接收到控制信息，恢复数据传输。而基站所选择的新波束是根据UE上报的信息获得的。</p>
+<p>2、由于基站可以通过多个下行控制信道发送PDCCH，因此<strong>下行波束失效</strong>定义为：UE所接收到的每一个下行控制信道波束的质量都低于规定阈值。</p>
+<p>3、波束失效的指标参数：</p>
+<ul>
+<li>误块率（BLER）：能够更好地反映信道接收质量，复杂度相对较高，但由于NR将每个UE在所激活的BWP中的CORESET数量限制为3，所以采用BLER作为波束失效的指标参数的复杂度还是相对能接受的。</li>
+<li>L1-RSRP：实现复杂度低，但不能够太好地反映信道接收质量。NR最终选择了L1-RSRP作为新候选波束的评估参数。</li>
+</ul>
+<p>4、用于波束失效测量的参考信号集合的配置，可以采用基站通过信令通知UE的显示配置或者是UE通过控制信道的波束配置隐含获得。</p>
+<p>5、新波束指示方式：为了让UE能够上报新的候选波束，网络需要给UE配置响应的参考信号资源集合，这些参考信号对应了候选波束集。UE通过测量参考信号集合，确定用于传输链路的收发波束对。当UE完成测量后，把新的候选波束上报给网络。</p>
+<p>6、用于上报波束失效事件和新候选波束的物理信道：PRACH和PUCCH</p>
+<p>7、波束恢复过程：</p>
+<p>网络将为UE配置一个专用的CORESET，称为CORESET_BFR，用于波束恢复的控制信令传输。当UE测量并上报波束失效消息后，UE开始监听CORESET_BFR内传输的PDCCH，并且UE会假设其所用波束为自己上报的新波束。而基站则会在CORESET_BFR中使用新波束发送PDCCH。</p>
+<p>如果之后UE未收到RRC重配置消息（用于CORESET集合的波束配置），则CORESET_BFR将会作为另一个用于调度的CORESET进行正常通信。UE如果收到了RRC重配置消息，则会根据新波束配置，并停止对CORESET_BFR的监听。</p>
+<p>此外，当基站受到波束失效事件的上报后，仍然可以使用原来配置的CORESET集合和波束参数进行通信（因为测失效判断是基于10%的BLER测量结果得到的），并可对下行控制信道进行重配置。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/07/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-07-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%89-%E4%BF%A1%E9%81%93%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%E5%8F%8D%E9%A6%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/05/07/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-07-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%89-%E4%BF%A1%E9%81%93%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%E5%8F%8D%E9%A6%88/" class="post-title-link" itemprop="url">第7章-大规模多天线传输(三)-信道状态信息反馈</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-07 10:11:02" itemprop="dateCreated datePublished" datetime="2022-05-07T10:11:02+08:00">2022-05-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-08 20:55:05" itemprop="dateModified" datetime="2022-05-08T20:55:05+08:00">2022-05-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="信道状态信息反馈"><a href="#信道状态信息反馈" class="headerlink" title="信道状态信息反馈"></a>信道状态信息反馈</h1><h2 id="框架设计"><a href="#框架设计" class="headerlink" title="框架设计"></a>框架设计</h2><h3 id="CSI反馈的设计原则"><a href="#CSI反馈的设计原则" class="headerlink" title="CSI反馈的设计原则"></a>CSI反馈的设计原则</h3><p>1.LTE中定义了多种反馈模式，导致传输方案以及CSI反馈的分散和复杂化。NR系统为了避免多种反馈模式和子模式，设计了统一的CSI反馈框架，即通过CSI测量和CSI反馈方式进行解耦，将测量资源和测量操作与具体上报操作分离，以更加灵活的方式支持不同的MIMO传输方案在多种场景和多种频段的应用。</p>
+<p>2.NR的CSI反馈方案以隐式反馈为主，辅以TDD系统的信道互易行反馈。隐式反馈以推荐的传输参数的形式反馈CSI,基站可以直接使用UE推荐的参数进行传输。</p>
+<p>3.考虑到SU-MIMO和MU-MIMO的反馈精度要求不同，NR支持两类CSI反馈：一类是普通精度的Type Ⅰ CSI反馈，另一类是高精度Type Ⅱ CSI反馈，具有更高的空间分辨率，目标是提升MU-MIMO的性能。</p>
+<h3 id="CSI测量与反馈解耦机制"><a href="#CSI测量与反馈解耦机制" class="headerlink" title="CSI测量与反馈解耦机制"></a>CSI测量与反馈解耦机制</h3><p>1.NR中，CSI包括：</p>
+<p>CQI（信道质量指示）、PMI（预编码矩阵指示）、CSI-RS资源指示（CRI）、SSB资源指示（SSBRI）、层指示（LI）、秩指示（RI）、层1参考信号接收功率（L1-RSRP）。</p>
+<p>其中，SSBRI、LI、L1-RSRP是NR相对于LTE新增的反馈量。LI指示预编码矩阵中最强的列，用于PT-RS的映射；SSBRI和L1-RSRP用于波束管理，分别指示波束索引和波束强度。</p>
+<p>2.根据CSI测量与反馈解耦的原则，基站可以为每个UE配置$N&gt;&#x3D;1$个CSI上报设置，以及$M&gt;&#x3D;1$个资源配置。CSI上报设置定义了CSI上报相关的参数。资源设置定义了UE测量CSI所需的参考信号，包括<strong>信道测量</strong>和<strong>干扰测量</strong>的参考信号。每个CSI上报设置关联至一个或多个资源设置，分别用于信道和干扰的测量，不同CSI上报设置可以关联至同一个资源设置。</p>
+<h2 id="码本设计"><a href="#码本设计" class="headerlink" title="码本设计"></a>码本设计</h2><p>随着天线规模的增加以及平面阵列的应用，天线配置更加灵活，码本结构只有和阵列的形式相匹配，才能匹配信道的统计特性。NR沿用了LTE中两种码本类型的设计，常规精度（对应Type Ⅰ码本）的CSI反馈用于链路的保持及SU-MIMO和MU-IMO的传输，高精度（对应Type Ⅱ码本）的CSI反馈用于提升MU-MIMO的性能。</p>
+<p>NR采用了参数化码本结构，NR码本分为两级（$W&#x3D;W_1W_2$）：$W_1$描述信道的长期、宽带特性，包含一个DFT波数（组）；$W_2$描述信道的短期、子带特性。</p>
+<p>$W_1$的结构为</p>
+<img src="/2022/05/07/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-07-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%89-%E4%BF%A1%E9%81%93%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%E5%8F%8D%E9%A6%88/%E5%9B%BE1.png" class>
+
+<p>$B&#x3D;[b_0…b_{L-1}]$是由$L$个过采样的DFT波束（向量）构成的矩阵，$W_1$两个对角块分别针对两个极化方向。</p>
+<p>其中，$W_1$作用是确定一组DFT波束。</p>
+<p>Type Ⅰ码本的$W_2$由加权的列选择向量构成。$W_2$的列选择向量的作用是从$L$个波束中为一个子带选择一个波束。在高精度的Type Ⅱ码本中，$W_2$的作用是对$W_1$的DFT波束进行线性合并。</p>
+<img src="/2022/05/07/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-07-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%89-%E4%BF%A1%E9%81%93%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%E5%8F%8D%E9%A6%88/%E5%9B%BE2.png" class>
+
+<h2 id="测量机制"><a href="#测量机制" class="headerlink" title="测量机制"></a>测量机制</h2><p>NR的CSI反馈框架既支持<strong>波束管理</strong>也支持<strong>CSI获取</strong>。</p>
+<p>用于波束管理时，UE仅测量L1-RSRP，无须进行干扰测量；</p>
+<p>用于CSI获取时，UE既需要进行信道测量也需要进行干扰测量。</p>
+<h3 id="信道测量"><a href="#信道测量" class="headerlink" title="信道测量"></a>信道测量</h3><p>NR选择NZP CSI-RS作为信道测量资源。用于信道测量的NZP CSI-RS可以采用宽波束赋性和窄波束赋性两种传输方式。</p>
+<p>宽波束赋性CSI-RS的传输，每个天线端口都是宽波束传输，因此可以覆盖整个小区的角度范围，多个UE可以共享一个CSI-RS资源，但为了获得完整的信道特性，需要较大的端口特性。</p>
+<p>窄波束赋性CSI-RS的传输，CSI-RS经过波束赋形后传输给UE以获得赋性增益，增加覆盖范围，每个天线端口均为短波束传输，空间覆盖的角度范围较小。一般波束赋形CSI-RS特指窄波束赋性CSI-RS。</p>
+<img src="/2022/05/07/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-07-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%89-%E4%BF%A1%E9%81%93%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%E5%8F%8D%E9%A6%88/%E5%9B%BE3.png" class>
+
+<h3 id="干扰测量"><a href="#干扰测量" class="headerlink" title="干扰测量"></a>干扰测量</h3><p>（1）基于CSI-IM的干扰测量</p>
+<p>NR支持基于CSI-IM资源的干扰测量，CSI-IM资源与NZP CSI-RS资源一一对应，当传输多个波束赋性NZP CSI-RS资源用于信道测量时，每个波束方向都对应一个CSI-IM资源用于测量波束之间的干扰，保证CSI测量的精度。</p>
+<p> （2）基于NZP CSI-RS的干扰测量</p>
+<p>NZP CSI-RS可以支持仅配置为用于干扰测量，该方法仅适用于非周期CSI上报。</p>
+<h2 id="反馈机制"><a href="#反馈机制" class="headerlink" title="反馈机制"></a>反馈机制</h2><p>NR没有采用LTE系统中将完整CSI拆分在多个子帧反馈的方式，而是将完整的CSI在一个时隙内进行反馈。信道状态信息可以在PUCCH反馈也可以在PUSCH反馈。基于以上的CSI反馈框架，NR支持周期、半持续和非周期CSI上报。</p>
+<h3 id="周期性CSI上报"><a href="#周期性CSI上报" class="headerlink" title="周期性CSI上报"></a>周期性CSI上报</h3><p>周期性CSI上报之只能采用周期性CSI-RS进行信道测量，也只能采用周期性CSI-IM进行干扰测量。</p>
+<h3 id="半持续CSI上报"><a href="#半持续CSI上报" class="headerlink" title="半持续CSI上报"></a>半持续CSI上报</h3><p>半持续CSI在CSI上报被激活后和被去激活之前按一定的周期进行CSI上报。半持续CSI可以使用周期CSI-RS或者半持续CSI-RS进行信道测量，相应地，使用周期CSI-IM或半持续CSI-IM进行干扰测量，但不能使用NAP CSI-RS测量干扰。并且，半持续CSI可以通过PUSCH上报也可以通过PUCCH上报。</p>
+<h3 id="非周期CSI上报"><a href="#非周期CSI上报" class="headerlink" title="非周期CSI上报"></a>非周期CSI上报</h3><p>非周期CSI上报采用周期、半持续或非周期CSI-RS进行信道测量，使用周期、半持续或非周期CSI-IM进行干扰测量，也可以采用非周期NZP CSI-RS进行干扰测量。每个非周期的CSI上报设置可以关联至1个、2个或3个资源设置：</p>
+<ul>
+<li>关联至1个资源设置：用于波束管理</li>
+<li>关联至2个资源设置：一个是基于NZP CSI-RS的信道测量资源，另一个是基于CSI-IM或NZP CSI-RS的干扰测量资源</li>
+<li>关联至3个资源设置：第一个是基于NZP CSI-RS的信道测量资源，第二个是基于CSI-IM的干扰测量资源，第三个是基于NZP CSI-RS的干扰测量资源。</li>
+</ul>
+<h2 id="PUCCH承载"><a href="#PUCCH承载" class="headerlink" title="PUCCH承载"></a>PUCCH承载</h2><p>PUCCH可以承载周期性CSI和半持续SP-CSI上报，具体如下图所示：</p>
+<img src="/2022/05/07/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-07-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%89-%E4%BF%A1%E9%81%93%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%E5%8F%8D%E9%A6%88/%E5%9B%BE4.png" class>
+
+<p>NR采用CSI在一个时隙完整上报的方式，但由于CSI的比特数与CSI的一部分秩指示（RI）有关，基站在不确定CSI的比特数情况下，只能通过盲检对各种可能性进行尝试。因此NR采用了以下两种CSI上报方式解决CSI比特数模糊的问题。</p>
+<ul>
+<li>未拆分CSI填零：这种方式通过补零保证反馈开销在所有情况下均恒定。</li>
+<li>拆分CSI:将CSI拆分成两个部分，第一部分的比特数固定，且第一部分的内容可以确定第二部分的比特数。</li>
+</ul>
+<h2 id="PUSCH承载"><a href="#PUSCH承载" class="headerlink" title="PUSCH承载"></a>PUSCH承载</h2><p>PUSCH可以承载半持续和非周期CSI上报。</p>
+<img src="/2022/05/07/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-07-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%89-%E4%BF%A1%E9%81%93%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%E5%8F%8D%E9%A6%88/%E5%9B%BE5.png" class>
+
+<h2 id="CSI上报优先级"><a href="#CSI上报优先级" class="headerlink" title="CSI上报优先级"></a>CSI上报优先级</h2><p>多种CSI上报分别配置和触发时，会出现不同的CSI在相同的OFDM上报的情况，称之为<strong>CSI冲突</strong>。如不同时域特性的CSI发生冲突，不同上报内容的CSI发生冲突。因为NR R15不允许UE在一个OFDM符号上同时传输多个物理信道，冲突发生时有两种处理方式：其一为复用，即发生冲突的CSI复用在一个物理信道传输；其二为丢弃，按照一定优先级顺序丢弃较低优先级的CSI。</p>
+<p>CSI的优先级如下：首先按规则1区分不同的优先级，若按规则1发现优先级相同，则根据规则2区分不同的优先级，以此类推，知道分出优先级：</p>
+<ul>
+<li><p>规则1：时域特性或承载信道（优先级从高到低为非周期CSI&gt;PUSCH承载的SP-CSI&gt;PUCCH承载的SP-CSI&gt;周期CSI）</p>
+</li>
+<li><p>规则2：CSI上报内容（优先级从高到低为波束管理&gt;CSI获取）</p>
+</li>
+<li><p>规则3：服务小区索引（PCell&gt;PSCell&gt;其他小区且按索引升序排列）</p>
+</li>
+<li><p>规则4：CSI上报设置ID(升序排列)</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -211,7 +486,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-07 09:46:42" itemprop="dateModified" datetime="2022-05-07T09:46:42+08:00">2022-05-07</time>
+      <time title="修改时间：2022-05-07 09:57:50" itemprop="dateModified" datetime="2022-05-07T09:57:50+08:00">2022-05-07</time>
     </span>
 
   
@@ -1173,192 +1448,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%89-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/me.jpg">
-      <meta itemprop="name" content="水中岚">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="水中岚">
-      <meta itemprop="description" content="水中岚的博客">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 水中岚">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%89-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">第5章-系统初始接入与移动性管理设计(三)-随机接入设计</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-04-27 15:45:32 / 修改时间：20:59:55" itemprop="dateCreated datePublished" datetime="2022-04-27T15:45:32+08:00">2022-04-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="随机接入设计"><a href="#随机接入设计" class="headerlink" title="随机接入设计"></a>随机接入设计</h1><p>随机接入设计的主要目的是使UE获取上行时间同步，并在UE建立初始无线链路（即UE从RRC_IDLE转换到RRC_CONNECTED）时，可以通过随机接入过程获取用户标识-小区无线网络临时标识信息（C-RNT1）。</p>
-<p>NR支持竞争和非竞争的随机接入过程，支持基站的下行发送波束扫描和上行接受波束扫描，同时支持UE的上行发送波束扫描。</p>
-<h2 id="随机接入过程"><a href="#随机接入过程" class="headerlink" title="随机接入过程"></a>随机接入过程</h2><p>1.NR支持四步随机接入过程：</p>
-<ol>
-<li><p>UE在物理随机接入信道（PRACH）资源上发送随机接入前导码（Preamble）序列（即消息1，Msg1）</p>
-<p>在随机接入过程之前，UE通过SIB1消息获得SSB索引的集合、物理随机接入信道时频资源、PRACH Preamble格式和PRACH Preamble序列集合的参数，然后UE根据所获得的信息，生成PRACH Preamble序列，并在选定的PRACH时频资源上发送随机接入<strong>Preamble序列</strong>。</p>
-</li>
-<li><p>UE在PDCCH&#x2F;PDSCH上接收随机接入相应（RAR）消息（即消息2，Msg2）</p>
-<p>基站针对Preamble序列进行检测，如果基站检测到Preamble序列，则在PDCCH&#x2F;PDSCH上反馈相应的<strong>RAR消息</strong>。UE在发送Preamble序列之后，在一个RAR时间窗口内检测下行PDCCH&#x2F;PDSCH反馈的RAR消息。</p>
-</li>
-<li><p>UE在PUSCH上发送消息3</p>
-<p>RAR信息种包含UE的上行定时提前调整量和调度该UE的消息3传输的上行调度许可。当UE检测到RAR消息后，UE根据上行定时提前调整量获得<strong>上行同步</strong>，并根据上行调度许可在PUSCH上发送消息3（如承载高层的RRC请求消息）</p>
-</li>
-<li><p>UE在PDSCH上接收竞争解决消息（即消息4，Msg4）</p>
-<p>基站接收并解析消息3包含的UE标识之后，在PDSCH上发送消息4。UE在PDSCH上接收消息4包含的竞争解决并解码，在竞争解决成功之后完成四步随机接入过程。</p>
-</li>
-</ol>
-<img src="/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%89-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/%E5%9B%BE1.png" class title="四步和两步随机接入过程">
-
-<h2 id="随机接入Preamble格式"><a href="#随机接入Preamble格式" class="headerlink" title="随机接入Preamble格式"></a>随机接入Preamble格式</h2><p>NR随机接入前导码（Preamble）采用Zadoff-Chu（ZC）序列。</p>
-<p>PRACH Preamble由一个循环前缀（CP）和一个或多个Preamble序列组成，每个Preamble序列占用一个PRACH OFDM符号。保护时间（GT）在协议种未显示定义，而是通过PRACH Preamble所在的时隙和其他时隙对齐。</p>
-<p>NR R15规定PRACH Preamble格式如下：</p>
-<img src="/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%B8%89-%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5%E8%AE%BE%E8%AE%A1/%E5%9B%BE2.png" class>
-
-<p><strong>选项1：</strong>在连续重复PRACH OFDM符号的开头插入CP，在末尾保留GT，并在各个<strong>重复</strong>的PRACH序列之间省略CP和GT。优点：小区的覆盖性能优于选项2和选项3。缺点：PRACH Preamble容量受限。NR R15所采纳。</p>
-<p><strong>选项2：</strong>PRACH Preamble由N个<strong>重复</strong>的Preamble序列构成，在每个Preamble序列的前面添加CP，只在所有的Preamble序列的末尾保留GT，中间的Preamble序列的后面省略GT。</p>
-<p><strong>选项3：</strong>PRACH Preamble由N个<strong>不同</strong>的Preamble序列构成，在每个Preamble序列的前面添加CP，只在所有的Preamble序列的末尾保留GT。</p>
-<h2 id="PRACH时频资源配置"><a href="#PRACH时频资源配置" class="headerlink" title="PRACH时频资源配置"></a>PRACH时频资源配置</h2><p>PRACH资源为周期性资源。</p>
-<p>PRACH资源的时域位置采用PRACH配置周期、无线帧索引、子帧、时隙索引、时隙内的起始PRACH OFDM符号索引和时域随机接入时机（RO）个数来定义。PRACH配置周期的候选值为{10，20，40，80，160}ms，每个PRACH配置周期内PRACH资源只分布在一个有效的无线帧（10ms）内，该有效无线帧包含一个或者多个子帧&#x2F;时隙，在每个子帧&#x2F;时隙内只有一种起始PRACH OFDM符号索引，一个时隙内有一个或多个时域RO。</p>
-<p>频域上，不同的PRACH Preamble格式和子载波间隔共同确定了PRACH占用的频域带宽。</p>
-<h2 id="多波束接入过程设计"><a href="#多波束接入过程设计" class="headerlink" title="多波束接入过程设计"></a>多波束接入过程设计</h2><p>波束互易性：一个设备可以根据接收波束推导确定其发送波束；或者由发射波束来推导确定接收波束的这种特性。</p>
-<p>在NR高频段传输种，由于高频段传播损耗大，在随机接入过程需要考虑小区覆盖范围，所以UE也应该采用波束赋形进行发送和接收，才能满足高频段的覆盖要求。而随机接入过程是UE第一次与网络进行通信，之前没有和网络交互，无法通过预先的信令交互完成波束的配置和对齐。因此随机接入过程所采用的4个消息所采用的发送波束和接收波束是随机接入在高频段的主要问题。随机接入过程需要确定的波束包括：UE发送消息1和消息3的发送波束，UE接收消息2和消息4的接受波束，基站接收消息1和消息3的接收波束，基站发送消息2和消息4的发送波束。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%BA%8C-%E5%B9%BF%E6%92%AD%E4%BF%A1%E5%8F%B7%E4%BC%A0%E8%BE%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/me.jpg">
-      <meta itemprop="name" content="水中岚">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="水中岚">
-      <meta itemprop="description" content="水中岚的博客">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 水中岚">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/27/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-27-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%BA%8C-%E5%B9%BF%E6%92%AD%E4%BF%A1%E5%8F%B7%E4%BC%A0%E8%BE%93/" class="post-title-link" itemprop="url">第5章-系统初始接入与移动性管理设计(二)-广播信号传输</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-04-27 14:12:18 / 修改时间：16:01:06" itemprop="dateCreated datePublished" datetime="2022-04-27T14:12:18+08:00">2022-04-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="广播信号传输"><a href="#广播信号传输" class="headerlink" title="广播信号传输"></a>广播信号传输</h1><p>NR广播的系统信息包括主信息块（MIB）、剩余最小系统信息（RMSI）和其他系统信息（OSI）。RMSI通过系统信息块（SIB1）传输，OSI通过SIB1之外的系统信息块传输。MIB中携带了UE访问NR网络所需的最小系统信息的一部分，其中包括获取SIB1所需的配置参数。而SIB1中包含获取其他系统信息块所需的参数，SIB1在PDSCH上传输，传输时间间隔为160ms，且SIB1可重复传输。重复传输周期与小区定义SSB的传输周期一样。</p>
-<h2 id="小区定义SSB和非小区定义SSB"><a href="#小区定义SSB和非小区定义SSB" class="headerlink" title="小区定义SSB和非小区定义SSB"></a>小区定义SSB和非小区定义SSB</h2><p><strong>预备知识：</strong></p>
-<p>CORESET称为“控制资源集”，是下行资源网络中特定区域内的一组物理资源，用于承载PDCCH。</p>
-<p>PDCCH承载的是下行控制信息（DCI）,根据DCI的不同可将PDCCH分为不同的类型。</p>
-<p>定义Type0-PDCCH 公共搜索空间（CSS）的CORESET简称为CORESET#0。CORESET#0主要是定义Type0-PDCCH CSS的时间和频率资源以及Type0-PDCCH CSS的监听时机。</p>
-<p><strong>小区定义SSB：</strong>携带关联的CORESET#0的配置信息以及Type0-PDCCH CSS的监听时机的配置信息。而UE根据CORESET#0和Type0-PDCCH CSS的信息搜索调度SIB1 NR PDSCH的NR PDCCH，以便解调接收SIB1，进而获得接入无线网络系统所需的最小系统信息。</p>
-<p><strong>非小区定义SSB：</strong>不携带CORESET#0的配置信息，主要用途是无线资源管理（RRM）。</p>
-<p>当UE在小区搜索期间检测到某一个SSB时，UE首先需要确定该SSB是CD-SSB还是NCD-SSB。</p>
-<h2 id="SSB和CORESET-0的复用模式"><a href="#SSB和CORESET-0的复用模式" class="headerlink" title="SSB和CORESET#0的复用模式"></a>SSB和CORESET#0的复用模式</h2><p><strong>复用模式1：</strong>在时域上，SSB和关联的CORESET#0出现在不同的时刻。在频域上，SSB传输带宽被CORESET#0传输带宽所覆盖。</p>
-<p><strong>复用模式2：</strong>在时域上，SSB和关联的CORESET#0出现在不同的时刻。在频域上，SSB传位于CORESET#0的顶部或底部。</p>
-<p><strong>复用模式3</strong>：在时域上，SSB和关联的CORESET#0出现在相同的OFDM符号种。在频域上，SSB正好位于CORESET#0的顶部或底部。</p>
-<ul>
-<li><input disabled type="checkbox"> 本节剩余内容有点不懂，等后面再学习</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
