@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,6 +175,125 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/11/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-11-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%94-%E4%B8%8A%E8%A1%8C%E5%A4%9A%E5%A4%A9%E7%BA%BF%E6%8A%80%E6%9C%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/05/11/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-11-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%94-%E4%B8%8A%E8%A1%8C%E5%A4%9A%E5%A4%A9%E7%BA%BF%E6%8A%80%E6%9C%AF/" class="post-title-link" itemprop="url">第7章-大规模多天线传输(五)-上行多天线技术</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-11 08:56:30" itemprop="dateCreated datePublished" datetime="2022-05-11T08:56:30+08:00">2022-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-17 15:04:53" itemprop="dateModified" datetime="2022-05-17T15:04:53+08:00">2022-05-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="上行多天线技术"><a href="#上行多天线技术" class="headerlink" title="上行多天线技术"></a>上行多天线技术</h1><p>当有多个发射通道时，UE可以通过多天线技术进行上行信号的传输，从而获得多天线处理增益。NR系统上行PUSCH的多天线技术包括基于码本的传输和非码本传输两种方案。</p>
+<h2 id="基于码本的传输方案"><a href="#基于码本的传输方案" class="headerlink" title="基于码本的传输方案"></a>基于码本的传输方案</h2><h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><img src="/2022/05/11/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-11-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%94-%E4%B8%8A%E8%A1%8C%E5%A4%9A%E5%A4%A9%E7%BA%BF%E6%8A%80%E6%9C%AF/%E5%9B%BE1.png" class>
+
+<p>如图所示，NR系统基于码本的上行传输方案的流程为：</p>
+<ul>
+<li>UE向基站发送上行探测信号（SRS）。</li>
+<li>基站测量UE发送的SRS，对UE进行资源调度，将PUSCH的资源分配和相应的调制与编码策略（MCS）、传输预编码矩阵指示（TPMI）、传输指数、SRS资源指示（SRI）、DM-RS端口指示信息等通知给终端。</li>
+<li>UE根据基站指示的MCS对数据进行调制编码，并利用SRI、TPMI和传输层数确定数据发送时使用的预编码矩阵和传输层数，进而对数据进行预编码传输。PUSCH的DM-RS与PUSCH的数据采用相同的预编码。</li>
+<li>基站根据DM-RS估计上行信道，并进行数据的解调、解码。</li>
+</ul>
+<h3 id="码本设计"><a href="#码本设计" class="headerlink" title="码本设计"></a>码本设计</h3><ul>
+<li>如果UE的两个天线端口间的相对功率差和相对相位差在一定时间窗的变化都在一定范围内，则认为这两个天线端口可以<strong>相干传输</strong>。</li>
+<li>相干传输被定为一种UE的能力，NR定义了3种UE的相干传输能力。<ul>
+<li>全相干传输：所有的天线端口都可以相干传输。</li>
+<li>部分相关传输：同一个相干组内的天线端口可以相干传输，不同相干传输组的天线端口不能相干传输，每个相干传输组包含两个天线端口。</li>
+<li>非相干传输：没有天线端口可以相干传输。</li>
+</ul>
+</li>
+</ul>
+<h3 id="码本子集限制"><a href="#码本子集限制" class="headerlink" title="码本子集限制"></a>码本子集限制</h3><p>将UE不能使用的码字排除在联合编码的范围之外，可以节省一定的信令开销。</p>
+<p>码本子集限制主要从码字相干传输的角度考虑，包括以下三种状态：</p>
+<ul>
+<li><p>FullyAndPartialAndNonCoherent</p>
+</li>
+<li><p>PartialAndNonCoherent</p>
+</li>
+<li><p>NonCoherent</p>
+<p>当码本子集限制为FullyAndPartialAndNonCoherent时，上行码本子集为传输层数不大于最大传输层数的所有码字。当码本子集限制为PartialAndNonCoherent时，上行码本子集为传输层数不大于最大传输层数的所有部分相干码字和非相干码字。当码本子集限制为NonCoherent时，上行码本子集为传输层数不大于最大传输层数的所有非相干码字。</p>
+<p>对于部分相干能力的UE，码本子集不能配置为FullyAndPartialAndNonCoherent；对于非相干能力的UE，码本子集不能配置为NonCoherent；UE默认为非相干传输能力。</p>
+</li>
+</ul>
+<h2 id="非码本传输方案"><a href="#非码本传输方案" class="headerlink" title="非码本传输方案"></a>非码本传输方案</h2><h3 id="基本原理-1"><a href="#基本原理-1" class="headerlink" title="基本原理"></a>基本原理</h3><p>UE基于信道互易行确定上预编码矩阵。</p>
+<img src="/2022/05/11/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-11-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%94-%E4%B8%8A%E8%A1%8C%E5%A4%9A%E5%A4%A9%E7%BA%BF%E6%8A%80%E6%9C%AF/%E5%9B%BE2.png" class>
+
+<p>非码本上行传输方案如上图所示。</p>
+<ul>
+<li>UE测量下行参考信号，通过对估计出的信道进行奇异值分解(SVD)等获得候选的上行预编码向量，利用所获得的多个预编码向量分别对SRS进行预编码后发送SRS。</li>
+<li>基站测量UE所发送的SRS，对UE进行资源调度，将PUSCH的资源分配和相应的MCS、SRI、DM-RS端口指示信息等通知给终端。</li>
+<li>UE根据基站发送的MCS对数据进行调制编码，并利用SRI确定数据的预编码和传输层数，对数据进行预编码后发送。非码本上行传输方案PUSCH的DM-RS与PUSCH的数据采用相同的预编码方式。</li>
+<li>基站根据DM-RS估计上行信道，进行数据的解调、解码。</li>
+</ul>
+<p>举个例子：</p>
+<img src="/2022/05/11/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-11-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%BA%94-%E4%B8%8A%E8%A1%8C%E5%A4%9A%E5%A4%A9%E7%BA%BF%E6%8A%80%E6%9C%AF/%E5%9B%BE3.png" class>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -193,7 +312,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">大规模多天线传输(四)-模拟波束管理</a>
+          <a href="/2022/05/08/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-08-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%9B%9B-%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%9D%9F%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">第7章-大规模多天线传输(四)-模拟波束管理</a>
         </h2>
 
         <div class="post-meta-container">
@@ -211,7 +330,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-10 20:47:02" itemprop="dateModified" datetime="2022-05-10T20:47:02+08:00">2022-05-10</time>
+      <time title="修改时间：2022-05-17 10:21:51" itemprop="dateModified" datetime="2022-05-17T10:21:51+08:00">2022-05-17</time>
     </span>
 
   
@@ -1351,85 +1470,6 @@
 <li>CSI-RS信干噪比（CSI-SINR）：CSI-RSRP与在CSI-RSRP相同频带带宽内，CSI-RS资源单元上的噪声和干扰功率的线性平均值的比值。</li>
 </ul>
 <h2 id="无线链路监测（RLM）"><a href="#无线链路监测（RLM）" class="headerlink" title="无线链路监测（RLM）"></a>无线链路监测（RLM）</h2><p>无线链路检测：一个RRC_CONNECTED状态的UE通过测量服务小区的下行链路RLM参考信号（RLM-RS）来监测下行无线链路质量，得到反映下行无线链路质量的测量值，如SS-SINR或CSI-SINR，并将测量值与UE内部设定的同步和失步阙值进行比较来判断UE与服务小区处于下行同步还是失步状态的过程。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/28/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-28-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E5%9B%9B-%E5%AF%BB%E5%91%BC%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/me.jpg">
-      <meta itemprop="name" content="水中岚">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="水中岚">
-      <meta itemprop="description" content="水中岚的博客">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 水中岚">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/28/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-28-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E5%9B%9B-%E5%AF%BB%E5%91%BC%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">第5章-系统初始接入与移动性管理设计(四)-寻呼信道设计</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-04-28 09:30:56 / 修改时间：09:56:31" itemprop="dateCreated datePublished" datetime="2022-04-28T09:30:56+08:00">2022-04-28</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="寻呼信道设计"><a href="#寻呼信道设计" class="headerlink" title="寻呼信道设计"></a>寻呼信道设计</h1><p>1、寻呼的目的：</p>
-<ul>
-<li>通知处于RRC_IDLE和RRC_INACTIVE状态的UE，重新连接到网络以开始新的数据服务</li>
-<li>提示处于RRC_IDLE、RRC_INACTIVE和RRC_CONNECTED状态的UE系统信息已改变，UE应该重新获取新的系统信息</li>
-<li>对所有RRC状态下的UE发送地震和海啸预警系统等指示。</li>
-</ul>
-<p>2、网络通过在UE的寻呼时机（PO）处发送寻呼消息和&#x2F;或指示来发起寻呼过程。一个PO包括一组S个连续的寻呼PDCCH监听时机，S等于SIB1种参数ssb-PositionInBurst提供的实际发送的SSB数量。所以PO中第k个监听时机对应于SSB突发集实际发送的第k个SSB，所以一个PO中不同监听时机对应于不同的波束方向，从而在一个PO中的所以监听时机处发送寻呼消息和&#x2F;或指示，就相当于完成一次寻呼过程的波束扫描。</p>
-<h2 id="寻呼方法"><a href="#寻呼方法" class="headerlink" title="寻呼方法"></a>寻呼方法</h2><p>NR支持的寻呼方法是：若要寻呼某个UE，基站以波束扫描的方式，通过给该UE配置的各个监听时机对该UE发送寻呼下行控制信息（DCI），以及由寻呼DCI调度的PDSCH携带的寻呼消息。</p>
-<h2 id="寻呼控制资源集和寻呼监听时机"><a href="#寻呼控制资源集和寻呼监听时机" class="headerlink" title="寻呼控制资源集和寻呼监听时机"></a>寻呼控制资源集和寻呼监听时机</h2><p>UE在Type2-PDCCH CSS中搜索承载寻呼DCI的PDCCH，但网络并不必为UE专门配置用于Type2-PDCCH CSS的CORESET，NR规定Type2-PDCCH CSS的CORESET与CORESET#完全相同。</p>
-<p>网络可用高层参数pagingSearchSpace为UE专门配置Type2-PDCCH CSS，如果没有配置，则默认与Type0-PDCCH CSS相同。</p>
 
       
     </div>

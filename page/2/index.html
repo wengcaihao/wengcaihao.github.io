@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -166,6 +166,85 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/28/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-28-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E5%9B%9B-%E5%AF%BB%E5%91%BC%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/28/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-28-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E5%9B%9B-%E5%AF%BB%E5%91%BC%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">第5章-系统初始接入与移动性管理设计(四)-寻呼信道设计</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-04-28 09:30:56 / 修改时间：09:56:31" itemprop="dateCreated datePublished" datetime="2022-04-28T09:30:56+08:00">2022-04-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="寻呼信道设计"><a href="#寻呼信道设计" class="headerlink" title="寻呼信道设计"></a>寻呼信道设计</h1><p>1、寻呼的目的：</p>
+<ul>
+<li>通知处于RRC_IDLE和RRC_INACTIVE状态的UE，重新连接到网络以开始新的数据服务</li>
+<li>提示处于RRC_IDLE、RRC_INACTIVE和RRC_CONNECTED状态的UE系统信息已改变，UE应该重新获取新的系统信息</li>
+<li>对所有RRC状态下的UE发送地震和海啸预警系统等指示。</li>
+</ul>
+<p>2、网络通过在UE的寻呼时机（PO）处发送寻呼消息和&#x2F;或指示来发起寻呼过程。一个PO包括一组S个连续的寻呼PDCCH监听时机，S等于SIB1种参数ssb-PositionInBurst提供的实际发送的SSB数量。所以PO中第k个监听时机对应于SSB突发集实际发送的第k个SSB，所以一个PO中不同监听时机对应于不同的波束方向，从而在一个PO中的所以监听时机处发送寻呼消息和&#x2F;或指示，就相当于完成一次寻呼过程的波束扫描。</p>
+<h2 id="寻呼方法"><a href="#寻呼方法" class="headerlink" title="寻呼方法"></a>寻呼方法</h2><p>NR支持的寻呼方法是：若要寻呼某个UE，基站以波束扫描的方式，通过给该UE配置的各个监听时机对该UE发送寻呼下行控制信息（DCI），以及由寻呼DCI调度的PDSCH携带的寻呼消息。</p>
+<h2 id="寻呼控制资源集和寻呼监听时机"><a href="#寻呼控制资源集和寻呼监听时机" class="headerlink" title="寻呼控制资源集和寻呼监听时机"></a>寻呼控制资源集和寻呼监听时机</h2><p>UE在Type2-PDCCH CSS中搜索承载寻呼DCI的PDCCH，但网络并不必为UE专门配置用于Type2-PDCCH CSS的CORESET，NR规定Type2-PDCCH CSS的CORESET与CORESET#完全相同。</p>
+<p>网络可用高层参数pagingSearchSpace为UE专门配置Type2-PDCCH CSS，如果没有配置，则默认与Type0-PDCCH CSS相同。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1280,90 +1359,6 @@
 </ol>
 <p>好了，本章就到这了~~</p>
 <img src="/2022/04/01/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-01-%E7%AC%AC4%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/1.webp" class title="这是一直杰尼龟">
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/01/Hexo%E5%AD%A6%E4%B9%A0-2022-04-01-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/me.jpg">
-      <meta itemprop="name" content="水中岚">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="水中岚">
-      <meta itemprop="description" content="水中岚的博客">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 水中岚">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/01/Hexo%E5%AD%A6%E4%B9%A0-2022-04-01-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Hexo搭建博客图片无法显示问题解决方法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-04-01 19:32:49 / 修改时间：20:24:28" itemprop="dateCreated datePublished" datetime="2022-04-01T19:32:49+08:00">2022-04-01</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>基于Hexo搭建的博客平台在上传图片时会遇到图片无法打开的情况，解决方法如下：</p>
-<p>1.在博客的根目录下的配置文件_config.yml中的post_asset_folder: false改为true（注意:后有一空格），这样在新建博客时就会自动建立一个同名的文件夹，这样我们可以将博客中用到的图片放在上述文件夹中。</p>
-<img src="/2022/04/01/Hexo%E5%AD%A6%E4%B9%A0-2022-04-01-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/%E6%AD%A5%E9%AA%A41.png" class title="步骤1">
-
-<p>2.git bash安装插件:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/7ym0n/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-<p>如果git bash安装插件失败，可以试试以管理员方式运行cmd，然后转到博客所在的文件夹，在执行上述命令。</p>
-<p>3.在编写博客时，需要用到图片的地方使用以下方式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img 杰尼龟.webp 这是一直杰尼龟 %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>将上面的 杰尼龟.webp 改成第一步中自动建立的文件夹中所需图片的名字 + .图片格式（jpg，png等），将上面的 这是一只杰尼龟 改成你图片的描述。</p>
-<p>这样问题就解决了，效果如下：</p>
-<img src="/2022/04/01/Hexo%E5%AD%A6%E4%B9%A0-2022-04-01-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/%E6%9D%B0%E5%B0%BC%E9%BE%9F.webp" class title="这是一直杰尼龟">
-
-
       
     </div>
 
