@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -166,6 +166,97 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/18/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-18-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%85%AD-%E5%87%86%E5%85%B1%E7%AB%99%E5%9D%80-QCL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/05/18/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-18-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%85%AD-%E5%87%86%E5%85%B1%E7%AB%99%E5%9D%80-QCL/" class="post-title-link" itemprop="url">第7章-大规模多天线传输(六)-准共站址(QCL)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-05-18 14:54:59 / 修改时间：16:42:59" itemprop="dateCreated datePublished" datetime="2022-05-18T14:54:59+08:00">2022-05-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="准共站址-QCL"><a href="#准共站址-QCL" class="headerlink" title="准共站址(QCL)"></a>准共站址(QCL)</h1><h2 id="QCL的定义"><a href="#QCL的定义" class="headerlink" title="QCL的定义"></a>QCL的定义</h2><p>1、准共站址(QCL)是指某个天线端口上的符号所经历的信道的大尺度参数可以从另一个天线端口上的符号所经历的信道推断出来，其中的大尺度参数可以包括为时延扩展、平均时延、多普勒扩展、多普勒频移、平均增益及空间接收参数。</p>
+<p>2、NR将信道大尺度参数分为4个类型，便于系统根据不同场景进行配置。</p>
+<ul>
+<li>QCL类型A：包括多普勒频移、多普勒扩展、平均时延和时延扩展。</li>
+<li>QCL类型B：包括多普勒频移和多普勒扩展。</li>
+<li>QCL类型C：包括多普勒频移和平均时延。</li>
+<li>QCL类型D：包括空间接收参数。</li>
+</ul>
+<h2 id="QCL关系配置"><a href="#QCL关系配置" class="headerlink" title="QCL关系配置"></a>QCL关系配置</h2><p>1、UE在接收目标参考信号之后，网络要通过信令为其配置其QCL源信号以及目标参考信号与源信号之间的QCL类型。为配置参考信号之间的QCL关系，NR引入了传输配置指示，简称TCI状态。</p>
+<p>2、TCI状态的结构为{RS1|QCL-Type1,RS2|QCL-Type2}或{RS1|QCL-Type1}，其中RS1和RS2是下行参考信号的标识信息，QCL-Type1和QCL-Type2是QCL类型。</p>
+<p>在TCI状态中，如果包含两个QCL类型，其对应的QCL参数不能有重叠。另外，当TCI两个参考信号为同一个时，他们对应的QCL类型不能相同。</p>
+<p>3、WCI状态的配置取决于参考信号的类型，有以下几种方式：</p>
+<ul>
+<li>通过RRC信令配置：如周期性CSI-RS&#x2F;TRS的TCI状态由RRC信令配置。</li>
+<li>通过RRC信令配置，由MAC-CE激活：如半持续的CSI-RS&#x2F;TRS，或者PDCCH的DM-RS是通过RRC信令配置，再由MAXC-CE指示。</li>
+<li>通过RRC信令配置，由MAC-CE激活，并利用DCI进行指示“如非周期CSO-RS&#x2F;TRS，或者PDSCH的DM-RS。</li>
+</ul>
+<h2 id="参考信号间的QCL关系"><a href="#参考信号间的QCL关系" class="headerlink" title="参考信号间的QCL关系"></a>参考信号间的QCL关系</h2><p>根据各种参考信号的用途、时频分布以及依存关系等，NR定义了参考信号之间可能的QCL关系。UE可以根据相应的指示或默认的对应关系从QCL源信号中获取相应的QCL参数，并用于目标参数信号的接收。以下三张表给出了QCL关系，对于一种参考信号，可以确定其能够从何种参考信号获得何种类型。</p>
+<img src="/2022/05/18/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-18-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%85%AD-%E5%87%86%E5%85%B1%E7%AB%99%E5%9D%80-QCL/%E5%9B%BE1.png" class>
+
+<img src="/2022/05/18/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-18-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%85%AD-%E5%87%86%E5%85%B1%E7%AB%99%E5%9D%80-QCL/%E5%9B%BE2.png" class>
+
+<img src="/2022/05/18/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-18-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%85%AD-%E5%87%86%E5%85%B1%E7%AB%99%E5%9D%80-QCL/%E5%9B%BE3.png" class>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1364,112 +1455,6 @@
 <li>组公共DCI格式：用于传输一组UE的控制信息，不用于资源调度。</li>
 </ul>
 <p>组公共控制信道通过UE专用RRC信令配置，用来发送一组特定UE的下行控制信令，信道结构与控制信道结构相同，只是DCI格式不同。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/28/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-28-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%BA%94-%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/me.jpg">
-      <meta itemprop="name" content="水中岚">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="水中岚">
-      <meta itemprop="description" content="水中岚的博客">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 水中岚">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/28/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-28-%E7%AC%AC5%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E6%8E%A5%E5%85%A5%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1-%E4%BA%94-%E7%A7%BB%E5%8A%A8%E6%80%A7%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">第5章-系统初始接入与移动性管理设计(五)-移动性管理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-04-28 09:57:37 / 修改时间：14:47:11" itemprop="dateCreated datePublished" datetime="2022-04-28T09:57:37+08:00">2022-04-28</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="移动性管理"><a href="#移动性管理" class="headerlink" title="移动性管理"></a>移动性管理</h1><p>NR定义了3种RRC状态：空闲（RRC_IDLE）、非激活（RRC_INACTIVE）和连接（RRC_CONNECTED）。</p>
-<ol>
-<li><p><strong>RRC_IDLE状态下：</strong>UE的移动性管理包括小区选择和小区重选两个过程；</p>
-<p>小区选择：一个UE通过测量移动性管理的参考信号，寻求识别合适小区或可接受小区并驻留到该小区的过程。</p>
-<p>小区重选：一个已经驻留在某个小区上的UE继续监视和测量当前驻留小区和其他小区的移动性管理参考信号，并根据比较各小区信号强弱来决定是否继续留在当前驻留小区或重新选择驻留小区的过程。</p>
-<p>小区选择和小区重选两个过程都依赖于<strong>无线资源管理（RRM）</strong>的设计和测量。</p>
-</li>
-<li><p><strong>RRC_INACTIVE状态下：</strong>UE的移动性管理仅涉及小区重选过程。</p>
-</li>
-<li><p><strong>RRC_CONNECTED状态下：</strong>UE的移动性管理包括小区之间的移动性管理和小区内部的波束之间的切换管理。此外，UE还需要进行<strong>无线链路检测（RLM）</strong>。</p>
-<p>小区之间的切换：通过RRC信令来控制，并依赖于RRM设计和测量。</p>
-<p>RLM过程：UE连续监视服务小区的下行链路无线链路质量，确定UE与服务小区处于同步（IS）或失步（OOS）状态，并周期性将IS&#x2F;OSS状态上报给高层。</p>
-</li>
-</ol>
-<h2 id="移动性管理参考信号"><a href="#移动性管理参考信号" class="headerlink" title="移动性管理参考信号"></a>移动性管理参考信号</h2><p>1.空闲与非激活状态：NR协议规定NR SSB包含的辅同步信号（SSS）作为支持RRC_IDLE或RRC_INACTIVE状态下UE的移动性管理的参考信号。此外，UE还可以采用PBCH DM-RS作为辅助移动性管理参考信号提供RRM的测量性能。令SSB-RS代表SSB中可用于移动性管理的参考信号，包括NR SSS和NR PBCH DM-RS</p>
-<p>2.连接状态：两种移动性管理参考信号，一是SSB-RS，二是NR CSI-RS。</p>
-<p>3.基于SSB-RS的移动性管理有以下两种局限：</p>
-<ul>
-<li>SSB传输带宽是固定的，而实际系统传输带宽可能远远大于SSB传输带宽，因此基于SSB-RS的RRM测量不一定能真实地反映SSB传输带宽之外的下行链路无线链路质量。</li>
-<li>小区SSB的传输周期配置要考虑小区资源使用的平衡，网络难以按某个或某些UE的移动性管理的需要来改变每个小区配置的SSB传输周期</li>
-</ul>
-<p>4.基于CSI-RS的RRM测量：网络可按UE的移动性管理的需要来灵活配置RRM CSI-RS的优化使用时频资源。</p>
-<h2 id="基于SSB的RRM测量参数"><a href="#基于SSB的RRM测量参数" class="headerlink" title="基于SSB的RRM测量参数"></a>基于SSB的RRM测量参数</h2><ul>
-<li><p>SS参考信号接收功率（SS-RSRP）：SSB-RS信号资源单元上测量的SSB-RS信号功率线性平均值，表示所测量的SSB的信号强度。</p>
-</li>
-<li><p>SS参考信号接收质量（SS-RSRQ）：$(N×SS-RSRP)&#x2F;(NR 载波RSSI)$，N是NR载波测量带宽的资源块的数量。NR载波接收信号强度指示（RSSI）表示在测量带宽中，针对N各资源块，用于测量RSSI的OFDM符号上观察到的所有信号的总接收功率。</p>
-</li>
-<li><p>SS信噪比（SS-SINR）：SS-RSRP与测量SS-RSRP相同资源上的干扰和噪声功率的线性平均值之比。</p>
-</li>
-</ul>
-<p>其中，SS-SINR仅用于RRC_CONNECTED状态下，而SS-RSRP和SS-RSRQ可用于3种RRC状态下。</p>
-<h2 id="基于CSI-RS的RRM测量参数"><a href="#基于CSI-RS的RRM测量参数" class="headerlink" title="基于CSI-RS的RRM测量参数"></a>基于CSI-RS的RRM测量参数</h2><ul>
-<li>CSI-RS参考信号接收功率（CSI-RSRP）：在所配置的带宽内，CSI-RS资源单元上测量CSI-RS信号功率的线性平均值。CSI-RSRP表示所测量的CSI-RS的信号强度。</li>
-<li>CSI-RS参考信号接收质量（CSI-RSRQ）：$(N×CSI-RSRP)&#x2F;(CSI-RSSI)$，N是CSI-RSSI测量带宽中的资源块的数量。CSI-RSRP和CSI-RSI的测量频率带宽相同。CSI-RSSI为测量时间资源和测量带宽中，针对N个资源块上的总接收信号功率的线性平均值。</li>
-<li>CSI-RS信干噪比（CSI-SINR）：CSI-RSRP与在CSI-RSRP相同频带带宽内，CSI-RS资源单元上的噪声和干扰功率的线性平均值的比值。</li>
-</ul>
-<h2 id="无线链路监测（RLM）"><a href="#无线链路监测（RLM）" class="headerlink" title="无线链路监测（RLM）"></a>无线链路监测（RLM）</h2><p>无线链路检测：一个RRC_CONNECTED状态的UE通过测量服务小区的下行链路RLM参考信号（RLM-RS）来监测下行无线链路质量，得到反映下行无线链路质量的测量值，如SS-SINR或CSI-SINR，并将测量值与UE内部设定的同步和失步阙值进行比较来判断UE与服务小区处于下行同步还是失步状态的过程。</p>
 
       
     </div>
