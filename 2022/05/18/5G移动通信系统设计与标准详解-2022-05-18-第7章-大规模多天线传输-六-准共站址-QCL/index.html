@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://example.com/2022/05/18/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-18-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%85%AD-%E5%87%86%E5%85%B1%E7%AB%99%E5%9D%80-QCL/%E5%9B%BE2.png">
 <meta property="og:image" content="http://example.com/2022/05/18/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-18-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E5%85%AD-%E5%87%86%E5%85%B1%E7%AB%99%E5%9D%80-QCL/%E5%9B%BE3.png">
 <meta property="article:published_time" content="2022-05-18T06:54:59.000Z">
-<meta property="article:modified_time" content="2022-05-18T08:42:59.867Z">
+<meta property="article:modified_time" content="2022-05-19T12:03:05.150Z">
 <meta property="article:author" content="水中岚">
 <meta property="article:tag" content="5G移动通信系统设计与标准详解">
 <meta name="twitter:card" content="summary">
@@ -139,7 +139,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -212,9 +212,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-05-18 14:54:59 / 修改时间：16:42:59" itemprop="dateCreated datePublished" datetime="2022-05-18T14:54:59+08:00">2022-05-18</time>
+      <time title="创建时间：2022-05-18 14:54:59" itemprop="dateCreated datePublished" datetime="2022-05-18T14:54:59+08:00">2022-05-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-19 20:03:05" itemprop="dateModified" datetime="2022-05-19T20:03:05+08:00">2022-05-19</time>
     </span>
 
   
@@ -238,7 +244,7 @@
 <h2 id="QCL关系配置"><a href="#QCL关系配置" class="headerlink" title="QCL关系配置"></a>QCL关系配置</h2><p>1、UE在接收目标参考信号之后，网络要通过信令为其配置其QCL源信号以及目标参考信号与源信号之间的QCL类型。为配置参考信号之间的QCL关系，NR引入了传输配置指示，简称TCI状态。</p>
 <p>2、TCI状态的结构为{RS1|QCL-Type1,RS2|QCL-Type2}或{RS1|QCL-Type1}，其中RS1和RS2是下行参考信号的标识信息，QCL-Type1和QCL-Type2是QCL类型。</p>
 <p>在TCI状态中，如果包含两个QCL类型，其对应的QCL参数不能有重叠。另外，当TCI两个参考信号为同一个时，他们对应的QCL类型不能相同。</p>
-<p>3、WCI状态的配置取决于参考信号的类型，有以下几种方式：</p>
+<p>3、TCI状态的配置取决于参考信号的类型，有以下几种方式：</p>
 <ul>
 <li>通过RRC信令配置：如周期性CSI-RS&#x2F;TRS的TCI状态由RRC信令配置。</li>
 <li>通过RRC信令配置，由MAC-CE激活：如半持续的CSI-RS&#x2F;TRS，或者PDCCH的DM-RS是通过RRC信令配置，再由MAXC-CE指示。</li>
@@ -270,6 +276,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/05/21/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-21-%E7%AC%AC8%E7%AB%A0-%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81%E8%AE%BE%E8%AE%A1-%E4%B8%80-LDPC%E7%BC%96%E7%A0%81%E6%96%B9%E6%A1%88/" rel="next" title="第8章-信道编码设计(七)-LDPC编码方案">
+                  第8章-信道编码设计(七)-LDPC编码方案 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

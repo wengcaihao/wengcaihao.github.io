@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -166,6 +166,129 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/02/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-02-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%B8%80-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/05/02/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-02-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%B8%80-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/" class="post-title-link" itemprop="url">第6章-控制信道设计与资源调度(一)-下行控制信道</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-02 09:51:48" itemprop="dateCreated datePublished" datetime="2022-05-02T09:51:48+08:00">2022-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-05 19:34:14" itemprop="dateModified" datetime="2022-05-05T19:34:14+08:00">2022-05-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>1.物理下行控制信道功能：主要用于承载下行调度许可、上行调度许可等动态调度信息。相比于LTE，NR 采取了更为灵活的设计方式，如控制资源合集CORESET和搜索空间独立定义，并引入监听时机的定义等，以适应灵活多变的时隙结构。</p>
+<p>2.物理上行控制信道功能：主要用于承载混合自动重传请求确认、调度请求和信道状态信息等上行控制信息。</p>
+<h1 id="下行控制信道"><a href="#下行控制信道" class="headerlink" title="下行控制信道"></a>下行控制信道</h1><p>NR PDCCH以控制资源集合（CORESET）为单位配置资源，CORESET占用的PRB个数以及PRB位置均可根据网络部署情况灵活选择，不必占满整个带宽，也不限于带宽内的特定位置。CORESET的时频资源可以灵活配置，避免了类似于LTE的PDCCH在小区之间产生的持续干扰，提供了控制小区干扰的便利手段。为了支持低时延业务，NR允许在一个时隙内有多个PDCCH发送机会，即可以在时隙内多个候选OFDM符号位置上发送PDCCH。</p>
+<h2 id="信道结构"><a href="#信道结构" class="headerlink" title="信道结构"></a>信道结构</h2><h3 id="控制资源集合CORESET"><a href="#控制资源集合CORESET" class="headerlink" title="控制资源集合CORESET"></a>控制资源集合CORESET</h3><p>1.<strong>控制资源集和是用于下行控制信道传输的物理资源集和</strong>，以6个连续PRB为资源粒度进行配置。CORESET的频域资源是连续或者非连续的，时域上包括连续的1~3个OFDM符号。</p>
+<p>2.在一个BWP（带宽部分）内，基站可以通过MIB（Master InformationBlock）、SIB（System Information Block）或者专用RRC信令为UE配置至多<strong>3个</strong>CORESET。配置多个CORESET的主要目的是：</p>
+<ul>
+<li><p>可通过不同CORESET的对应的不同下行波束传输PDCCH，某些CORESET用较宽的波束传输以获得较稳定的覆盖范围，其他CORESET用较窄波束传输以获得较大的波束赋形增益。</p>
+</li>
+<li><p>实现相邻小区的频域干扰协调：通过配置不同频域资源位置的CORESET，这样基站在向UE发送PDCCH时可以选择受到邻区干扰较小的CORESET，有利于保证下行控制信道的传输质量。</p>
+</li>
+<li><p>优化不同信道状况下的传输性能。配置分布式映射的CORESET获得频率分集增益，用于抵抗衰落信道带来的性能恶化；配置集中式映射的CORESET获得频率选择性增益，用于信道状态信息可靠的情况。基站可以根据信道状态信息的可靠程度，选择合适的CORESET传输PDCCH。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m_052148/article/details/51994477%E3%80%90LTE%E4%B8%8B%E8%A1%8C%E7%89%A9%E7%90%86%E5%B1%82%E4%BC%A0%E8%BE%93%E6%9C%BA%E5%88%B6-%E9%9B%86%E4%B8%AD%E5%BC%8F%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E8%B5%84%E6%BA%90%E6%98%A0%E5%B0%84%E3%80%91">https://blog.csdn.net/m_052148/article/details/51994477【LTE下行物理层传输机制-集中式和分布式资源映射】</a></p>
+</li>
+<li><p>支持不同时延要求业务的下行控制信道传输。配置一个OFDM符号长度的CORESET，缩短PDCCH传输的时间，降低时延；配置2个或3个OFDM符号长度的CORESET，增加PDCCH传输可用的资源，提高传输可靠性。</p>
+</li>
+</ul>
+<h3 id="PDCCH的物理结构"><a href="#PDCCH的物理结构" class="headerlink" title="PDCCH的物理结构"></a>PDCCH的物理结构</h3><p>1.NR资源单元组（Resource Element Group，REG）是CORESET内最基本的<strong>物理资源单元</strong>。一个REG由一个OFDM符号上的12RE组成（即一个OFDM符号上的一个PRB，第4章提过：一个PRB由12个子载波组成，所以这里的RE指的是子载波），包含3个DM-RS RE。一个CORESET内的REG按先时域后频域从0开始编号。</p>
+<img src="/2022/05/02/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-02-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%B8%80-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE1.png" class>
+
+<p>2.REG组由CORESET内若干个连续的REG组成，是NR PDCCH资源映射和预编码的基本单位。同一个REG组内的REG使用相同的预编码矩阵传输，因此UE在一个REG组的范围内可以进行联合信道估计，获得联合处理的增益。在REG组之间可以实现预编码矩阵轮循传输，以获得分集增益。</p>
+<p>3.REG组可以包含2个、3个或者6个REG，这将有高层信令配置。较小的REG组在使用预编码矩阵轮循时可以获得更大的分集增益，在信道条件较好时有利于提升PDCCH的接收性能；较大的REG组能够获得额外的信道估计增益，通常用于信道条件较差时的PDCCH传输。</p>
+<p>4.NR控制信道单元（CCE）是确定搜索空间以及候选PDCCH资源分配的<strong>逻辑资源单位</strong>。一个CCE由6个REG构成。</p>
+<p>5.针对CCE到REG的映射，NR协议支持<strong>集中式映射</strong>和<strong>分布式映射</strong>两种方式。</p>
+<ul>
+<li>集中式映射：即CCE映射到连续的REG，且REG组的大小必须为6。如果基站可以获得信道质量信息，通过集中式映射将CCE映射到信道质量较好的REG，则可以获得频率选择性增益。</li>
+<li>分布式映射：通过一个块交织器将CCE映射到分散的REG组。</li>
+</ul>
+<h2 id="传输方案"><a href="#传输方案" class="headerlink" title="传输方案"></a>传输方案</h2><h3 id="PDCCH多天线方案"><a href="#PDCCH多天线方案" class="headerlink" title="PDCCH多天线方案"></a>PDCCH多天线方案</h3><p>1.NR PDCCH仅支持单流传输，不支持空分复用传输，因为PDCCH设计的首要目标是保证传输的可靠性，而不是高频谱效率。</p>
+<p>2.NR PDCCH支持单端口REG组间的预编码轮循传输的发射分级方案，在不同的REG组轮流应用不同的预编码矩阵，达到发射分集的效果。这一操作对UE是透明的。</p>
+<p>补充：在预编码系统中，发射机可以根据信道条件，对发送信号的空间特性进行优化，使发送信号的空间分布特性与信道条件相匹配，因此可以有效降低对接收机算法的依赖程度。</p>
+<h3 id="PDCCH解调参考信号"><a href="#PDCCH解调参考信号" class="headerlink" title="PDCCH解调参考信号"></a>PDCCH解调参考信号</h3><p>1.NR PDCCH用解调参考信号（DM-RS）解调。DM-RS在PDCCH映射到的每个REG内都存在，密度为1&#x2F;4，且每个REG内DM-RS都映射到固定位置的RE。DM-RS的密度是权衡信道估计信道和导频开销的重要因素，较高的密度有助于提高PDCCH的信道估计精度，过高的密度将造成REG内可用于传输下行控制信息的资源减少。</p>
+<p>2.NR PDCCH的传输方案为单端口传输，预编码颗粒粒度可以配置为REG或者资源簇，一个CORESET内连续的多个REG构成资源簇，一个CORESET内可以有多个资源簇。</p>
+<ul>
+<li>如果预编码颗粒粒度配置为REG，则可以支持REG之间的预编码轮循传输，此时，DM-RS映射在PDCCH实际占用的所有REG上。</li>
+<li>如果哦预编码颗粒粒度为资源簇，则应该假设一个资源簇内REG是相同的预编码。此时DM-RS映射到的资源簇内的所有连续的REG上，即DM-RS会存在于PDCCH实际映射的REG之外。</li>
+</ul>
+<img src="/2022/05/02/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-02-%E7%AC%AC6%E7%AB%A0-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6-%E4%B8%80-%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93/%E5%9B%BE2.png" class>
+
+<h3 id="搜索空间设计"><a href="#搜索空间设计" class="headerlink" title="搜索空间设计"></a>搜索空间设计</h3><p>1.盲检过程：根据承载的下行控制信息（DCI）的比特数和信道状况，基站可以选择使用1个、2个、4个、8个或16个连续的控制信道单元（CCE）承载一条DCI，承载一条DCI的CCE个数称为<strong>聚合等级</strong>。UE在检测PDCCH时，要在不同的候选PDCCH上按照特定的DCI格式以及无线网络临时标识（RNT1）来检测DCI。候选PDCCH的资源位置由CCE的起始位置和聚合等级确定。</p>
+<p>UE在检测DCI时并不知道基站是否发送了DCI，也不知道实际发送该DCI所使用的CCE的聚合等级和起始位置，所以UE需要对候选PDCCH进行逐个尝试，将这一过程称为候选PDCCH的<strong>盲选</strong>。</p>
+<p>2.<strong>搜索空间</strong>由UE需要盲检的一组候选PDCCH组成。PDCCH的搜索空间分为公共搜索空间（CSS）与特定搜索空间（USS）。顾名思义，面向一组UE的公共控制信息通过CSS进行发送。UE的专属调度信息通过USS进行发送，也可以通过CSS发送。其中CSS根据传输内容以及配置方法的不同，分为Type0&#x2F;0A&#x2F;1&#x2F;2&#x2F;3-PDCCH CSS，分别应用于RMSI、OSI、RAR&#x2F;Msg4、Paging以及公共控制信息的调度或者传输。</p>
+<h3 id="控制信息内容与格式"><a href="#控制信息内容与格式" class="headerlink" title="控制信息内容与格式"></a>控制信息内容与格式</h3><p>1.NR的下行控制信息格式可以分为以下三大类：</p>
+<ul>
+<li>回退DCI格式：信息域固定，只能支持最基本的调度，可以用于回退模式的场景。</li>
+<li>非回退DCI格式：部分信息域可以通过高层信令进行配置，支持不同的调度场景和业务需求。</li>
+<li>组公共DCI格式：用于传输一组UE的控制信息，不用于资源调度。</li>
+</ul>
+<p>组公共控制信道通过UE专用RRC信令配置，用来发送一组特定UE的下行控制信令，信道结构与控制信道结构相同，只是DCI格式不同。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1134,166 +1257,6 @@
 <li>接口冲突：如果一个接口提供了一个默认方法，另一个接口提供了一个同名而且参数类型（不论是否是默认参数）相同的方法，必须覆盖这个方法来解决冲突。</li>
 </ol>
 <h1 id="接口示例"><a href="#接口示例" class="headerlink" title="接口示例"></a>接口示例</h1>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/03/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-03-%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/me.jpg">
-      <meta itemprop="name" content="水中岚">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="水中岚">
-      <meta itemprop="description" content="水中岚的博客">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 水中岚">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/03/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-03-%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF/" class="post-title-link" itemprop="url">第5章_继承</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-04-03 15:12:54" itemprop="dateCreated datePublished" datetime="2022-04-03T15:12:54+08:00">2022-04-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-04 20:18:35" itemprop="dateModified" datetime="2022-04-04T20:18:35+08:00">2022-04-04</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="类、超类和子类"><a href="#类、超类和子类" class="headerlink" title="类、超类和子类"></a>类、超类和子类</h1><p>1.子类无法直接访问超类的私有域，虽然子类对象也拥有与超类同名的域。不过可以通过super.域访问器来访问超类的私有域。</p>
-<p>2.子类构造器：由于子类无法直接访问超类的私有域，所以子类的初始化必须利用超类的构造器对私有域进行初始化。使用super调用构造器的语句必须是子类构造器的第一句，如果子类构造器没有显式调用超类构造器，将自动调用超类无参构造器。如果子类没有显式调用超类构造器并且超类也没有无参构造器，则Java编译器会报错。</p>
-<p>3.关键字this有两个用途：一是引用隐式参数，二是调用该类的其他的构造器。</p>
-<p>而关键字super有两个用途：一是调用超类的方法，二是调用超类的构造器。</p>
-<p>4.多态：一个对象变量可以指示多种实际类型的现象被称为多态。</p>
-<p>一个Employee变量既可以引用一个Employee类对象，也可以引用Employee类的任何一个子类的对象。然而，不能将一个超类的引用赋值给子类变量。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Employee e;</span><br><span class="line">e = <span class="keyword">new</span> <span class="title class_">Employee</span>(...);</span><br><span class="line">e = <span class="keyword">new</span> <span class="title class_">Manager</span>(...);<span class="comment">//Manager extends Employee</span></span><br></pre></td></tr></table></figure>
-
-<p>在Java中，子类数组的引用可以转换为超类数组的引用，而不需要强制转换。如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Manager[] managers = <span class="keyword">new</span> <span class="title class_">Manager</span>[<span class="number">10</span>];</span><br><span class="line">Employee[] staff = manager;<span class="comment">//OK</span></span><br></pre></td></tr></table></figure>
-
-<p>此时manager和staff引用的是同一个数组，虽然上述代码没有问题，但当往staff中存入一个Employee对象时，manager[0]和staff[0]引用的是同一个Employee对象，似乎我们把一个Employee对象引用赋值给一个Manager。为了不犯这种错误时，所有数组都要牢记创建它们的元素类型，并且负责监督仅将类型兼容的引用存储到数组中。</p>
-<p>5.在覆盖一个方法的时候，子类方法不能低于超类方法的可见性。</p>
-<p>6.动态绑定：运行时能够自动地选择调用哪个方法的现象称为动态绑定。</p>
-<p>7.阻止继承：final类和方法。</p>
-<p>如果一个类被声明为final，则这个类不能被继承。类中的方法也被声明为final，而域并不会被声明为final。</p>
-<p>如果一个方法被声明为final，则这个方法不能被重写。</p>
-<p>如果一个域被声明为final，则这个方法不能被再次赋值。</p>
-<p>8.强制类型转换（尽量少使用）</p>
-<ul>
-<li>只能在继承层次内进行类型转换。</li>
-<li>在将超类转换成子类之前，应该使用instanceof进行检查。</li>
-</ul>
-<p>9.抽象类</p>
-<p>抽象方法充当着占位的角色，它们的具体实现在子类中。包含一个或多个抽象的方法的类需要声明为抽象类，反之，抽象类可以不拥有抽象方法。扩展抽象类可以有两种选择。一种是在抽象类定义部分抽象类方法或不定义抽象方法，这样子类就必须标记为抽象类。另一种是定义全部的抽象方法，这样子类就无需定义为抽象类。</p>
-<p>10.Java的4个访问修饰符</p>
-<ol>
-<li>仅对本类可见—-private。</li>
-<li>对所有类可见—-public。</li>
-<li>对本包和所有子类可见—-protected。</li>
-<li>对本包可见—-默认，不需要修饰符。</li>
-</ol>
-<h1 id="Object：所有类的超类"><a href="#Object：所有类的超类" class="headerlink" title="Object：所有类的超类"></a>Object：所有类的超类</h1><p>1.equals方法：在Object类中，这个方法将判断两个对象是否具有相同的引用。然而对于许多类来说这种方法没有意义，因此会重写equals类用来比较内容。例如：如果两个雇员对象的姓名、薪水和雇佣日期都一样，就认为它们是相等的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object otherObject)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span> == otherObject)<span class="comment">//判断是否为同一对象</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (otherObject == <span class="literal">null</span>)<span class="comment">//判断是否为空</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (getClass() != otherObject.getClass())<span class="comment">//判断类型是否相同</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//至此，otherObject可证得是引用的非空的Employee对象</span></span><br><span class="line">        <span class="type">Employee</span> <span class="variable">other</span> <span class="operator">=</span> (Employee) otherObject;<span class="comment">//强制转换</span></span><br><span class="line">        <span class="keyword">return</span> Objects.equals(name, other.name)</span><br><span class="line">                &amp;&amp; salary == other.salary</span><br><span class="line">                &amp;&amp; Objects.equals(hireDay, other.hireDay);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>下面给出编写一个完美的equals方法的建议：</p>
-<ol>
-<li><p>显示参数命名为otherObject，稍后需要将它转换为另一个叫做other的变量。</p>
-</li>
-<li><p>检测this与otherObject是否引用同一个对象：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">this</span> == otherObject) <span class="keyword">return</span> <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>检测otherObject是否为null，如是则返回false。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (otherObject == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>比较this与otherObject是否属于同一个类。如果equals的语义在每个子类中有所改变（如Employee比较姓名、薪水、雇佣日期，而Manager比较姓名、薪水、雇佣日期和奖金，因此二者equals语义不同），就是用getClass检测。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (getClass() != otherObject.getClass()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
-
-<p>如果所有子类都拥有统一的子类，就是用instanceof检测</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!(otherObject <span class="keyword">instanceof</span> ClassName)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将otherObject转换为相应的类类型变量</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Employee</span> <span class="variable">other</span> <span class="operator">=</span> (Employee) otherObject;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对所有需要的域进行比较。使用&#x3D;&#x3D;比较基本类型域，使用equals比较对象域。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">return</span> <span class="variable">field1</span> <span class="operator">=</span>= other.field1</span><br><span class="line">                &amp;&amp; Objects.equals(field2, field2);</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>2.hashCode方法：重写equals方法就必须重写hashCode方法。因为hashCode和equals两个方法是用来协同判断两个对象是否相等，采用这种方式的原因是可以提高程序插入和查询的速度。如果重写equals时，不重写hashCode，就会导致在某些场景下，如将两个相等的自定义对象存储在Set集合时，Set进行去重操作，会先判断两个对象hashCode是否相同，返回false，就不再执行equals方法，直接返回false。则在Set中保留了两个一摸一样的数据。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> Objects.hash(name, salary, hireDay);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Equals和hashCode的定义必须一致，如果x.equals(y)返回true，那么x.hashCode和y.hashCode返回值就必须一致。如：equals比较雇员的ID，那么hashCode方法就需要散列ID。</p>
-<p>3.toString方法：强烈建议为自定义的每一个类增加toString方法。</p>
-<h1 id="泛型数组列表"><a href="#泛型数组列表" class="headerlink" title="泛型数组列表"></a>泛型数组列表</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Employee&gt; staff = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
-
-<h1 id="对象包装器与自动装箱"><a href="#对象包装器与自动装箱" class="headerlink" title="对象包装器与自动装箱"></a>对象包装器与自动装箱</h1><p>1.基本数据类型的包装器类：Integer、Long、Float、Double、Short、Byte、Character和Boolean，前六个类全派生于超类Number。</p>
-<p>自动装箱：将基本数据类型自动转换为对应的包装器类。</p>
-<p>自动拆箱：将包装器类自动转换为对应的基本数据类型。</p>
-<p>对象包装器类是不可变的，一旦构造了包装器，就不可更改包装在其中的值。此外，对象包装器类是final，因此不能定义它们的子类。</p>
-<h1 id="参数数量可变的方法"><a href="#参数数量可变的方法" class="headerlink" title="参数数量可变的方法"></a>参数数量可变的方法</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PrintStream</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> PrintStream <span class="title function_">printf</span><span class="params">(String fmt, Object... args)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> format(fmt, args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>第二个参数为Object[]数组，如果调用者提供的是整型数组和其他基本类型的值，则会自动装箱。</p>
-<h1 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h1><p>1.在比较两个枚举类型的值时，永远不要调用equals，而直接使用“&#x3D;&#x3D;”就可以了。</p>
-<p>2.枚举类中可以添加域、方法、构造器，如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">Size</span> &#123;</span><br><span class="line">    SMALL(<span class="string">&quot;S&quot;</span>), MEDIUM(<span class="string">&quot;M&quot;</span>), LARGE(<span class="string">&quot;L&quot;</span>), EXTRA_LARGE(<span class="string">&quot;XL&quot;</span>);</span><br><span class="line">    <span class="keyword">private</span> String abbreciation;</span><br><span class="line"></span><br><span class="line">    Size(String abbreciation) &#123;</span><br><span class="line">        <span class="built_in">this</span>.abbreciation = abbreciation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getAbbreciation</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> abbreciation;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="继承的设计技巧"><a href="#继承的设计技巧" class="headerlink" title="继承的设计技巧"></a>继承的设计技巧</h1><ol>
-<li>将公共操作和域放在超类。</li>
-<li>不要使用受保护的域。</li>
-<li>使用继承实现“is-a”关系。</li>
-<li>除非所有继承的方法都有意义，否则不要使用继承。</li>
-<li>在覆盖方法时，不要改变预期的行为。</li>
-<li>使用多态，而非类型信息。</li>
-<li>不要过多的使用反射。</li>
-</ol>
-<p>本章就到这了~</p>
-<img src="/2022/04/03/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-03-%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF/%E9%B8%A3%E4%BA%BA.webp" class title="鸣人">
       
     </div>
 
