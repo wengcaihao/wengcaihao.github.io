@@ -20,28 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="水中岚的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://example.com/tags/index.html">
+    <meta name="description" content="邻频共存邻频共存：LTE系统和NR系统部署在相邻的频谱上。 邻频共存的实现方式：  半静态FDM方式：在LTE系统和NR系统之间半静态划分频谱，可以根据NR和LTE网络的业务量调整划分比例。该方法调整较为缓慢，不够灵活。  半静态FDM+CA方式：LTE系统和NR系统各自占用一部分固定的频谱资源，同时预留一部分的频谱资源，同时预留一部分频谱作为LTE系统或NR系统的辅助载波配置给UE。这样，网络可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第9章-NR与LTE共存">
+<meta property="og:url" content="http://example.com/2022/05/25/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-25-%E7%AC%AC9%E7%AB%A0-NR%E4%B8%8ELTE%E5%85%B1%E5%AD%98/index.html">
 <meta property="og:site_name" content="水中岚">
-<meta property="og:description" content="水中岚的博客">
+<meta property="og:description" content="邻频共存邻频共存：LTE系统和NR系统部署在相邻的频谱上。 邻频共存的实现方式：  半静态FDM方式：在LTE系统和NR系统之间半静态划分频谱，可以根据NR和LTE网络的业务量调整划分比例。该方法调整较为缓慢，不够灵活。  半静态FDM+CA方式：LTE系统和NR系统各自占用一部分固定的频谱资源，同时预留一部分的频谱资源，同时预留一部分频谱作为LTE系统或NR系统的辅助载波配置给UE。这样，网络可">
 <meta property="og:locale">
-<meta property="article:published_time" content="2022-03-25T02:03:37.000Z">
-<meta property="article:modified_time" content="2022-03-25T02:06:56.861Z">
+<meta property="article:published_time" content="2022-05-25T08:31:17.000Z">
+<meta property="article:modified_time" content="2022-05-26T11:43:27.785Z">
 <meta property="article:author" content="水中岚">
+<meta property="article:tag" content="5G移动通信系统设计与标准详解">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/tags/">
+<link rel="canonical" href="http://example.com/2022/05/25/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-25-%E7%AC%AC9%E7%AB%A0-NR%E4%B8%8ELTE%E5%85%B1%E5%AD%98/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/tags/index.html","path":"tags/index.html","title":"tags"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/05/25/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-25-%E7%AC%AC9%E7%AB%A0-NR%E4%B8%8ELTE%E5%85%B1%E5%AD%98/","path":"2022/05/25/5G移动通信系统设计与标准详解-2022-05-25-第9章-NR与LTE共存/","title":"第9章-NR与LTE共存"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>tags | 水中岚
-</title>
+<title>第9章-NR与LTE共存 | 水中岚</title>
   
 
 
@@ -107,7 +107,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -120,6 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%82%BB%E9%A2%91%E5%85%B1%E5%AD%98"><span class="nav-number">1.</span> <span class="nav-text">邻频共存</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,43 +169,104 @@
 </noscript>
 
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
   
   
 
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/25/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-25-%E7%AC%AC9%E7%AB%A0-NR%E4%B8%8ELTE%E5%85%B1%E5%AD%98/">
 
-    
-    
-    
-    <div class="post-block" lang="zh-Hans"><header class="post-header">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
 
-<h1 class="post-title" itemprop="name headline">tags
-</h1>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="第9章-NR与LTE共存 | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第9章-NR与LTE共存
+        </h1>
 
-<div class="post-meta-container">
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-25 16:31:17" itemprop="dateCreated datePublished" datetime="2022-05-25T16:31:17+08:00">2022-05-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-26 19:43:27" itemprop="dateModified" datetime="2022-05-26T19:43:27+08:00">2022-05-26</time>
+    </span>
+
+  
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      <div class="post-body"><div class="tag-cloud">
-  <div class="tag-cloud-title">
-    目前共计 4 个标签
-  </div>
-  <div class="tag-cloud-tags">
-    <a href="/tags/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3/" style="font-size: 30px;" class="tag-cloud-10">5G移动通信系统设计与标准详解</a> <a href="/tags/Hexo%E5%AD%A6%E4%B9%A0/" style="font-size: 18px;" class="tag-cloud-3">Hexo学习</a> <a href="/tags/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0/" style="font-size: 24px;" class="tag-cloud-7">JAVA核心技术 卷Ⅰ</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 12px;" class="tag-cloud-0">其他</a>
-  </div>
-</div>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="邻频共存"><a href="#邻频共存" class="headerlink" title="邻频共存"></a>邻频共存</h1><p>邻频共存：LTE系统和NR系统部署在相邻的频谱上。</p>
+<p>邻频共存的实现方式：</p>
+<ul>
+<li><p>半静态FDM方式：在LTE系统和NR系统之间半静态划分频谱，可以根据NR和LTE网络的业务量调整划分比例。该方法调整较为缓慢，不够灵活。</p>
+</li>
+<li><p>半静态FDM+CA方式：LTE系统和NR系统各自占用一部分固定的频谱资源，同时预留一部分的频谱资源，同时预留一部分频谱作为LTE系统或NR系统的辅助载波配置给UE。这样，网络可以根据UE的渗透率较为灵活地调整NR系统和LTE系统所占用的频谱。</p>
+</li>
+</ul>
 
-      </div>
-      
-      
-      
     </div>
 
     
     
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3/" rel="tag"># 5G移动通信系统设计与标准详解</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/22/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-22-%E7%AC%AC8%E7%AB%A0-%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81%E8%AE%BE%E8%AE%A1-%E4%BA%8C-Polar%E7%A0%81%E7%9A%84%E7%BC%96%E7%A0%81%E6%96%B9%E6%A1%88/" rel="prev" title="第8章-信道编码设计(二)-Polar码的编码方案">
+                  <i class="fa fa-chevron-left"></i> 第8章-信道编码设计(二)-Polar码的编码方案
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
 
 
 </div>

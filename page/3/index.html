@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -166,6 +166,258 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/" class="post-title-link" itemprop="url">第2章-系统结构与体系标准(一)-无线接口协议栈</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-23 11:03:49" itemprop="dateCreated datePublished" datetime="2022-04-23T11:03:49+08:00">2022-04-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-28 15:13:53" itemprop="dateModified" datetime="2022-04-28T15:13:53+08:00">2022-04-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>1.在5G系统中，将终端和接入网之间的接口简称为<strong>Uu接口</strong>，也成为<strong>空中接口</strong>。</p>
+<p>2.<strong>无线接口协议</strong>：建立、重配置和释放各种无线承载业务。主要分为三层两面，三层指的是<strong>物理层、数据链路层、网络层</strong>；两面指的是<strong>控制平面</strong>和<strong>用户平面</strong>。</p>
+<ul>
+<li><p>物理层是指MAC层，位于控制平面和用户平面。</p>
+</li>
+<li><p>数据链路层可分成媒体访问控制（MAC）层、无线链路控制（RLC）层、分组数据汇聚协议（PDCP）层、服务数据自适应协议（SDPA）四个子层，相比于LTE多了SDPA层，且SDPA层只位于用户平面，其余三个子层同时位于控制平面和用户平面。</p>
+</li>
+<li><p>网络层指无线资源控制（RRC）层，位于控制平面。</p>
+</li>
+</ul>
+<p>3.无线接口协议栈</p>
+<ul>
+<li>控制平面协议栈：负责对无线接口的管理和控制</li>
+</ul>
+<img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE1.png" class title="控制平面协议栈">
+
+<ul>
+<li>用户平面协议栈</li>
+</ul>
+<img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE2.png" class title="用户平面协议栈">
+
+<h2 id="物理层协议功能"><a href="#物理层协议功能" class="headerlink" title="物理层协议功能"></a>物理层协议功能</h2><p>物理层为MAC和更好层提供信息传输服务，其中所提供的服务通过传输信道来描述。</p>
+<p>1.下行传输信道类型</p>
+<ul>
+<li>广播信道BCH：采用固定的预定义传输格式，能偶在整个小区覆盖区域内广播。</li>
+<li>下行共享信道DL_SCH：使用混合自动重传请求（HARQ）传输，能够通过调整传输使用的调制方式、编码速率和发送功率来实现链路自适应，在整个小区内发送或使用波束赋形发送，支持动态或半静态的资源分配，支持终端非连续接收，达到节电的目的。</li>
+<li>寻呼信道PCH：支持终端非连续接收，能在整个小区覆盖范围传输，使用映射到可用于动态使用的业务或者其他的控制信道的物理资源上。</li>
+</ul>
+<p>2.上行传输信道类型</p>
+<ul>
+<li>上行共享信道UL_SCH：与下行共享信道DL_SCH一样</li>
+<li>随机接入信道RACH：承载有限的控制信息，并且具有冲突碰撞特征。</li>
+</ul>
+<img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE3.png" class title="映射关系">
+
+<h2 id="数据链路层协议功能"><a href="#数据链路层协议功能" class="headerlink" title="数据链路层协议功能"></a>数据链路层协议功能</h2><img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE4.png" class title="数据链路层的下行架构">
+<img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE5.png" class title="数据链路层的上行架构">
+
+<p>物理层为MAC子层提供传输信道级的服务，MAC子层为RLC子层提供逻辑信道级的服务，RLC子层为PDCP子层提供RLC信道级服务，PDCP子层为SDAP子层提供无线承载级的服务，SDAP子层为上层提供SGC Qos流级的服务。</p>
+<h3 id="MAC子层"><a href="#MAC子层" class="headerlink" title="MAC子层"></a>MAC子层</h3><p>Ⅰ、MAC子层的功能</p>
+<p>①逻辑信道到传输信道的映射</p>
+<p>②来自多个逻辑信道的MAC业务数据单元的复用和解复用</p>
+<p>③上行调度信息上报</p>
+<p>④通过HARQ进行错误纠正</p>
+<p>⑤通过动态调度实现UE间的优先级处理</p>
+<p>⑥通过逻辑信道优先级来实现终端内多个逻辑信道的优先级处理</p>
+<p>⑦当实际传输数据量不能填满整个授权的数据库大小时使用填充功能</p>
+<p>Ⅱ、逻辑信道</p>
+<p>MAC层根据传输的信息类型划分为多种逻辑信道类型，针对不同的数据类型，提供不同的传输服务。一般将逻辑信道分为<strong>控制信道</strong>（传输控制平面信息）和<strong>业务信道</strong>（传输用户平面信息）</p>
+<p>控制信道分为</p>
+<ul>
+<li>广播控制信道BCCH：为系统广播信息传输使用的下行信道。</li>
+<li>寻呼控制信道PCCH：为传输寻呼信息、系统信息改变通知消息以及指示是否有正在广播的公共告警系统信息的下行信道。</li>
+<li>公共控制信道CCCH：用于当终端和网络之间没有无线资源控制层（RRC）时，传输终端和网络之间的控制信息，双向。</li>
+<li>专用控制信道DCCH：为点对点的双向信道，用于终端侧和网络侧存在RRC时的专用控制信息传输，双向。</li>
+</ul>
+<p>业务信道仅有专用业务信道DTCH，用于针对单个用户的点到点的业务传输信道，可单向可双向。</p>
+<p>Ⅲ、逻辑信道与传输信道的映射关系</p>
+<img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE6.png" class title="上行逻辑信道到上行传输信道的映射关系">
+<img src="/2022/04/23/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-23-%E7%AC%AC2%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%93%E7%B3%BB%E6%A0%87%E5%87%86-%E4%B8%80-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E6%A0%88/%E5%9B%BE7.png" class title="下行逻辑信道到下行传输信道的映射关系">
+
+<h3 id="RLC子层"><a href="#RLC子层" class="headerlink" title="RLC子层"></a>RLC子层</h3><p>为了满足不同的业务需求，RLC子层支持三种传输模式：<strong>透明模式</strong>（TM）、<strong>非确认模式</strong>（UM）、<strong>确认模式</strong>（AM）。RLC的配置基于逻辑信道的颗粒度，不依赖于底层的参数集和传输时间间隔的长度。</p>
+<p>透明模式主要用于寻呼消息、系统信息广播以及SRB0信令的传输</p>
+<p>其他SRB信令用确认模式传输</p>
+<p>用于传输用户数据的DRB可以根据业务类型选择确认模式或非确认模式。</p>
+<p><strong>补充</strong>：RB&#x3D;Resource Bearer（终端与基站之间的承载） SRB&#x3D;Signal RB（终端与基站之间的信令承载） DRB &#x3D; Data RB（终端与基站之间的数据承载）</p>
+<p>其中<strong>SRB0</strong>用于使用CCCH逻辑信道的RRC消息，<strong>SRB1</strong>用于RRC消息（可能包括后向装载的NAS消息）以及SRB2建立之前的NAS消息，均使用DCCH逻辑信道。<strong>SRB2</strong>用于NAS消息，全部使用DCCH逻辑信道。<strong>SRB3</strong>用于UE在EN-DC中时的特定RRC消息，均使用DCCH逻辑信道。</p>
+<h3 id="PDCP子层"><a href="#PDCP子层" class="headerlink" title="PDCP子层"></a>PDCP子层</h3><p>PDCP子层为控制平面和用户平面提供不同的服务。</p>
+<p>PDCP子层用于用户平面的功能包括</p>
+<ul>
+<li>支持头压缩解压缩功能，包含健壮性报头压缩协议算法。</li>
+<li>提供序列号使得其可以支持确认模式下逻辑信道向高层进行重排序、按需递交，及对底层SDU数据的重复检测。</li>
+<li>切换过程中，支持对确认模式逻辑信道的PDCP SDU重传</li>
+<li>加密、解密和完整性保护</li>
+<li>业务平面数据的传输</li>
+<li>上行基于定时器的SDU丢弃机制</li>
+<li>支持PDCP分离承载的路由功能</li>
+<li>复制PDCP PDU，将其分发到不同路径上。</li>
+</ul>
+<p>PDCP子层用于控制平面的功能包括：</p>
+<ul>
+<li>加密、解密和完整性保护；</li>
+<li>控制平面数据的传输；</li>
+<li>提供序列号使得其可以支持确认模式下逻辑信道向高层进行重排序、按需递交，及对底层SDU数据的重复检测。</li>
+<li>复制PDCP PDU，将其分发到不同路径上。</li>
+</ul>
+<p><strong>补充</strong>：SDU为服务数据单元，PDU为协议数据单元，本层的PDU是下层的SDU，本次的SDU是上层的PDU。</p>
+<h3 id="SDAP子层"><a href="#SDAP子层" class="headerlink" title="SDAP子层"></a>SDAP子层</h3><p>SDAP子层主要功能是完成QoS流和DRB之间的映射，对上行和下行数据分组增加QoS流的标识号，并将不同的QoS流映射到数据无线承载上，每个独立的PDU会话会配置一个SDAP实体。</p>
+<h2 id="RRC层协议功能"><a href="#RRC层协议功能" class="headerlink" title="RRC层协议功能"></a>RRC层协议功能</h2><p>RRC层协议模块是接入层的控制中心，其功能包括：发送系统信息广播（非接入层和接入层）相关信息、发送由核心网5GC和接入网NG-RAN发起的寻呼消息，UE和NG-RAN之间的RRC建立、维护和释放，安全功能密钥管理，无线承载管理（包括建立、配置、维护和释放信令无线承载和用户无线承载），移动性管理（包括切换、UE小区选择和重选、切换时上下文传输），QoS管理，UE测量报告和控制，无线链路失败的检测和恢复，以及NAS消息的传输。</p>
+<p>RRC协议状态由LTE的3个增加为3个：RRC_IDEL、RRC_INACATIVE、RRC_CONNECTED</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/04/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-04-%E7%AC%AC6%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/04/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B7%E2%85%A0-2022-04-04-%E7%AC%AC6%E7%AB%A0-%E6%8E%A5%E5%8F%A3%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB/" class="post-title-link" itemprop="url">第6章_接口、lambda表达式与内部类</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-04 20:33:36" itemprop="dateCreated datePublished" datetime="2022-04-04T20:33:36+08:00">2022-04-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-05 10:37:44" itemprop="dateModified" datetime="2022-05-05T10:37:44+08:00">2022-05-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>1.接口中不能含有实例域，但是可以含有常量（接口中的域自动声明为public static final），可以含有方法，在Java SE 8之后，可以在接口中实现方法。此外，接口中的所有方法自动地属于public。但是，在实现接口的类中应该将方法显示声明为public。在Java SE 8中，允许在接口中增加静态方法。</p>
+<p>2.接口与抽象类：每个类只能扩展一个类，而接口可以提供多重继承的大多数好处，同时还能避免多重继承的复杂性和低效性。</p>
+<p>3.默认方法：可以在接口中为接口方法提供一个默认实现，但必须用default标记该方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Comparable</span>&lt;T&gt;&#123;</span><br><span class="line">	<span class="keyword">default</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(T other)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这样当某个类实现这个接口时，可以无需实现这个默认方法，并且该类调用该方法时，也会转成调用接口的这个方法，不会报错。</p>
+<p>4.解决默认方法冲突：</p>
+<p>如果先在一个接口中将一个方法定义为默认方法，然后又在超类或另一个接口中定义了同样的方法，Java解决这种二义性的规则如下：</p>
+<ol>
+<li>超类优先：如果超类提供了一个具体方法，同名而且有相同参数类型的默认方法会被忽略。</li>
+<li>接口冲突：如果一个接口提供了一个默认方法，另一个接口提供了一个同名而且参数类型（不论是否是默认参数）相同的方法，必须覆盖这个方法来解决冲突。</li>
+</ol>
+<h1 id="接口示例"><a href="#接口示例" class="headerlink" title="接口示例"></a>接口示例</h1>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
