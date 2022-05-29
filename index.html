@@ -211,7 +211,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-26 19:43:27" itemprop="dateModified" datetime="2022-05-26T19:43:27+08:00">2022-05-26</time>
+      <time title="修改时间：2022-05-29 14:54:19" itemprop="dateModified" datetime="2022-05-29T14:54:19+08:00">2022-05-29</time>
     </span>
 
   
@@ -227,11 +227,35 @@
           <h1 id="邻频共存"><a href="#邻频共存" class="headerlink" title="邻频共存"></a>邻频共存</h1><p>邻频共存：LTE系统和NR系统部署在相邻的频谱上。</p>
 <p>邻频共存的实现方式：</p>
 <ul>
-<li><p>半静态FDM方式：在LTE系统和NR系统之间半静态划分频谱，可以根据NR和LTE网络的业务量调整划分比例。该方法调整较为缓慢，不够灵活。</p>
-</li>
-<li><p>半静态FDM+CA方式：LTE系统和NR系统各自占用一部分固定的频谱资源，同时预留一部分的频谱资源，同时预留一部分频谱作为LTE系统或NR系统的辅助载波配置给UE。这样，网络可以根据UE的渗透率较为灵活地调整NR系统和LTE系统所占用的频谱。</p>
-</li>
+<li>半静态FDM方式：在LTE系统和NR系统之间半静态划分频谱，可以根据NR和LTE网络的业务量调整划分比例。该方法调整较为缓慢，不够灵活。</li>
+<li>半静态FDM+CA方式：LTE系统和NR系统各自占用一部分固定的频谱资源，同时预留一部分的频谱资源，同时预留一部分频谱作为LTE系统或NR系统的辅助载波配置给UE。这样，网络可以根据UE的渗透率较为灵活地调整NR系统和LTE系统所占用的频谱。</li>
 </ul>
+<p>对于FDD频段，LTE和NR相邻的频谱的传输方向相同，不会产生上下行之间的干扰。而对于TDD频段，LTE和NR存在上下行的交叉时隙，则会带来码间干扰，NR通过单周期或者双周期上下行结构配置，避免交叉时隙干扰。</p>
+<h1 id="同频共存"><a href="#同频共存" class="headerlink" title="同频共存"></a>同频共存</h1><p>同频共存：LTE系统和NR系统部署的频谱重叠。NR系统利用LTE系统子帧内的部分资源发送和接收数据。</p>
+<p>对于<strong>下行</strong>：NR系统的传输可以调度在MBSFN(多播&#x2F;组播单频网络)或者在非MBSFN子帧内，采用基于时隙或者微时隙的调度，并且需要避开LTE系统的PSS&#x2F;SSS、PBCH和CRS。其中,LTE系统的非MBFSN子帧包括PDCCH和CRS，在LTE系统非MBSFN子帧中调度NR系统传输应该避免使用LTE PDCCH 和CRS占用的资源。为此，NR提供了以下几种处理方式：</p>
+<ul>
+<li>使用基于微时隙的调度。该方法可以占用2、4、7个OFDM符号，且开始的符号位置任意，NR调度的OFDM符号应该不与PDCCH和CRS所在的OFDM符号有重复。</li>
+<li>将LTE CRS占用的OFDM符号配置为速率匹配资源。</li>
+<li>在上一个方法的基础上，引入对LTE CRS资源位置的通知，这样NR PDSCH的映射就会避开LTE CRS的位置，这样资源利用更充分。</li>
+</ul>
+<p>对于<strong>上行</strong>：上行不存在持续发送的信号，LTE和NR的上行共存通过合理的调度即可实现。二者可以用TDM或FDM方式复用。</p>
+<h1 id="补充上行载波SUL"><a href="#补充上行载波SUL" class="headerlink" title="补充上行载波SUL"></a>补充上行载波SUL</h1><p>SUL是对NR FDD和TDD接入链路的补充。SUL的主要目的是<strong>扩展NR系统上行的覆盖</strong>，尤其是在较高频段部署的NR系统,SUL载波可以配置在一个独立的低频频点，或者共享LTE FDD的上行频点，</p>
+<img src="/2022/05/25/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-25-%E7%AC%AC9%E7%AB%A0-NR%E4%B8%8ELTE%E5%85%B1%E5%AD%98/%E5%9B%BE1.png" class>
+
+<p>如图所示，通过配置在较低频段上的SUL载波，UE的上行覆盖得到了扩展。</p>
+<h1 id="上行单发传输"><a href="#上行单发传输" class="headerlink" title="上行单发传输"></a>上行单发传输</h1><p>对于一些特定的频段组合，UE在两个频段上同时发送上行信号会产生互调失真，影响UE接收机的灵敏度，为此NR载波允许UE在特定的频段组合仅支持上行在单个载波上传输信号。</p>
+<p>上行单发传输不影响UE的下行接收能力。当EN-DC的UE同时接收NR载波和LTE载波的下行信号时，就有可能出现LTE和NR载波的PDSCH同时需要反馈HARQ-ACK的情况，为此NR提供了两种方法。</p>
+<ul>
+<li>方案一：通过为终端配置参考上下行配置（由参数subframeAssignment-r15配置），由该参考上下行配置确定LTE FDD载波的HARQ-ACK的时序，从而可将剩下子帧用于传输NR的上行信号。</li>
+<li>方案二：eNB调度器将LTE载波下行的调度限制在一定的子帧内，终端在子帧n收到PDSCH，对应的HARQ-ACK在子帧n+4发送。</li>
+</ul>
+<h1 id="功率共享"><a href="#功率共享" class="headerlink" title="功率共享"></a>功率共享</h1><p>EN-DC框架的终端需要同时维持LTE和NR系统的连接，UE的发射功率在LTE系统和NR系统之间共享。因此会出现$P_{LTE}+P_{NR}&lt;&#x3D;P_{Total}$或者$P_{LTE}+P_{NR}&gt;P_{Total}$的情况。</p>
+<ul>
+<li>当$P_{LTE}+P_{NR}&lt;&#x3D;P_{Total}$时，即使在LTE系统和NR系统独立进行功率控制和计算，也不会出现实际发送功率超过$P_{Total}$的情况，即半静态功率共享。当是，假如没有NR系统信号需要发送时，LTE系统也不能使用NR那部分的功率。</li>
+<li>$P_{LTE}+P_{NR}&gt;P_{Total}$时，终端优先保证LTE系统的发射功率，剩余功率再分给NR系统，因为EN-DC中，LTE是主载波。</li>
+</ul>
+<p>NE-DC中NR为主载波，NE-DC中终端的功率分享和EN-DC架构类似，支持半静态和功率共享。</p>
+<h1 id="终端自干扰消除"><a href="#终端自干扰消除" class="headerlink" title="终端自干扰消除"></a>终端自干扰消除</h1><p>当终端的接收机的工作频点是发射机工作频点的整数倍时，终端发射的无线信号会在终端的接收机上产生谐波干扰，解决方法是将信号的收发分配到不同的时间或者不会产生谐波干扰的频率上。 </p>
 
       
     </div>
