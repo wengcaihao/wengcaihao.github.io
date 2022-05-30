@@ -131,13 +131,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -166,6 +166,108 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/30/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-30-%E7%AC%AC10%E7%AB%A0-%E5%8A%9F%E7%8E%87%E6%8E%A7%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/05/30/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-30-%E7%AC%AC10%E7%AB%A0-%E5%8A%9F%E7%8E%87%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">第10章-功率控制</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-05-30 15:20:46 / 修改时间：16:23:08" itemprop="dateCreated datePublished" datetime="2022-05-30T15:20:46+08:00">2022-05-30</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>功率控制：通过对基站或者终端发送信号的功率进行调节，达到有效地实现路径损耗补偿、克服阴影衰落、抑制干扰等目的，功率控制对蜂窝无线通信系统的性能具有重要影响。</p>
+<p>在蜂窝无线通信系统中，如果单纯提高信号发送功率，则会带来小区内和小区间两方面的干扰，并浪费能量，降低终端的电池使用时长。因此，如何满足业务传输QoS需求的情况，最小化发射功率，尽可能地降低能耗和干扰是功率控制研究的主要内容。</p>
+<h1 id="上行功率控制"><a href="#上行功率控制" class="headerlink" title="上行功率控制"></a>上行功率控制</h1><h2 id="上行功率控制技术的原理"><a href="#上行功率控制技术的原理" class="headerlink" title="上行功率控制技术的原理"></a>上行功率控制技术的原理</h2><p>NR系统上行功率控制采用了<strong>部分路损补偿（FPC）的开环功率控制</strong>与<strong>快速闭环功率控制</strong>相结合的技术方案。</p>
+<p>开环功率控制通过调节功率补偿路损和阴影衰落带来的信号损失，以满足信号的目标信干噪比（SINR）的需求。目标信干噪比是指接收<strong>信号功率谱密度</strong>（PSD）与干扰加性噪声的比值。上行信道通过维持发射带宽中信号的PSD来实现功率控制目标；</p>
+<p>快速闭环控制根据传输业务的误块率（BLER）需要，通过快速调整功率谱密度的方式来实现对信道衰落和干扰的补偿。</p>
+<ul>
+<li>上行功率控制的特点：采用部分路损补偿的开环功率控制技术：FPC通过对终端的路径损耗和阴影衰落进行部分补偿来控制总体干扰水平。路损补偿因子$\alpha$&#x3D;1时代表全路损补偿，$\alpha$增大时，小区容量减少，小区边缘的传输速率提升。因此应该通过控制补偿因子$\alpha$来权衡小区容量和小区边缘的传输速度。</li>
+<li>目标SINR值的设定：NR支持不同的业务，不同的业务都有不同的QoS需求，体现为不同BLER和传输时延的指标要求。BLER指标对应所需要的接收信号的SINR值，从而映射于目标接收功率值$P_0$。$P_0$包含了小区级和UE级的目标接收功率参数，小区级参数是适用于所有终端的上行物理信道公共目标接收功率，UE级参数是适用于每个终端针对不同的上行物理信道的专有目标接收功率配置。</li>
+<li>多波束配置：上行功率控制需要针对不同波束的路损，采用基于波束的功率控制策略和参数。</li>
+<li>为了补偿快衰落、适应小区间干扰以及业务的快速变化，需要在开环慢速功率控制的基础上，增加快速功率补偿，实现动态功率调整，可以采用：基于MCS的功率调整和闭环功率控制两种方法。</li>
+</ul>
+<h2 id="上行信道功率控制方案"><a href="#上行信道功率控制方案" class="headerlink" title="上行信道功率控制方案"></a>上行信道功率控制方案</h2><h3 id="PUSCH功率控制"><a href="#PUSCH功率控制" class="headerlink" title="PUSCH功率控制"></a>PUSCH功率控制</h3><img src="/2022/05/30/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-30-%E7%AC%AC10%E7%AB%A0-%E5%8A%9F%E7%8E%87%E6%8E%A7%E5%88%B6/%E5%9B%BE1.png" class>
+
+<img src="/2022/05/30/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-30-%E7%AC%AC10%E7%AB%A0-%E5%8A%9F%E7%8E%87%E6%8E%A7%E5%88%B6/%E5%9B%BE2.png" class>
+
+<img src="/2022/05/30/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-30-%E7%AC%AC10%E7%AB%A0-%E5%8A%9F%E7%8E%87%E6%8E%A7%E5%88%B6/%E5%9B%BE3.png" class>
+
+<h3 id="PUCCH功率控制"><a href="#PUCCH功率控制" class="headerlink" title="PUCCH功率控制"></a>PUCCH功率控制</h3><img src="/2022/05/30/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-30-%E7%AC%AC10%E7%AB%A0-%E5%8A%9F%E7%8E%87%E6%8E%A7%E5%88%B6/%E5%9B%BE4.png" class>
+
+<img src="/2022/05/30/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-30-%E7%AC%AC10%E7%AB%A0-%E5%8A%9F%E7%8E%87%E6%8E%A7%E5%88%B6/%E5%9B%BE5.png" class>
+
+<h3 id="SRS（信道探测参考信号）功率控制"><a href="#SRS（信道探测参考信号）功率控制" class="headerlink" title="SRS（信道探测参考信号）功率控制"></a>SRS（信道探测参考信号）功率控制</h3><img src="/2022/05/30/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-30-%E7%AC%AC10%E7%AB%A0-%E5%8A%9F%E7%8E%87%E6%8E%A7%E5%88%B6/%E5%9B%BE6.png" class>
+
+<img src="/2022/05/30/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-30-%E7%AC%AC10%E7%AB%A0-%E5%8A%9F%E7%8E%87%E6%8E%A7%E5%88%B6/%E5%9B%BE7.png" class>
+
+<h3 id="PRACH功率控制"><a href="#PRACH功率控制" class="headerlink" title="PRACH功率控制"></a>PRACH功率控制</h3><img src="/2022/05/30/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-30-%E7%AC%AC10%E7%AB%A0-%E5%8A%9F%E7%8E%87%E6%8E%A7%E5%88%B6/%E5%9B%BE8.png" class>
+
+<h3 id="PHR机制"><a href="#PHR机制" class="headerlink" title="PHR机制"></a>PHR机制</h3><img src="/2022/05/30/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-30-%E7%AC%AC10%E7%AB%A0-%E5%8A%9F%E7%8E%87%E6%8E%A7%E5%88%B6/%E5%9B%BE9.png" class>
+
+<img src="/2022/05/30/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-30-%E7%AC%AC10%E7%AB%A0-%E5%8A%9F%E7%8E%87%E6%8E%A7%E5%88%B6/%E5%9B%BE10.png" class>
+
+<h1 id="下行功率分配"><a href="#下行功率分配" class="headerlink" title="下行功率分配"></a>下行功率分配</h1><p>下行功率分配的目标是在满足用户接收质量的前提下尽量降低下行信道的发射功率，达到控制小区间干扰的目标。</p>
+<p>基站决定了小区内下行物理信道的每个无线资源单元发射能量（EPRE）。</p>
+<img src="/2022/05/30/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-30-%E7%AC%AC10%E7%AB%A0-%E5%8A%9F%E7%8E%87%E6%8E%A7%E5%88%B6/%E5%9B%BE11.png" class>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1276,152 +1378,6 @@
 
 <p><strong>遗留问题：</strong></p>
 <p>这样会带来一些麻烦，一是新建的.md文件的title默认为post，需要手动修改，二是文件无法应用new_post_name参数，也就是说你的文章无法自动在文件名前添加时间，需要手动添加。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/04/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-04-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%80-%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93%E6%96%B9%E6%A1%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/me.jpg">
-      <meta itemprop="name" content="水中岚">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="水中岚">
-      <meta itemprop="description" content="水中岚的博客">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 水中岚">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/04/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-04-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%80-%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">第7章-大规模多天线传输(一)-多天线传输方案</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-05-04 20:09:40" itemprop="dateCreated datePublished" datetime="2022-05-04T20:09:40+08:00">2022-05-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-06 08:23:33" itemprop="dateModified" datetime="2022-05-06T08:23:33+08:00">2022-05-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="多天线传输方案"><a href="#多天线传输方案" class="headerlink" title="多天线传输方案"></a>多天线传输方案</h1><h2 id="下行传输方案"><a href="#下行传输方案" class="headerlink" title="下行传输方案"></a>下行传输方案</h2><p>NR PDSCH传输的处理过程如图所示：</p>
-<img src="/2022/05/04/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-05-04-%E7%AC%AC7%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93-%E4%B8%80-%E5%A4%9A%E5%A4%A9%E7%BA%BF%E4%BC%A0%E8%BE%93%E6%96%B9%E6%A1%88/%E5%9B%BE1.png" class> 
-
-<p>高层下发的传输块经信道编码后与码字一一对应；码字中的比特流经过加扰和调制之后，通过层映射模块映射到并行的数据流（或称<strong>层</strong>）；每一层的数据流经过端口映射模块映射到传输使用的天线端口（端口1000-1011）上去。每个天线端口上根据资源分配进行资源的映射以及OFDM调制。其中还有一个非标准化的处理模块（预编码模块），目的是实现天线端口到物理天线的映射过程，也就是实现预编码或者波束赋形的过程。</p>
-<p><strong>补充一下LTE中的知识：</strong><a target="_blank" rel="noopener" href="https://www.txrjy.com/thread-549490-1-1.html">请教下有关码字和层映射的问题 - 技术综合版块 - 通信人家园 - Powered by C114 (txrjy.com)</a><br><strong>LTE的下行发送过程：</strong></p>
-<ol>
-<li>对于来自上层的数据，进行信道编码，形成码字；</li>
-<li>对不同的码字进行调制，产生调制符号；</li>
-<li>对于不同码字的调制信号组合一起进行层映射；</li>
-<li>对于层映射之后的数据进行预编码，映射到天线端口上发送。</li>
-</ol>
-<p><strong>码字、层和天线端口的区分</strong></p>
-<ul>
-<li><p>码字：</p>
-<p>码字是指来自上层的业务流进行信道编码之后的数据。不同的码字q区分不同的数据流，其目的是通过MIMO发送多路数据，实现空间复用。</p>
-<p>由于LTE系统接收端最多支持2天线，所以发送的数据流数量最多为2。这决定了不管发送端天线数为1、2或者4，码字q的数量最多只为2。</p>
-<p>当发送端天线只有一根时，实际能够支持的码流数量也只能为1，所以码字数量最多也只能为1。</p>
-<p>如果接收端有两根接收天线，但是两根天线高度相关。如果发送端仍然发送两组数据流（两个码字），则接收端无法解码。因此，在收端信道高度相关的情况下，码字数量也只能为1。</p>
-<p>综上，码字q的数量决定于信道矩阵的秩。</p>
-</li>
-<li><p>层</p>
-<p>由于码字数量和发送天线数量不一致，需要将码字流映射到不同的发送天线上，因此需要使用层与预编码。</p>
-<p>层映射与预编码实际上是“映射码字到发送天线”过程的两个的子过程。</p>
-<p>层映射首先按照一定的规则将码字流重新映射到多个层（新的数据流），（注：层的数量小于物理信道传输所使用的天线端口数量）。</p>
-<p>预编码再将数据映射到不同的天线端口上。</p>
-<p>在各个天线端口上进行资源映射，生成OFDM符号并发射。</p>
-</li>
-<li><p>天线端口</p>
-<p>天线端口指用于传输的<strong>逻辑</strong>端口，与物理天线不存在定义上的一一对应关系。天线端口由用于该天线的参考信号来定义。</p>
-<p>从层到物理天线端口传输是通过预编码来完成的。无论层数是多少，只要其小于用于物理传输的端口数，即可通过预编码矩阵W(i)将其映射到物理的传输天线上。</p>
-</li>
-</ul>
-<p><strong>总结</strong></p>
-<p>码字用于区分空间复用的流；层用于重排码字数据；天线端口决定预编码天线映射。  </p>
-<h3 id="码字映射"><a href="#码字映射" class="headerlink" title="码字映射"></a>码字映射</h3><h4 id="码字数量"><a href="#码字数量" class="headerlink" title="码字数量"></a>码字数量</h4><p>NR系统中SU-MIMO可以支持最多8层的数据传输。NR的数据层数为1-4时采用单码字传输，5-8层时采用双码字传输。</p>
-<h4 id="码字到层的映射"><a href="#码字到层的映射" class="headerlink" title="码字到层的映射"></a>码字到层的映射</h4><ul>
-<li>对等映射：两个码字对应的层数尽可能相等。层数为偶数时，两个码字的层数相同；层数为奇数时，码字“0”的层数比码字“1”少一个。</li>
-<li>非对等映射：完全根据各层的信道条件灵活调整码字与层的对应关系。</li>
-</ul>
-<p>NR采用了对等映射。</p>
-<p><strong>码字到空&#x2F;时&#x2F;频资源的映射</strong></p>
-<p>针对基于CP-OFDM的传输方式，考虑过以下几种映射</p>
-<ul>
-<li>方式1（层-频率-时间）：每个码字首先串&#x2F;并转换为层，然后对于每一层，调制符号按照先频域（子载波）后时域（符号）的方式进行映射。UE在接收到某个码块组的一个或数个OFDM符号后就进行解码，拥有较低的解码时延。NR R15选择了这种方式。</li>
-<li>方式2（层组1-频率-时间，层组2-频率-时间）将多个数据层分为两组，分别在组内按照层-频率-时间的顺序进行映射。</li>
-<li>方式3（层-时间-频率）每层的调制符号先依次映射到对应于某一子载波的各OFDM符号上，然后再在下一子载波重复上述操作。优势在于可以在时变信道中获得更高的时间分级增益，缺点是解码时延大。</li>
-</ul>
-<p>基于DFT-s-OFDM的上行传输只能支持单流，沿用了层-频率-时间的映射方式。</p>
-<h3 id="PRB绑定"><a href="#PRB绑定" class="headerlink" title="PRB绑定"></a>PRB绑定</h3><p>NR 的DM-RS与数据采用相同的预编码，这种情况下，频率选择性预编码的性能与信道估计精度之间存在一定的矛盾。为了获得多个PRB联合信道估计的处理增益，就会限制频率选择性预编码的颗粒度，从而降低预编码增益；反之，如果为了获得频率选择性预编码的增益而对每个PRB独立编码，则无法进行联合信道估计。NR使用预编码资源组（PRG）来控制频率选择性编码的颗粒度。PRG定义为一组连续的PRB（物理资源块），在这组PRB上，UE可以假设基站用相同的预编码矩阵传输。</p>
-<p>NR将PRB的大小确定为2、4或者“连续的被调度带宽”三种取值。</p>
-<h3 id="高可靠性传输方案"><a href="#高可靠性传输方案" class="headerlink" title="高可靠性传输方案"></a>高可靠性传输方案</h3><p>针对高速移动场景以及高频段常见的遮挡效应，特殊设计的多天线传输方案可以提高传输的<strong>可靠性</strong>。如：</p>
-<ul>
-<li>基于多TRP（传输&#x2F;接收点）&#x2F;阵面的发射分集方案：通过多个TRP&#x2F;阵面分别发送具有一定冗余度的多个数据样本，传输被阻断的可能性被降低。</li>
-<li>半开环传输方案：将粗略的波束反馈信息（闭环）与开环的预编码轮循相结合。如：根据UE的上报信息，使用较宽的波束或者小范围扫描的一组波束向UE所处的大致方向进行赋性可以提高可靠性。</li>
-</ul>
-<h3 id="多传输点协作"><a href="#多传输点协作" class="headerlink" title="多传输点协作"></a>多传输点协作</h3><p>1.多点协作可以改善小区边缘的覆盖，在服务区内提供更为均衡的服务质量，在NR中仍是一种重要的技术手段。随着频段的升高，为了保证网络覆盖，需要相对密集的接入点部署。而随着有源天线设备集成度的提高，高频段将更加倾向于采用模块化的有源天线阵列。每个TRP的天线阵列可以被分为若干个相对独立的天线阵面，整个阵面的形态和端口数可以随着部署场景和业务需求进行灵活的调制。</p>
-<p>2.根据发送信号流到多个TRP&#x2F;阵面的映射关系，多点协作传输技术可以分为相干和非相干两种。</p>
-<ul>
-<li>相关传输：每个数据层会经过加权向量映射到多个TRP&#x2F;阵面上</li>
-<li>非相干传输：每个数据层只映射到部分TRP&#x2F;阵面上，不同数据层映射到不同TRP&#x2F;阵面上。</li>
-</ul>
-<p>多点协作重点考虑非相干传输。</p>
-<p>3.非相干-联合传输（NC-JT）可以采用PDCCH调度单个PDSCH的方式（方式1），也可以采用多个PDCCH各自调度对应的PDSCH的方式（方式2）</p>
-<p>方式1传输点之间的协作更紧密，需要更为理想的回传链路交互CSI和控制信息。</p>
-<p>方式2多个PDSCH的传输相对独立，对回传链路的时延等非理想因素不敏感。</p>
-<h2 id="上行传输方案"><a href="#上行传输方案" class="headerlink" title="上行传输方案"></a>上行传输方案</h2><p>1.NR系统的上行链路支持DFT-s-OFDM调制于CP-OFDM调制。使用DFT-s-OFDM时，每个UE只能进行单流传输；使用CP-OFDM时，每个UE可以使用4个数据流，从而支持更高的峰值速率。</p>
-<p>2.NR上行传输支持基于码本和非码本传输</p>
-<ul>
-<li>基于码本：UE使用固定的预编码矩阵来源于固定的码本，是基站根据测量的上行信道选择的。</li>
-<li>非码本：若上下行存在互易性则可使用非码本传输，UE可以基于对下行信道的测量向基站推荐上行链路中可以使用的预编码矩阵，然后由基站确定上行调度时使用的预编码矩阵。</li>
-</ul>
 
       
     </div>

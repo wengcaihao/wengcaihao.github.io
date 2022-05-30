@@ -131,13 +131,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -166,6 +166,142 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/me.jpg">
+      <meta itemprop="name" content="水中岚">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水中岚">
+      <meta itemprop="description" content="水中岚的博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 水中岚">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/" class="post-title-link" itemprop="url">第4章-帧结构与物理信道</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-24 09:58:55" itemprop="dateCreated datePublished" datetime="2022-04-24T09:58:55+08:00">2022-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-02 15:24:14" itemprop="dateModified" datetime="2022-05-02T15:24:14+08:00">2022-05-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="波形和参数集设计"><a href="#波形和参数集设计" class="headerlink" title="波形和参数集设计"></a>波形和参数集设计</h1><p>5G下行的调制波形为CP-OFDM，上行的调制波形除了CP-OFDM外还有DFT-sOFDM。其中，CP-OFDM调制的关键参数包括子载波间隔和CP长度。LTE支持15kHz的子载波间隔，而NR支持多种子载波间隔，不同子载波之间呈倍数关系，并且倍数必须为2的整数次幂。</p>
+<p>如果记$f_0&#x3D;15kHz$$,则NR支持的子载波间隔满足关系$$f_u&#x3D;2^uf_0,u&#x3D;0,1,2,3,4$</p>
+<h1 id="时频资源"><a href="#时频资源" class="headerlink" title="时频资源"></a>时频资源</h1><h2 id="时域资源的定义"><a href="#时域资源的定义" class="headerlink" title="时域资源的定义"></a>时域资源的定义</h2><p>1.NR无线帧</p>
+<p>NR<strong>无线帧</strong>长度定义为10ms，一个无线帧包含10个<strong>子帧</strong>，每个子帧长度为1ms。一个子帧进一步分为若干个<strong>时隙</strong>，具体的个数取决于子载波间隔，但无论子载波间隔多大，一个时隙都包括14个OFDM符号。如果子载波间隔为$f_u&#x3D;2^uf_0$，则一个子帧内包含$2^u$$个，每个时隙的长度为$$2^{-u}ms$。</p>
+<p>NR帧结构如下：</p>
+<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE1.png" class title="NR帧结构">
+
+<p>2.OFDM符号：一个时隙内的OFDM符号包括3种：下行符号、上行符号和灵活符号。上、下行符号只能用于上、下行传输，而灵活符号根据信令的指示可以进行上行传输或下行传输。</p>
+<h2 id="频域资源的定义"><a href="#频域资源的定义" class="headerlink" title="频域资源的定义"></a>频域资源的定义</h2><p>频域内，无论子载波间隔是多少，都可以将连续的12个子载波定义为一个物理资源块（PRB）。子载波间隔越大，PRB的实际带宽越大。</p>
+<h1 id="物理信道和信号"><a href="#物理信道和信号" class="headerlink" title="物理信道和信号"></a>物理信道和信号</h1><h2 id="物理信号"><a href="#物理信号" class="headerlink" title="物理信号"></a>物理信号</h2><p>1.常见的物理信号</p>
+<p>NR下行物理信号包括信道状态信息参考信号、解调参考信号、时频跟踪参考信号、相位噪声跟踪参考信号、RRM测量参考信号、RLM测量参考信号等</p>
+<p>NR上行物理信号包括探测参考信号、解调参考信号、相位噪声跟踪参考信号等。</p>
+<p>其中解调参考信号和行为噪声跟踪参考信号在上下行的设计基本相同。</p>
+<p>2.物理信号的设计原则</p>
+<ul>
+<li>尽量避免持续发送（持续发送：不经系统配置即发送，也无法关闭的信号）的周期性信号。因为持续发送的信号无法关闭，未来系统引入的新业务需要考虑如何避开这些信号，且这些信号会造成不必要的系统开销和功率消耗。</li>
+<li>物理信号占用的时频资源应该可以灵活配置。</li>
+<li>支持大规模波束赋形传输。（<strong>波束赋形</strong>：调整多天线信号的幅相以产生干涉效应，使最终辐射的信号集中朝着某个方向传播或接收，从数学的角度讲，多天线辐射的射频信号就是很多正弦信号的和，调整每个正弦信号的幅相之后，这些信号和功率在一些会变为零（相消干涉），在另一些位置功率最大（相长干涉））</li>
+</ul>
+<h2 id="物理信道"><a href="#物理信道" class="headerlink" title="物理信道"></a>物理信道</h2><h3 id="控制信道"><a href="#控制信道" class="headerlink" title="控制信道"></a>控制信道</h3><p>物理信道对应于一组特定的时&#x2F;频资源，用于承载高层映射的传输信号。不承载传输信道的物理信道称为<strong>控制信道</strong>。（传输信道中也有控制信道，但二者明显不是一个概念）</p>
+<p>物理下行控制信道用于为UE提供下行接收和上行传输的<strong>必要信息</strong>（如资源分配信息）。</p>
+<p>物理上行控制信道承载上行控制信息，用于向基站报告YE的状态。</p>
+<h3 id="NR定义的物理信道"><a href="#NR定义的物理信道" class="headerlink" title="NR定义的物理信道"></a>NR定义的物理信道</h3><ul>
+<li><strong>物理下行共享信道（PDSCH）</strong>：主要用于下行单播数据的传输，也可以用于寻呼消息和系统消息的传输。天线端口1000~1011</li>
+<li><strong>物理广播信道（PBCH）</strong>：承载UE接入网络所需的最小系统信息的一部分。天线端口4000</li>
+<li><strong>物理下行控制信道（PDCCH）</strong>：用于传输下行控制信息，主要是UE接收PDSCH和传输上行共享信道（PUSCH）所需的调度信息，也可以传输时隙格式指示和抢占指示。天线端口为2000</li>
+<li><strong>物理上行共享信道（PUSCH）</strong>：对应于PDSCH的上行物理信道，用于传输上行业务数据，还可以承载上行控制信息。天线端口1000~1003</li>
+<li><strong>物理上行控制信道（PUCCH）</strong>：承载上行控制信息，反馈HARQ-ACK信息，指示下行的传输块是否正确接收；上报信道状态信息；在有上行数据到达时请求上行资源。PUCCH的天线端口为2000。</li>
+<li><strong>物理随机接入信道（PRACH）</strong>：用于随机接入过程。天线端口为4000</li>
+</ul>
+<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE2.png" class>
+
+
+
+<p>下面将详细介绍下这些物理信道</p>
+<h3 id="初始接入信道（下行同步信道（本质是物理广播信道）与物理随机接入信道）"><a href="#初始接入信道（下行同步信道（本质是物理广播信道）与物理随机接入信道）" class="headerlink" title="初始接入信道（下行同步信道（本质是物理广播信道）与物理随机接入信道）"></a>初始接入信道（下行同步信道（本质是物理广播信道）与物理随机接入信道）</h3><p>UE开机或移动到新的小区覆盖范围后，需要通过<strong>下行同步信道</strong>获得与网络的下行同步，如时间和频率的同步、读取小区的广播信息、获取小区的物理表示，从而获取小区的系统信息以确定后续的操作。然而NR所支持的高频率将导致网络覆盖范围变小，通过大规模天线技术将有效地解决高频段带来的覆盖范围变小的难题。而下行同步信道的设计必须考虑覆盖范围的要求，使之与业务信道的范围相匹配。</p>
+<p>NR采用<strong>波束扫描</strong>技术提升下行同步信道的覆盖范围，波束扫描即用多个波束在不同方向重复发送下行同步信道，将这些波束合并起来可以覆盖整个小区。</p>
+<p>UE开机后获得下行同步，读取完系统广播消息之后，如果UE需要和基站建立无线链路，则UE需要发起<strong>上行随机接入过程</strong>，建立与基站的连接，随后才能进行常规的数据传输和接收。而随机接入过程也需要考虑覆盖范围，也就是说，基站要采用接收波束赋形获得赋性增益，UE也需要采用波束赋性进行发送，才能满足高频段的覆盖要求。</p>
+<h3 id="上下行控制信道"><a href="#上下行控制信道" class="headerlink" title="上下行控制信道"></a>上下行控制信道</h3><p>4.1下行控制信道（PDCCH）</p>
+<p>上下行业务信道的传输需要相关的下行控制信令辅助，而下行控制信令在PDCCH上传输。下行控制信令的可靠高效传输是上、下行数据传输的前提条件，因此当上、下行数据信道通过大规模天线技术获得了速率和覆盖的提升时，控制信道的覆盖也需要获得与之匹配的提升，否则下行控制信道会成为覆盖的瓶颈。</p>
+<p>1.PDCCH多天线方案有以下几种：</p>
+<ul>
+<li>波束赋性：这里指UE专属的波束赋性，不同UE的PDCCH可以有不同的波束赋性方向。下节将讨论的PDSCH中也会用到波束赋性技术，但二者的目标不一样。PDSCH追求频谱效率，波束应该尽量的窄，以获得更大的波束赋形增益；而对于PDCCH，可靠性是更为重要的目标，因此PDCCH的波束可以宽一些。</li>
+<li>发射分级：由于控制信道的可靠性高于数据信道，因此控制信道的设计过程考虑了空间分集方案。</li>
+<li>多用户多入多出技术：以提高容量为目标，并没有得到明显的协议支持</li>
+<li>空分复用：目的是提高频谱效率，NR不支持PDCCH的空分复用传输。</li>
+</ul>
+<p>4.2上行控制信道（PUCCH）</p>
+<p>NR中关于上行控制信道的一个重要特征是引入了两种PUCCH结构：长PUCCH和短PUCCH。</p>
+<p>1.短PUCCH的设计动机：</p>
+<ul>
+<li>降低HARQ-ACK的时延：为了支持uRLLC业务，希望PDSCH的HARQ-ACK反馈能在尽短时间内完成，这要求PUCCH在较短的时间内完成传输。</li>
+<li>支持上行波束赋性传输：其一是因为UE用多个不同的波束重复发送PUCCH，由于模拟波束赋形的特点，UE一个时间点上只能用一个波束进行发送，过长的PUCCH重复传输会占用更多的时域资源，导致系统开销增加。其二是支持基站侧的接受波束扫描，同样由于模拟波束，基站在一个时间点上仅能用一个模拟波束接收PUCCH，短PUCCH可以实现不同UE的PUCCH&#x2F;PUSCH的时分复用。</li>
+</ul>
+<img src="/2022/04/24/5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%A0%87%E5%87%86%E8%AF%A6%E8%A7%A3-2022-04-24-%E7%AC%AC4%E7%AB%A0-%E5%B8%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E4%BF%A1%E9%81%93/%E5%9B%BE3.png" class title="PUCCH&#x2F;PUSCH的时分复用">
+
+
+
+<h3 id="上、下行业务信道"><a href="#上、下行业务信道" class="headerlink" title="上、下行业务信道"></a>上、下行业务信道</h3><p>下行共享信道（DL-SCH）是下行数据的主要传输信道，映射到PDSCH上进行传输。同理，上行共享信道（UL-SCH）是上行数据的主要传输信道，映射到PUSCH上进行传输。</p>
+<p>PDSCH和PUSCH频域资源调度类似于LTE，但增加了BWP(带宽部分)的指示。</p>
+<p>NR时域资源调度比LTE更加灵活,PDSCH和PUSCH的时域资源的映射类型有两种：TypeA和TypeB。TypeA是基于时隙的调度；TypeB是基于微时隙的调度，主要目标是支持uRLLC业务，使起始符号位置可以使任意的符号。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
